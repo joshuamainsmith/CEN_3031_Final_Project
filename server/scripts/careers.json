@@ -1,0 +1,49 @@
+{
+    "entries": [
+        {
+            "name": "Agricultural Engineers",
+            "type": "Agriculture, Food, and Natural Resources",
+            "description": "Agricultural Engineers use engineering to solve problems on farms that are related to things like power, electricity, soil and water conservation, and the processing of farm products.",
+            "keywords": ["agriculture", "safety", "health", "program", "director", "conservation", "engineer", "scientist"],
+            "salary_ranges": {
+                "entry": 29.32,
+                "median": 37.72,
+                "high": 46.53,
+                "mean": 0
+            },
+            "outlook": "Growth Rate: 5.4%",
+            "eduation": "Bachelor's degree",
+            "important_subjects": ["accounting", "algebra", "biology", "chemistry", "mechanics", "trigonometry"]
+        },
+        {
+            "name": "Dredge Operators",
+            "type": "Architecture and Construction",
+            "description": "Dredge Operators operate dredge to remove sand, gravel, or other materials in waterways.",
+            "keywords": ["backhoe", "operator", "heavy", "equipment", "cranes", "hoists", "excavation"],
+            "salary_ranges": {
+                "entry": 18.26,
+                "median": 22.56,
+                "high": 27.47,
+                "mean": 0
+            },
+            "outlook": "Growth Rate: 6.2%",
+            "eduation": "High School",
+            "important_subjects": ["drafting", "cad", "algebra", "woodworking", "physics", "trigonometry", "geometry"]
+        },
+        {
+            "name": "Geneticists",
+            "type": "Science, Technology, Engineering, and Mathematics",
+            "description": "Geneticists research and study how traits are inherited. They design genetic experiments and publish research studies. They may also treat patients with genetic disorders.",
+            "keywords": ["backhoe", "operator", "heavy", "equipment", "cranes", "hoists", "excavation"],
+            "salary_ranges": {
+                "entry": 0,
+                "median": 35.77,
+                "high": 0,
+                "mean": 0
+            },
+            "outlook": "N/A",
+            "eduation": "Bachelor's Degree",
+            "important_subjects": ["biology", "calculus", "chemistry", "economics", "physics", "sociology", "trigonometry"]
+        }
+    ]
+}
