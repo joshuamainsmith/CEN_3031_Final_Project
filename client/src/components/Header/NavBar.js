@@ -2,22 +2,15 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './NavBar.css';
 
-
 const NavBar = () => {
 	return (
-		<div className="header">
-			{/* Logo */}
-			<Link className="nav-title" to="/">
-				<img className="nav-logo" src={'/logo192.png'} alt="React logo" />
-			</Link>
 
-			{/* Page Links */}
 			<div className="nav-items">
 				<Link className="nav-link" to="/Home">
 					Home
 				</Link>
 				<Link className="nav-link" to="/Register">
-					Extra Page
+					Register
 				</Link>
 				<a
 					className="nav-link"
@@ -35,11 +28,10 @@ const NavBar = () => {
 				>
 					React Tutorial
 				</a>
-				<a className="nav-link" target="_blank" rel="noopener norefferer" href="https://nodejs.org/en/docs/">
-					Node Docs
+				<a className="nav-link" target="_blank" rel="noopener norefferer" href="https://amazon.com">
+					To Change Later
 				</a>
 			</div>
-		</div>
 	);
 };
 
