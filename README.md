@@ -1,6 +1,6 @@
 ## _**PLEASE READ THIS TO COMPLETION BEFORE ASKING ANY QUESTIONS!**_
 
-### _**IMPORTANT NOTES**_ - 
+### _**IMPORTANT NOTES**_ -
 This project does not have a mongoDB connection setup. Setup the connection based on the environments below.
 - local development: create a config file (make sure to name it config.js) in the config folder, which exports your db.uri connection. An example is provided, config/config.example.js. This file will be ignored by git so your db credentials will be kept safe when the app is deployed.
 - production: Since the config file is not pushed when you deploy your app, you must specifiy your db uri in heorku. Set the uri in heroku as specified in [this](https://devcenter.heroku.com/articles/config-vars) resource. Make sure you name the environement variable "DB_URI".
@@ -12,7 +12,7 @@ This repository aims to assist you in beginning work on a MERN stack application
 
 Since this project will hold both the client application and the server application there will be node modules in two different places. First run `npm install` from the root. After this you will run `npm run-script install-all` from the root. From now on run this command anytime you want to install all modules again. This is a script we have defined in package.json. Alternatively your group may choose to simplify this process by using yarn workspaces as specified [here](https://yarnpkg.com/lang/en/docs/workspaces/).
 
-This app can be deployed directly to heroku since there is a script defined in package.json which will automatically handle building and deploying the app. For more information on deploying to heroku reference the extra resources at the bottom of this file. 
+This app can be deployed directly to heroku since there is a script defined in package.json which will automatically handle building and deploying the app. For more information on deploying to heroku reference the extra resources at the bottom of this file.
 
 
 ## Available Scripts
@@ -72,3 +72,15 @@ To learn how to setup a local MongoDB instance for testing, check out how to [co
 To learn how to deploy a full-stack web app to heroku, check out [this great guide](https://daveceddia.com/deploy-react-express-app-heroku/).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+
+## Filling Database with dummy data
+
+Make sure to make a `config.js` file inside `server/config` and have the right db uri (local or remote).
+
+Then run the following
+
+`node server/scripts/JSONToMongo.js`
+
+This should create 3 careers in your MongoDB. These are for testing purposes only. You can add more careers to the `server/scripts/careers.json` if you want.
+After filling the DB with dummy data, in your browser, go to `localhost:5000/api/careers` and you should see a response from the backend.
