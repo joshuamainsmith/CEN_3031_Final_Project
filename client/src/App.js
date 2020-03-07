@@ -6,7 +6,7 @@ import NavBar from './components/Header/NavBar';
 import SearchBar from './components/SearchBar';
 import Register from './components/Register';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Show from './views/Show/Show';
+import Show from './views/ShowView/Show';
 
 const App = () => {
 	return (
