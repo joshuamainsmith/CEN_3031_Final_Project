@@ -3,9 +3,10 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import Home from './views/Home/Home';
 import NotFound from './views/NotFound';
 import NavBar from './components/Header/NavBar';
-import SearchBar from './views/Home/SearchBar';
+import SearchBar from './components/SearchBar';
 import Register from './components/Register';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Show from './views/Show/Show';
 
 const App = () => {
 	return (
@@ -18,6 +19,7 @@ const App = () => {
 					<Redirect to="/Home" />
 				</Route>
 				<Route exact path="/Register" component={Register} />
+				<Route exact path="/Show" component={Show} />
 				<Route component={NotFound} />
 			</Switch>
 		</div>

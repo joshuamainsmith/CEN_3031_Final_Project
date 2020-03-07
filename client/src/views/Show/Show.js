@@ -1,35 +1,28 @@
 import React from 'react';
 import ButtonToolbar from 'react-bootstrap/ButtonToolbar';
 import Button from 'react-bootstrap/Button';
-import './Home.css';
+//import './Home.css';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import { Redirect } from 'react-router-dom';
-import { useHistory } from 'react-router-dom';
 
-function Home() {
-	const history = useHistory();
-	const handleClick = () => {
-		//return <Redirect to="/Temp/" />;
-		history.push('/Show/');
-	};
+function Show() {
 	return (
 		<div>
 			<ButtonToolbar>
 				<Button variant="primary" size="lg">
-					Large button
+					Show Button
 				</Button>
 			</ButtonToolbar>
 			<ul className="justify-content-center nav nav-tabs">
 				<li className="nav-item">
 					<a className="nav-link active" href="#">
-						Active
+						Show Active
 					</a>
 				</li>
 				<li className="nav-item">
 					<a className="nav-link" href="#">
-						Link
+						Did nothing
 					</a>
 				</li>
 				<li className="nav-item">
@@ -48,7 +41,10 @@ function Home() {
 				<Row>
 					<Col />
 					<Col>
-						<Button onClick={handleClick}>Discover Your Future Career Now!</Button>
+						<Button>
+							Discoover Your Future Career Now!
+							<a target="_blank" rel="noopener noreferrer" href="https://localhost:3000/Home" />
+						</Button>
 					</Col>
 					<Col />
 				</Row>
@@ -64,4 +60,4 @@ function Home() {
 	);
 }
 
-export default Home;
+export default Show;
