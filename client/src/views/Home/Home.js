@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 function Home() {
 	return (
 		<div className="discover-btn">
-			<Link to="/Show">
+			<Link to="/Search">
 				<Button color="primary">Discover your Future</Button>
 			</Link>
 		</div>

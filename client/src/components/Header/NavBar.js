@@ -55,16 +55,16 @@ const NavBar = () => {
 											Create Careers
 										</a>
 									</Link>
-									<Link to="Show" >
-									<a className="dropdown-item" href="#">
-										Show Careers
-									</a>
+									<Link to="Search">
+										<a className="dropdown-item" href="#">
+											Search Careers
+										</a>
 									</Link>
 									<div className="dropdown-divider" />
-									<Link to="/EditView" >
-									<a className="dropdown-item" href="#">
-										Edit Careers
-									</a>
+									<Link to="/EditView">
+										<a className="dropdown-item" href="#">
+											Edit Careers
+										</a>
 									</Link>
 								</div>
 							</li>

@@ -6,7 +6,7 @@ import NavBar from './components/Header/NavBar';
 import CreateView from './views/CreateView/CreateView';
 import IndexView from './views/IndexView/IndexList';
 import Credit from './components/Footer/Credit';
-import Show from './views/ShowView/Show';
+import Search from './views/SearchView/Search';
 import EditView from './views/EditView/EditView';
 
 const App = () => {
@@ -19,7 +19,7 @@ const App = () => {
 						<Redirect to="/Home" />
 					</Route>
 					<Route exact path="/Home" component={Home} />
-					<Route exact path="/Show" component={Show} />
+					<Route exact path="/Search" component={Search} />
 					<Route exact path="/CreateView" component={CreateView} />
 					<Route exact path="/IndexView" component={IndexView} />
 					<Route exact path="/EditView" component={EditView} />

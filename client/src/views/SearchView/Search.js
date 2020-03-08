@@ -1,7 +1,7 @@
 import React from 'react';
-import './Show.css';
+import './Search.css';
 
-function Show() {
+function Search() {
 	return (
 		<div className="search">
 			<a className="active" href="#home">
@@ -15,4 +15,4 @@ function Show() {
 	);
 }
 
-export default Show;
+export default Search;
