@@ -1,12 +1,14 @@
 import React from 'react';
-//import NavBar from '../../components/Header/NavBar.js';
-//import Credit from '../../components/Footer/Credit.js';
+import { Button } from 'reactstrap';
+import './Home.css';
+import { Link } from 'react-router-dom';
 
 function Home() {
 	return (
-		<div>
-			This is the home view. In this view there will be Discover your Future Career Path Button and Take the Quiz
-			button
+		<div className="discover-btn">
+			<Link to="/Show">
+				<Button color="primary">Discover your Future</Button>
+			</Link>
 		</div>
 	);
 }

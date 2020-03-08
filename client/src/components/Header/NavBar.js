@@ -1,5 +1,5 @@
 import React from 'react';
-//import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './NavBar.css';
 
 const NavBar = () => {
@@ -25,9 +25,12 @@ const NavBar = () => {
 					<div className="collapse navbar-collapse" id="navbarSupportedContent">
 						<ul className="navbar-nav mr-auto">
 							<li className="nav-item active">
-								<a className="nav-link" href="#">
-									Home <span className="sr-only">(current)</span>
-								</a>
+								<Link to="/Home">
+									<a className="nav-link" href="#">
+										Home
+										<span className="sr-only">(current)</span>
+									</a>
+								</Link>
 							</li>
 							<li className="nav-item">
 								<a className="nav-link" href="#">
@@ -44,19 +47,25 @@ const NavBar = () => {
 									aria-haspopup="true"
 									aria-expanded="false"
 								>
-									About Dropdown
+									Admin
 								</a>
 								<div className="dropdown-menu" aria-labelledby="navbarDropdown">
+									<Link to="CreateView">
+										<a className="dropdown-item" href="#">
+											Create Careers
+										</a>
+									</Link>
+									<Link to="Show" >
 									<a className="dropdown-item" href="#">
-										Action
+										Show Careers
 									</a>
-									<a className="dropdown-item" href="#">
-										Another action
-									</a>
+									</Link>
 									<div className="dropdown-divider" />
+									<Link to="/EditView" >
 									<a className="dropdown-item" href="#">
-										Something else here
+										Edit Careers
 									</a>
+									</Link>
 								</div>
 							</li>
 							<li className="nav-item">

@@ -30,3 +30,8 @@ body {
 .App-link {
 	color: #09d3ac;
 }
+
+.discover-btn {
+	text-align: center;
+	margin-top: 150pt;
+}

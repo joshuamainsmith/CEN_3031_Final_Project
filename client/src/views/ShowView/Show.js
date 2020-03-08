@@ -1,10 +1,15 @@
 import React from 'react';
-import Home from '../Home/Home';
+import './Show.css';
 
 function Show() {
-	
 	return (
-		<div>
+		<div className="search">
+			<a className="active" href="#home">
+				Home {'  '}
+			</a>
+			<a href="#about">About </a>
+			<a href="#contact">Contact </a>
+			<input type="text" placeholder="Career Search..." />
 
 		</div>
 	);
