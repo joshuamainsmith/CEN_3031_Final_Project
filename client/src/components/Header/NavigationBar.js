@@ -1,14 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './NavBar.css';
+import './NavigationBar.css';
 
-const NavBar = () => {
+const NavigationBar = () => {
 	return (
 		<div>
 			<main>
-				<nav className="navbar navbar-expand-lg navbar-blue bg-light">
+				<nav className="navbar navbar-expand-lg navbar-blue bg-dark">
 					<a className="navbar-brand" href="#">
-						Career Search bar
+						Career Finder
 					</a>
 					<button
 						className="navbar-toggler"
@@ -26,15 +26,15 @@ const NavBar = () => {
 						<ul className="navbar-nav mr-auto">
 							<li className="nav-item active">
 								<Link to="/Home">
-									<a className="nav-link" href="#">
+									<a className="nav-link" href="/home">
 										Home
 										<span className="sr-only">(current)</span>
 									</a>
 								</Link>
 							</li>
 							<li className="nav-item">
-								<a className="nav-link" href="#">
-									Browse
+								<a className="nav-link" href="/careers">
+									Search
 								</a>
 							</li>
 							<li className="nav-item dropdown">
@@ -51,35 +51,25 @@ const NavBar = () => {
 								</a>
 								<div className="dropdown-menu" aria-labelledby="navbarDropdown">
 									<Link to="CreateView">
-										<a className="dropdown-item" href="#">
+										<a className="dropdown-item" href="/career">
 											Create Careers
 										</a>
 									</Link>
 									<Link to="Search">
-										<a className="dropdown-item" href="#">
+										<a className="dropdown-item" href="/careers">
 											Search Careers
-										</a>
-									</Link>
-									<div className="dropdown-divider" />
-									<Link to="/EditView">
-										<a className="dropdown-item" href="#">
-											Edit Careers
 										</a>
 									</Link>
 								</div>
 							</li>
-							<li className="nav-item">
-								<a className="nav-link disabled" href="#">
-									Disabled
-								</a>
-							</li>
 						</ul>
-						<form className="form-inline my-2 my-lg-0">
+						<form className="form-inline my-2 my-lg-0" action="/careers">
 							<input
 								className="form-control mr-sm-2"
 								type="search"
 								placeholder="Search"
 								aria-label="Search"
+								name="keyword"
 							/>
 							<button className="btn btn-outline-success my-2 my-sm-0" type="submit">
 								Search
@@ -89,7 +79,7 @@ const NavBar = () => {
 				</nav>
 			</main>
 		</div>
-	);
+	)
 };
 
-export default NavBar;
+export default NavigationBar;
