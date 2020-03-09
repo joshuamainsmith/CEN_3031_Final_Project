@@ -22,6 +22,19 @@ module.exports.init = () => {
     // enable request logging for development debugging
     app.use(morgan('dev'));
 
+    app.use((req, res, next) => {
+      res.setHeader('Access-Control-Allow-Origin', '*');
+      res.setHeader(
+        'Access-Control-Allow-Headers',
+        'Origing, X-Requested-With, Content-Type, Accept, Authorization'
+      );
+      res.setHeader(
+        'Access-Controll-Allow-Methods',
+        'GET, POST, PUT, PATCH, DELETE, OPTIONS'
+      );
+      next();
+    });
+
     // body parsing middleware
     app.use(bodyParser.json());
 
