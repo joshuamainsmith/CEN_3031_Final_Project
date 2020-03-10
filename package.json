@@ -24,6 +24,7 @@
   "author": "Dakota Rennemann",
   "license": "MIT",
   "dependencies": {
+    "async": "^3.1.1",
     "body-parser": "^1.19.0",
     "bootstrap": "^4.4.1",
     "concurrently": "^4.1.0",
@@ -32,10 +33,11 @@
     "mongoose": "^5.7.1",
     "morgan": "^1.9.1",
     "nodemon": "^1.18.10",
+    "react": "^16.13.0",
     "react-bootstrap": "^1.0.0-beta.17",
+    "react-dom": "^16.13.0",
     "should": "^13.2.3",
-    "supertest": "^4.0.2",
-    "async": "^3.1.1"
+    "supertest": "^4.0.2"
   },
   "homepage": "https://github.com/UFWebApps/React_Template_Repo#readme"
 }
