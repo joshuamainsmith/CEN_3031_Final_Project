@@ -1,103 +1,154 @@
 import React from 'react';
 import './CreateView.css';
+import { Form, Row, Col, FormGroup, Button, Label, Input } from 'reactstrap';
 
 function CreateView() {
+	
 	return (
-		<div>
-			<form role="form" className="form-inline">
-				<label for="title">Title:</label>
-				<input type="text" />
+		<Form className="container">
+			<Row form>
+				<Col md={4}>
+					<FormGroup>
+						<Label for="careerTitle">Title</Label>
+						<Input type="career" name="email" id="exampleEmail" placeholder="Enter a career" value={this.state.title}/>
+					</FormGroup>
+				</Col>
+				<Col md={2}>
+					<FormGroup>
+						<Label for="entryWage">Wage Entry: </Label>
+						<Input
+							type="password"
+							name="wageEntry"
+							id="entryWage"
+							placeholder="Enter the starting wage $"
+						/>
+					</FormGroup>
+				</Col>
+				<Col md={2}>
+					<FormGroup>
+						<Label for="meanWage">Mean: </Label>
+						<Input type="password" name="wageEntry" id="entryWage" placeholder="Enter the Mean wage $" />
+					</FormGroup>
+				</Col>
+				<Col md={2}>
+					<FormGroup>
+						<Label for="medianWage">Median: </Label>
+						<Input type="password" name="wageEntry" id="entryWage" placeholder="Enter the median wage $" />
+					</FormGroup>
+				</Col>
+			</Row>
 
-				<label for="entry">Wages: Entry:</label>
-				<input type="text" placeholder="$" />
+			<FormGroup row className="career-description">
+				<Label for="exampleText" sm={2} className="career-text">
+					Career Description
+				</Label>
+				<Col sm={10}>
+					<Input type="textarea" name="text" id="exampleText" />
+				</Col>
+			</FormGroup>
 
-				<label for="mean">Mean: </label>
-				<input type="text" />
+			<Label for="education">Education</Label>
+			<Form>
+				<FormGroup check inline>
+					<Label check>
+						<Input type="checkbox" /> None
+					</Label>
+				</FormGroup>
 
-				<label for="median">Median: </label>
-				<input type="text" />
-				<br />
-				<h4>Cluster </h4>
-				<div class="dropdown">
-					<button
-						className="btn btn-secondary dropdown-toggle"
-						type="button"
-						id="dropdownMenuButton"
-						data-toggle="dropdown"
-						aria-haspopup="true"
-						aria-expanded="false"
-					>
-						Career Clusters
-					</button>
-					<div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-						<a class="dropdown-item" href="#">
-							Action
-						</a>
-						<a className="dropdown-item" href="#">
-							Another action
-						</a>
-						<a className="dropdown-item" href="#">
-							Something else here
-						</a>
-					</div>
-				</div>
-			</form>
-            {/* Not sure yet how to make all these check boxes inline. */}
-			<h4>Description</h4>
-			<textarea role="form" rows="5" col="11" maxlength="400" placeholder="Career Description" />
-			<h3>Education</h3>
-			<div className="custom-control custom-checkbox">
-				<input type="checkbox" class="custom-control-input" id="defaultUnchecked" />
-				<label className="custom-control-label" for="defaultUnchecked">
-					None
-				</label>
-			</div>
+				<FormGroup check inline>
+					<Label check>
+						<Input type="checkbox" /> High School
+					</Label>
+				</FormGroup>
 
-			<div className="custom-control custom-checkbox">
-				<input type="checkbox" class="custom-control-input" id="defaultUnchecked" />
-				<label className="custom-control-label" for="defaultUnchecked">
-					High School
-				</label>
-			</div>
+				<FormGroup check inline>
+					<Label check>
+						<Input type="checkbox" /> Bachelors
+					</Label>
+				</FormGroup>
 
-			<div className="custom-control custom-checkbox">
-				<input type="checkbox" class="custom-control-input" id="defaultUnchecked" />
-				<label className="custom-control-label" for="defaultUnchecked">
-					Bachelor's
-				</label>
-			</div>
+				<FormGroup check inline>
+					<Label check>
+						<Input type="checkbox" /> Masters
+					</Label>
+				</FormGroup>
 
-			<div className="custom-control custom-checkbox">
-				<input type="checkbox" class="custom-control-input" id="defaultUnchecked" />
-				<label className="custom-control-label" for="defaultUnchecked">
-					Master's
-				</label>
-			</div>
+				<FormGroup check inline>
+					<Label check>
+						<Input type="checkbox" /> Doctorate
+					</Label>
+				</FormGroup>
 
-			<div className="custom-control custom-checkbox">
-				<input type="checkbox" class="custom-control-input" id="defaultUnchecked" />
-				<label className="custom-control-label" for="defaultUnchecked">
-					Doctorate
-				</label>
-			</div>
+				<FormGroup check>
+					<Label check>
+						<Input type="checkbox" /> Other
+					</Label>
 
-			<div className="custom-control custom-checkbox">
-				<input type="checkbox" class="custom-control-input" id="defaultUnchecked" />
-				<label className="custom-control-label" for="defaultUnchecked">
-					Other
-					
-					<label for="title"></label>
-					<input type="text" />
-				</label>
-			</div>
-            {/* Other tag */}
-            <h3>Projection</h3>
-            		<form role="form" className="form-projection" />
-				<label for="title">Percentage:</label>
-				<input type="text" placeholder="$"/>
+					<Label for="otherCareer" />
+					<Col md={3}>
+						<Input type="otherEducation" name="email" id="exampleEmail" placeholder="Other Education" />
+					</Col>
+				</FormGroup>
+			</Form>
 
-		</div>
+			<Row form>
+				<Col md={2}>
+					<FormGroup>
+						<Label for="careerTitle">Percentage</Label>
+						<Input type="career" name="email" id="exampleEmail" placeholder="Enter a percentage" />
+					</FormGroup>
+				</Col>
+				<Col md={2}>
+					<FormGroup>
+						<Label for="entryWage">Base Year Estimate</Label>
+						<Input type="password" name="wageEntry" id="entryWage" placeholder="Base Year Estimate $" />
+					</FormGroup>
+				</Col>
+				<Col md={2}>
+					<FormGroup>
+						<Label for="meanWage">Projected Year Estimate </Label>
+						<Input
+							type="password"
+							name="wageEntry"
+							id="entryWage"
+							placeholder="Projected year estimate $"
+						/>
+					</FormGroup>
+				</Col>
+			</Row>
+
+			<Button color="primary" size="lg" active>
+				Save
+			</Button>
+
+			<Button color="secondary" size="lg" active>
+				Cancel
+			</Button>
+		</Form>
 	);
 }
+
+const SaveCareerFields = props => {
+
+	const [ careerTitle, setCareerTitle ] = useState(props.match.params.title);
+	const [ careerEntryWage, setCareerEntryWage ] = useState(props.match.params.title);
+	const [ careerMeanWage, setCareerMeanWage ] = useState(props.match.params.title);
+	const [ careerMedianWage, setCareerMedianWage ] = useState(props.match.params.title);	
+
+	useEffect(() => {
+		const saveCareer = async () => {
+			const response = await fetch('http://localhost:5000/api/careers/' + careerId);
+
+			const responseData = await response.json();
+
+			setLoadedCareer(responseData);
+			setCareerId(careerId);
+		};
+
+		fetchCareers();
+	}, []);
+
+	return <CareerShow career={loadedCareer} />;
+};
 
 export default CreateView;

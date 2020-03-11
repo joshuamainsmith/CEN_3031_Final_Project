@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './Search.css';
 
 function Search() {
-	const [loadedCareers, setLoadedCareers] = useState([]);
+	const [ loadedCareers, setLoadedCareers ] = useState([]);
 
 	useEffect(() => {
 		const fetchCareers = async () => {
@@ -16,7 +16,7 @@ function Search() {
 		fetchCareers();
 	}, []);
 
-	const careerList = loadedCareers.map(career => {
+	const careerList = loadedCareers.map((career) => {
 		return (
 			<div className="row" key={career.id}>
 				<div className="col-12">
@@ -26,13 +26,15 @@ function Search() {
 					<p>{career.description}</p>
 				</div>
 			</div>
-		)
-	})
+		);
+	});
 
-	return <div>
-		<h1>Careers</h1>
+	return (
+		<div>
+			<h1>Careers</h1>
 			{careerList}
-		</div>;
+		</div>
+	);
 }
 
 export default Search;

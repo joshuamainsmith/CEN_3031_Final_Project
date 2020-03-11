@@ -5,7 +5,7 @@ import NotFound from './views/NotFound';
 import NavigationBar from './components/Header/NavigationBar';
 import CreateView from './views/CreateView/CreateView';
 import IndexView from './views/IndexView/IndexList';
-// import Credit from './components/Footer/Credit';
+//import Credit from './components/footer/Credit';
 import Search from './views/SearchView/Search';
 import EditView from './views/EditView/EditView';
 import ShowView from './views/ShowView/ShowView';
@@ -28,8 +28,7 @@ const App = () => {
 							<Route exact path="/career/:id/edit" component={EditView} />
 							<Route component={NotFound} />
 						</Switch>
-						<footer>
-						</footer>
+						<footer />
 					</div>
 				</Router>
 			</div>
