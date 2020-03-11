@@ -7,7 +7,9 @@ function Home() {
 	return (
 	<div>
 		<div>
-			<h1 className="title">Florida Middle School</h1>
+			<h1 className="title">Florida Middle</h1>
+			<img className="logoHome" src="logoHome.jpg" alt="School Home Logo"></img>
+			<h1 className="title" margin-left="2em">School</h1>
 		</div>
 		<div className="discover-btn">
 			<Link to="/Search">

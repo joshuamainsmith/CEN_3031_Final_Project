@@ -33,7 +33,16 @@ body {
 
 .title {
 	color: blue;
-	text-align: center;
+	text-align: left;
+	font-size: 5em;
+	font-weight: bold;
+	display: block;
+}
+
+.logoHome {
+	float:left;
+	width:140px;
+	height:128px;
 }
 
 .button {
