@@ -10,7 +10,7 @@ function CreateView() {
 				<Col md={4}>
 					<FormGroup>
 						<Label for="careerTitle">Title</Label>
-						<Input type="career" name="email" id="exampleEmail" placeholder="Enter a career" value={this.state.title}/>
+						<Input type="career" name="email" id="exampleEmail" placeholder="Enter a career" />
 					</FormGroup>
 				</Col>
 				<Col md={2}>
@@ -128,27 +128,5 @@ function CreateView() {
 	);
 }
 
-const SaveCareerFields = props => {
-
-	const [ careerTitle, setCareerTitle ] = useState(props.match.params.title);
-	const [ careerEntryWage, setCareerEntryWage ] = useState(props.match.params.title);
-	const [ careerMeanWage, setCareerMeanWage ] = useState(props.match.params.title);
-	const [ careerMedianWage, setCareerMedianWage ] = useState(props.match.params.title);	
-
-	useEffect(() => {
-		const saveCareer = async () => {
-			const response = await fetch('http://localhost:5000/api/careers/' + careerId);
-
-			const responseData = await response.json();
-
-			setLoadedCareer(responseData);
-			setCareerId(careerId);
-		};
-
-		fetchCareers();
-	}, []);
-
-	return <CareerShow career={loadedCareer} />;
-};
 
 export default CreateView;
