@@ -12,7 +12,17 @@ const mongoose = require('mongoose'),
 // };
 
 exports.create = async (req, res) => {
-    Career.create(req.body, function (err, career) {
+
+    let career = req.body;
+    career.salary_ranges = {}
+    career.salary_ranges.entry = career.entry_wage
+    career.salary_ranges.median = career.median_wage
+    career.salary_ranges.mean = career.mean_wage
+    career.outlook = career.growth_rate
+    career.important_subjects = career.important_subjects.split(',').map(e => String(e).trim());
+    career.keywords = career.keywords.split(',').map(e => String(e).trim());
+
+    Career.create(career, function (err, career) {
         if (err) {
             res.status(400).send(err);
         } else {

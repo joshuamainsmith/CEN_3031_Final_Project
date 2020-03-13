@@ -4,7 +4,6 @@ import Home from './views/Home/Home';
 import NotFound from './views/NotFound';
 import NavigationBar from './components/Header/NavigationBar';
 import CreateView from './views/CreateView/CreateView';
-import IndexView from './views/IndexView/IndexList';
 //import Credit from './components/footer/Credit';
 import Search from './views/SearchView/Search';
 import EditView from './views/EditView/EditView';
