@@ -28,7 +28,6 @@ const App = () => {
 							<Route exact path="/career/:id/edit" component={EditView} />
 							<Route component={NotFound} />
 						</Switch>
-						<footer />
 					</div>
 				</Router>
 			</div>

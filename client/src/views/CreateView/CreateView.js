@@ -3,7 +3,6 @@ import './CreateView.css';
 import { Form, Row, Col, FormGroup, Button, Label, Input } from 'reactstrap';
 
 function CreateView() {
-	
 	return (
 		<Form className="container">
 			<Row form>
@@ -47,41 +46,59 @@ function CreateView() {
 				</Col>
 			</FormGroup>
 
+			<FormGroup row className="keywords">
+				<Label for="exampleText" sm={2} className="keywords-text">
+					Keywords
+				</Label>
+				<Col sm={10}>
+					<Input type="textarea" name="text" id="exampleText" placeholder="comma sperated values" />
+				</Col>
+			</FormGroup>
+
+			<FormGroup row className="subjects">
+				<Label for="exampleText" sm={2} className="subjects-text">
+					Subjects
+				</Label>
+				<Col sm={10}>
+					<Input type="textarea" name="text" id="exampleText" placeholder="comma sperated values" />
+				</Col>
+			</FormGroup>
+
 			<Label for="education">Education</Label>
 			<Form>
 				<FormGroup check inline>
 					<Label check>
-						<Input type="checkbox" /> None
+						<Input type="radio" name="radio1" /> None
 					</Label>
 				</FormGroup>
 
 				<FormGroup check inline>
 					<Label check>
-						<Input type="checkbox" /> High School
+						<Input type="radio" name="radio1" /> High School
 					</Label>
 				</FormGroup>
 
 				<FormGroup check inline>
 					<Label check>
-						<Input type="checkbox" /> Bachelors
+						<Input type="radio" name="radio1" /> Bachelors
 					</Label>
 				</FormGroup>
 
 				<FormGroup check inline>
 					<Label check>
-						<Input type="checkbox" /> Masters
+						<Input type="radio" name="radio1" /> Masters
 					</Label>
 				</FormGroup>
 
 				<FormGroup check inline>
 					<Label check>
-						<Input type="checkbox" /> Doctorate
+						<Input type="radio" name="radio1" /> Doctorate
 					</Label>
 				</FormGroup>
 
 				<FormGroup check>
 					<Label check>
-						<Input type="checkbox" /> Other
+						<Input type="radio" name="radio1" /> Other
 					</Label>
 
 					<Label for="otherCareer" />
@@ -127,6 +144,5 @@ function CreateView() {
 		</Form>
 	);
 }
-
 
 export default CreateView;

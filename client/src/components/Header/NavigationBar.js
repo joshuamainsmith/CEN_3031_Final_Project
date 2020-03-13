@@ -7,7 +7,7 @@ const NavigationBar = () => {
 		<div>
 			<main>
 				<nav className="navbar navbar-expand-lg navbar-blue bg-dark">
-					<a className="navbar-brand" href="#">
+					<a className="navbar-brand" href="/home">
 						Career Finder
 					</a>
 					<button
@@ -25,7 +25,7 @@ const NavigationBar = () => {
 					<div className="collapse navbar-collapse" id="navbarSupportedContent">
 						<ul className="navbar-nav mr-auto">
 							<li className="nav-item active">
-								<Link to="/Home">
+								<Link to="/home">
 									<a className="nav-link" href="/home">
 										Home
 										<span className="sr-only">(current)</span>
@@ -50,12 +50,12 @@ const NavigationBar = () => {
 									Admin
 								</a>
 								<div className="dropdown-menu" aria-labelledby="navbarDropdown">
-									<Link to="CreateView">
+									<Link to="/career">
 										<a className="dropdown-item" href="/career">
-											Create Careers
+											Create Career
 										</a>
 									</Link>
-									<Link to="Search">
+									<Link to="/careers">
 										<a className="dropdown-item" href="/careers">
 											Search Careers
 										</a>
@@ -79,7 +79,7 @@ const NavigationBar = () => {
 				</nav>
 			</main>
 		</div>
-	)
+	);
 };
 
 export default NavigationBar;
