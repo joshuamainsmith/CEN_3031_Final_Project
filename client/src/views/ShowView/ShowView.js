@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Label } from 'reactstrap';
+//import { Container, Label } from 'reactstrap';
 import './ShowView.css';
 
 function CareerShow(props) {

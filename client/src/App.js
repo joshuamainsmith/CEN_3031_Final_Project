@@ -26,6 +26,7 @@ const App = () => {
 							<Route exact path="/career" component={CreateView} />
 							<Route exact path="/career/:id" component={ShowView} />
 							<Route exact path="/career/:id/edit" component={EditView} />
+							
 							<Route component={NotFound} />
 						</Switch>
 					</div>

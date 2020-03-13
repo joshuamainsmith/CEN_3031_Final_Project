@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import './Search.css';
 
 function Search() {
@@ -20,7 +21,9 @@ function Search() {
 		return (
 			<div className="row" key={career.id}>
 				<div className="col-12">
+					
 					<h3>{career.name}</h3>
+					<Link to="/careers" />
 				</div>
 				<div className="col-12">
 					<p>{career.description}</p>

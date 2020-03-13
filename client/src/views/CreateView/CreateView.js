@@ -1,17 +1,57 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './CreateView.css';
 import { Form, Row, Col, FormGroup, Button, Label, Input } from 'reactstrap';
 
 function CreateView() {
+	const [ values, setValues ] = useState({ title: '', type: '' });
+
+	const handleInputChange = (e) => {
+		const { name, value } = e.target;
+		setValues({ ...values, [name]: value });
+	};
+
+	const handleSave = async (e) => {
+		e.preventDefault();
+		//alert(values.title);
+		let data = { name: values.title, type: values.type };
+		const response = await fetch('http://localhost:5000/api/careers/', {
+			method: 'POST',
+			mode: 'no-cors',
+			headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+			body: JSON.stringify(data)
+		});
+	};
+
 	return (
 		<Form className="container">
 			<Row form>
 				<Col md={4}>
 					<FormGroup>
 						<Label for="careerTitle">Title</Label>
-						<Input type="career" name="email" id="exampleEmail" placeholder="Enter a career" />
+						<Input
+							type="text"
+							name="title"
+							id="careerName"
+							value={values.title}
+							onChange={handleInputChange}
+							placeholder="Enter a career"
+						/>
 					</FormGroup>
 				</Col>
+				<Col md={4}>
+					<FormGroup>
+						<Label for="careerType">Type</Label>
+						<Input
+							type="text"
+							name="type"
+							id="careerType"
+							value={values.type}
+							onChange={handleInputChange}
+							placeholder="Enter a career"
+						/>
+					</FormGroup>
+				</Col>
+
 				<Col md={2}>
 					<FormGroup>
 						<Label for="entryWage">Wage Entry: </Label>
@@ -134,7 +174,7 @@ function CreateView() {
 				</Col>
 			</Row>
 
-			<Button color="primary" size="lg" active>
+			<Button color="primary" size="lg" active onClick={handleSave}>
 				Save
 			</Button>
 
