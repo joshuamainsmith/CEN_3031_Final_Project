@@ -45,7 +45,7 @@ function Search(props) {
 					<p>Median Wage: ${career.salary_ranges.median}</p>
 				</div>
 				<div className="col-12">
-					<p>{career.outlook}</p>
+					<p>Growth Rate: {career.outlook}</p>
 				</div>
 			</div>
 		);
@@ -53,8 +53,6 @@ function Search(props) {
 
 	return (
 		<div>
-			<h2 className='school-name'>Florida Middle School</h2>
-
 			<h1>Careers</h1>
 			{careerList}
 		</div>
