@@ -11,8 +11,8 @@
                 "high": 46.53,
                 "mean": 0
             },
-            "outlook": "Growth Rate: 5.4%",
-            "eduation": "Bachelor's degree",
+            "growth_rate": "5.4%",
+            "education": "Bachelor's degree",
             "important_subjects": ["accounting", "algebra", "biology", "chemistry", "mechanics", "trigonometry"]
         },
         {
@@ -26,8 +26,8 @@
                 "high": 27.47,
                 "mean": 0
             },
-            "outlook": "Growth Rate: 6.2%",
-            "eduation": "High School",
+            "growth_rate": "6.2%",
+            "education": "High School",
             "important_subjects": ["drafting", "cad", "algebra", "woodworking", "physics", "trigonometry", "geometry"]
         },
         {
@@ -41,8 +41,8 @@
                 "high": 0,
                 "mean": 0
             },
-            "outlook": "N/A",
-            "eduation": "Bachelor's Degree",
+            "growth_rate": "N/A",
+            "education": "Bachelor's Degree",
             "important_subjects": ["biology", "calculus", "chemistry", "economics", "physics", "sociology", "trigonometry"]
         }
     ]
