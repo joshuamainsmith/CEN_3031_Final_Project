@@ -9,9 +9,9 @@ function CareerShow(props) {
 	const [ article, setCareer ] = useState({});
 
 	async function handleDelete() {
-    console.log(props.career._id);
+		console.log(props.career._id);
 		try {
-			fetch(`/api/careers/${props.career._id}`, {method: "delete"});
+			fetch(`/api/careers/${props.career._id}`, { method: 'delete' });
 
 			props.history.push('/careers/');
 		} catch (error) {
@@ -40,7 +40,7 @@ function CareerShow(props) {
 			</div>
 			<div>
 				<h3>Education</h3>
-				{props.career.eduation}
+				{props.career.education}
 			</div>
 			<div>
 				<h3>Projection</h3>
