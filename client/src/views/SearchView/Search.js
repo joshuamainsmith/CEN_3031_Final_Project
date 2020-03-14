@@ -25,6 +25,9 @@ function Search() {
 				<div className="col-12">
 					<p>{career.description}</p>
 				</div>
+				<div className="col-12">
+					<p>{career._id}</p>
+				</div>
 			</div>
 		);
 	});
