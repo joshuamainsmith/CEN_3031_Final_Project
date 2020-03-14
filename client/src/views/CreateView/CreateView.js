@@ -1,147 +1,275 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './CreateView.css';
 import { Form, Row, Col, FormGroup, Button, Label, Input } from 'reactstrap';
 
-function CreateView() {
+function CreateView(props) {
+	const initialState = {
+		name: '',
+		type: '',
+		description: '',
+		keywords: '',
+		important_subjects: '',
+		entry_wage: '',
+		median_wage: '',
+		mean_wage: '',
+		growth_rate: '',
+		education: ''
+	};
+	const [ career, setCareer ] = useState(initialState);
+
+	function handleChange(event) {
+		setCareer({ ...career, [event.target.name]: event.target.value });
+	}
+
+	function handleSubmit(event) {
+		console.log(career);
+		event.preventDefault();
+		async function postCareer() {
+			fetch('/api/careers', {
+				method: 'post',
+				body: JSON.stringify(career),
+				headers: {
+					Accept: 'application/json',
+					'Content-Type': 'application/json'
+				}
+			})
+				.then((response) => response.json())
+				.then((data) => {
+					props.history.push('/career/' + data._id);
+				})
+				.catch((error) => {
+					console.log('Error: ', error);
+				});
+		}
+		postCareer();
+	}
+
 	return (
-		<Form className="container">
-			<Row form>
-				<Col md={4}>
-					<FormGroup>
-						<Label for="careerTitle">Title</Label>
-						<Input type="career" name="email" id="exampleEmail" placeholder="Enter a career" />
-					</FormGroup>
-				</Col>
-				<Col md={2}>
-					<FormGroup>
-						<Label for="entryWage">Wage Entry: </Label>
-						<Input
-							type="password"
-							name="wageEntry"
-							id="entryWage"
-							placeholder="Enter the starting wage $"
-						/>
-					</FormGroup>
-				</Col>
-				<Col md={2}>
-					<FormGroup>
-						<Label for="meanWage">Mean: </Label>
-						<Input type="password" name="wageEntry" id="entryWage" placeholder="Enter the Mean wage $" />
-					</FormGroup>
-				</Col>
-				<Col md={2}>
-					<FormGroup>
-						<Label for="medianWage">Median: </Label>
-						<Input type="password" name="wageEntry" id="entryWage" placeholder="Enter the median wage $" />
-					</FormGroup>
-				</Col>
-			</Row>
-
-			<FormGroup row className="career-description">
-				<Label for="exampleText" sm={2} className="career-text">
-					Career Description
-				</Label>
-				<Col sm={10}>
-					<Input type="textarea" name="text" id="exampleText" />
-				</Col>
-			</FormGroup>
-
-			<FormGroup row className="keywords">
-				<Label for="exampleText" sm={2} className="keywords-text">
-					Keywords
-				</Label>
-				<Col sm={10}>
-					<Input type="textarea" name="text" id="exampleText" placeholder="comma sperated values" />
-				</Col>
-			</FormGroup>
-
-			<FormGroup row className="subjects">
-				<Label for="exampleText" sm={2} className="subjects-text">
-					Subjects
-				</Label>
-				<Col sm={10}>
-					<Input type="textarea" name="text" id="exampleText" placeholder="comma sperated values" />
-				</Col>
-			</FormGroup>
-
-			<Label for="education">Education</Label>
-			<Form>
-				<FormGroup check inline>
-					<Label check>
-						<Input type="radio" name="radio1" /> None
-					</Label>
-				</FormGroup>
-
-				<FormGroup check inline>
-					<Label check>
-						<Input type="radio" name="radio1" /> High School
-					</Label>
-				</FormGroup>
-
-				<FormGroup check inline>
-					<Label check>
-						<Input type="radio" name="radio1" /> Bachelors
-					</Label>
-				</FormGroup>
-
-				<FormGroup check inline>
-					<Label check>
-						<Input type="radio" name="radio1" /> Masters
-					</Label>
-				</FormGroup>
-
-				<FormGroup check inline>
-					<Label check>
-						<Input type="radio" name="radio1" /> Doctorate
-					</Label>
-				</FormGroup>
-
-				<FormGroup check>
-					<Label check>
-						<Input type="radio" name="radio1" /> Other
-					</Label>
-
-					<Label for="otherCareer" />
-					<Col md={3}>
-						<Input type="otherEducation" name="email" id="exampleEmail" placeholder="Other Education" />
+		<div className="form-wrapper">
+			<Form id="career-create-form" className="container" onSubmit={handleSubmit}>
+				<Row form>
+					<Col md={6}>
+						<FormGroup>
+							<Label>Name</Label>
+							<Input
+								type="text"
+								name="name"
+								id="careerName"
+								value={career.title}
+								onChange={handleChange}
+							/>
+						</FormGroup>
 					</Col>
-				</FormGroup>
+					<Col md={6}>
+						<FormGroup>
+							<Label>Career Type</Label>
+							<Input
+								type="text"
+								name="type"
+								id="careerType"
+								value={career.type}
+								onChange={handleChange}
+							/>
+						</FormGroup>
+					</Col>
+				</Row>
+
+				<Row form>
+					<Col md={12}>
+						<FormGroup>
+							<Label>Career Description</Label>
+							<small id="descriptionHelp" class="form-text text-muted">
+								A brief description of the career.
+							</small>
+							<Input
+								type="textarea"
+								name="description"
+								id="careerDescription"
+								value={career.description}
+								onChange={handleChange}
+							/>
+						</FormGroup>
+					</Col>
+				</Row>
+
+				<Row form>
+					<Col md={12}>
+						<FormGroup>
+							<Label>Career Keywords</Label>
+							<small id="keywordsHelp" class="form-text text-muted">
+								A list of comma separated values.
+							</small>
+							<Input
+								type="textarea"
+								name="keywords"
+								id="careerKeywords"
+								value={career.keywords}
+								onChange={handleChange}
+							/>
+						</FormGroup>
+					</Col>
+				</Row>
+
+				<Row form>
+					<Col md={12}>
+						<FormGroup>
+							<Label for="importantSubjects">Important Subjects</Label>
+							<small id="subjectsHelp" class="form-text text-muted">
+								A list of comma separated values.
+							</small>
+							<Input
+								type="textarea"
+								name="important_subjects"
+								id="importantSubjects"
+								value={career.important_subjects}
+								onChange={handleChange}
+							/>
+						</FormGroup>
+					</Col>
+				</Row>
+
+				<Row form>
+					<Col md={4}>
+						<FormGroup>
+							<Label>Entry Wage</Label>
+							<Input
+								type="text"
+								name="entry_wage"
+								id="entryWage"
+								placeholder="$0.00"
+								value={career.entry_wage}
+								onChange={handleChange}
+							/>
+						</FormGroup>
+					</Col>
+					<Col md={4}>
+						<FormGroup>
+							<Label>Mean Wage</Label>
+							<Input
+								type="text"
+								name="mean_wage"
+								id="meanWage"
+								placeholder="$0.00"
+								value={career.mean_wage}
+								onChange={handleChange}
+							/>
+						</FormGroup>
+					</Col>
+					<Col md={4}>
+						<FormGroup>
+							<Label>Median Wage</Label>
+							<Input
+								type="text"
+								name="median_wage"
+								id="medianWage"
+								placeholder="$0.00"
+								value={career.median_wage}
+								onChange={handleChange}
+							/>
+						</FormGroup>
+					</Col>
+				</Row>
+
+				<Row form>
+					<Col md={12}>
+						<FormGroup>
+							<Label>Growth Rate</Label>
+							<small id="growthRateHelp" class="form-text text-muted">
+								Expected growth rate in the next year.
+							</small>
+							<Input
+								type="text"
+								name="growth_rate"
+								id="growthRate"
+								placeholder="0.0%"
+								value={career.growth_rate}
+								onChange={handleChange}
+							/>
+						</FormGroup>
+					</Col>
+				</Row>
+
+				<Row form>
+					<FormGroup tag="fieldset">
+						<Label>Education</Label>
+						<small id="descriptionHelp" class="form-text text-muted">
+							Lowest education needed for career.
+						</small>
+						<FormGroup check>
+							<Label check>
+								<Input
+									type="radio"
+									name="education"
+									value="none"
+									onChange={handleChange}
+									checked={career.education === 'none'}
+								/>
+								None
+							</Label>
+						</FormGroup>
+						<FormGroup check>
+							<Label check>
+								<Input
+									type="radio"
+									name="education"
+									value="high school"
+									onChange={handleChange}
+									checked={career.education === 'high school'}
+								/>
+								High School
+							</Label>
+						</FormGroup>
+						<FormGroup check>
+							<Label check>
+								<Input
+									type="radio"
+									name="education"
+									value="bachelors"
+									onChange={handleChange}
+									checked={career.education === 'bachelors'}
+								/>
+								Bachelors
+							</Label>
+						</FormGroup>
+						<FormGroup check>
+							<Label check>
+								<Input
+									type="radio"
+									name="education"
+									value="masters"
+									onChange={handleChange}
+									checked={career.education === 'masters'}
+								/>
+								Masters
+							</Label>
+						</FormGroup>
+						<FormGroup check>
+							<Label check>
+								<Input
+									type="radio"
+									name="education"
+									value="doctorate"
+									onChange={handleChange}
+									checked={career.education === 'doctorate'}
+								/>
+								Doctorate
+							</Label>
+						</FormGroup>
+					</FormGroup>
+				</Row>
+
+				<Row form>
+					<Col md={12}>
+						<Button color="primary" className="float-right">
+							Save
+						</Button>{' '}
+						<a href="/careers" id="cancel" name="cancel" className="btn btn-secondary float-left">
+							Cancel
+						</a>
+					</Col>
+				</Row>
 			</Form>
-
-			<Row form>
-				<Col md={2}>
-					<FormGroup>
-						<Label for="careerTitle">Percentage</Label>
-						<Input type="career" name="email" id="exampleEmail" placeholder="Enter a percentage" />
-					</FormGroup>
-				</Col>
-				<Col md={2}>
-					<FormGroup>
-						<Label for="entryWage">Base Year Estimate</Label>
-						<Input type="password" name="wageEntry" id="entryWage" placeholder="Base Year Estimate $" />
-					</FormGroup>
-				</Col>
-				<Col md={2}>
-					<FormGroup>
-						<Label for="meanWage">Projected Year Estimate </Label>
-						<Input
-							type="password"
-							name="wageEntry"
-							id="entryWage"
-							placeholder="Projected year estimate $"
-						/>
-					</FormGroup>
-				</Col>
-			</Row>
-
-			<Button color="primary" size="lg" active>
-				Save
-			</Button>
-
-			<Button color="secondary" size="lg" active>
-				Cancel
-			</Button>
-		</Form>
+		</div>
 	);
 }
 

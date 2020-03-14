@@ -1,21 +1,31 @@
 import React, { useState, useEffect } from 'react';
 import './Search.css';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { PromiseProvider } from 'mongoose';
 
-let cName;
+function useQuery() {
+	return new URLSearchParams(useLocation().search);
+}
 
 function Search(props) {
-	const [ careerID ] = useState(props.match.params.id);
+	let query = useQuery()
 	const [ loadedCareers, setLoadedCareers ] = useState([]);
+	const [ keyword, setKeyword ] = useState('');
+	const [ careerID ] = useState(props.match.params.id);
 
 	useEffect(() => {
 		const fetchCareers = async () => {
-			const response = await fetch('http://localhost:5000/api/careers/');
-			cName = careerID;
-
+			let uri;
+			const keyword = query.get('keyword')
+			if (keyword) {
+				uri = '/api/careers?keyword=' + keyword
+			} else {
+				uri = '/api/careers'
+			}
+			const response = await fetch(uri);
 			const responseData = await response.json();
 
+			setKeyword(keyword);
 			setLoadedCareers(responseData);
 		};
 
@@ -24,7 +34,7 @@ function Search(props) {
 
 	const careerList = loadedCareers.map((career) => {
 		return (
-			<div className="row" key={career.id}>
+			<div className="row" key={career._id}>
 				<div className="col-12">
 					<h3 color><Link to={"/career/" + career._id}>{career.name}</Link></h3>
 				</div>
