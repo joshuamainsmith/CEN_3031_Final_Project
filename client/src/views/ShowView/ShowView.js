@@ -53,7 +53,7 @@ const ShowView = (props) => {
 
 	useEffect(() => {
 		const fetchCareers = async () => {
-			const response = await fetch('http://localhost:5000/api/careers/' + careerId);
+			const response = await fetch('/api/careers/' + careerId);
 
 			const responseData = await response.json();
 
