@@ -23,40 +23,54 @@ function CareerShow(props) {
 		<div>
 			<div>
 				<h3>{props.career.name}</h3>
+        <sm>{props.career.type}</sm>
+        <div className="space"></div>
 				<p>
 					<h4>Job Description: </h4>
 					{props.career.description}
 				</p>
 			</div>
-			<div>
+
+      <Row> 
+			<Col md={4} >
 				<h3>Wages:</h3>
-				<ul key="Entry {props.career.salary_ranges.entry}">Entry: {props.career.salary_ranges.entry}</ul>
+				<ul key="Entry {props.career.salary_ranges.entry}">Entry: ${props.career.salary_ranges.entry}</ul>
 
-				<ul key="Median {props.career.salary_ranges.median}">Median: {props.career.salary_ranges.median}</ul>
+				<ul key="Median {props.career.salary_ranges.median}">Median: ${props.career.salary_ranges.median}</ul>
 
-				{/*<ul key={props.career.salary_ranges.high}>High: {props.career.salary_ranges.high}</ul>*/}
+				<ul key="Mean {props.career.salary_ranges.mean}">Mean: ${props.career.salary_ranges.mean}</ul>
+			</Col>
 
-				<ul key="Mean {props.career.salary_ranges.mean}">Mean: {props.career.salary_ranges.mean}</ul>
-			</div>
-			<div>
+			<Col md={5} >
 				<h3>Education</h3>
-				{props.career.education}
-			</div>
-			<div>
+				<li>{props.career.education}</li>
+			</Col>
+
+			<Col md={2} >
 				<h3>Projection</h3>
 				<ul>
-					<li>{props.career.outlook}</li>
+					<li>Growth Rate: {props.career.outlook}%</li>
 				</ul>
-			</div>
-			<div>
+			</Col>
+</Row>
+
+      <Row>
+      <Col md={4} >
+			<div> 
 				<h3>Important Subjects</h3>
 				<ul>{listSubjects}</ul>
 			</div>
+      </Col>
+      
 
+      
+      <Col md={2}>
 			<div>
 				<h3>Keywords:</h3>
 				<ul>{listKeywords}</ul>
 			</div>
+      </Col>
+      </Row>
 
 			<Row form>
 				<Col md={12}>
@@ -68,6 +82,7 @@ function CareerShow(props) {
 					</a>
 				</Col>
 			</Row>
+
 		</div>
 	);
 }
