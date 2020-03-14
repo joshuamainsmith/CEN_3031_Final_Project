@@ -1,15 +1,30 @@
 import React, { useState, useEffect } from 'react';
 import './Search.css';
+import { useLocation } from "react-router-dom";
+
+function useQuery() {
+	return new URLSearchParams(useLocation().search);
+}
+
 
 function Search() {
+	let query = useQuery()
 	const [ loadedCareers, setLoadedCareers ] = useState([]);
+	const [ keyword, setKeyword ] = useState('');
 
 	useEffect(() => {
 		const fetchCareers = async () => {
-			const response = await fetch('/api/careers');
-
+			let uri;
+			const keyword = query.get('keyword')
+			if (keyword) {
+				uri = '/api/careers?keyword=' + keyword
+			} else {
+				uri = '/api/careers'
+			}
+			const response = await fetch(uri);
 			const responseData = await response.json();
 
+			setKeyword(keyword);
 			setLoadedCareers(responseData);
 		};
 
@@ -18,7 +33,7 @@ function Search() {
 
 	const careerList = loadedCareers.map((career) => {
 		return (
-			<div className="row" key={career.id}>
+			<div className="row" key={career._id}>
 				<div className="col-12">
 					<h3>{career.name}</h3>
 				</div>
