@@ -74,8 +74,6 @@ function Search(props) {
 
 	return (
 		<div>
-			<h2 className='school-name'>Florida Middle School</h2>
-
 			<h1>Careers</h1>
 			{careerList}
 		</div>

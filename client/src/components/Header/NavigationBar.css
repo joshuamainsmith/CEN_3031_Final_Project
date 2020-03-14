@@ -31,3 +31,22 @@
 .nav-link:hover {
 	background-color: #08bd9a;
 } */
+
+.school-name {
+	color: navy;
+}
+
+.sn-1 {
+	display: block;
+}
+
+.sn-2 {
+	display: inline;
+	margin-left: 10px;
+}
+
+.logo {
+	width: 90px;
+	height: 70px;
+	margin-bottom: 10px;
+}

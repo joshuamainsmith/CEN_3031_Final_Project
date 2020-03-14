@@ -80,6 +80,11 @@ const NavigationBar = () => {
 						</form>
 					</div>
 				</nav>
+				<div>
+				<h1 className='school-name sn-1'>Florida Middle</h1>
+				<img className='logo' src="logo.jpg"></img>
+				<h1 className='school-name sn-2'>School</h1>
+				</div>
 			</main>
 		</div>
 	);
