@@ -25,19 +25,22 @@ const NavigationBar = () => {
 					<div className="collapse navbar-collapse" id="navbarSupportedContent">
 						<ul className="navbar-nav mr-auto">
 							<li className="nav-item active">
-								<Link to="/home">
-									<a className="nav-link" href="/home">
-										Home
-										<span className="sr-only">(current)</span>
-									</a>
-								</Link>
+								
+								<a className="nav-link" href="/home">
+									Home
+									<span className="sr-only">(current)</span>
+								</a>
+
 							</li>
 							<li className="nav-item">
+								
 								<a className="nav-link" href="/careers">
 									Search
 								</a>
+
 							</li>
 							<li className="nav-item dropdown">
+								
 								<a
 									className="nav-link dropdown-toggle"
 									href="#"
@@ -49,17 +52,17 @@ const NavigationBar = () => {
 								>
 									Admin
 								</a>
+
 								<div className="dropdown-menu" aria-labelledby="navbarDropdown">
-									<Link to="/career">
-										<a className="dropdown-item" href="/career">
-											Create Career
-										</a>
-									</Link>
-									<Link to="/careers">
-										<a className="dropdown-item" href="/careers">
-											Search Careers
-										</a>
-									</Link>
+									
+									<a className="dropdown-item" href="/career">
+										Create Career
+									</a>
+
+									<a className="dropdown-item" href="/careers">
+										Search Careers
+									</a>
+									
 								</div>
 							</li>
 						</ul>
