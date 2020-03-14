@@ -2,9 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { Row, Col, Button } from 'reactstrap';
 import './ShowView.css';
 
+
+function capitalize(str){
+		return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
 function CareerShow(props) {
-	const listSubjects = props.career.important_subjects.map((item) => <li key={item}>{item}</li>);
-	const listKeywords = props.career.keywords.map((item) => <li key={item}>{item}</li>);
+	const listSubjects = props.career.important_subjects.map((item) => <li key={item}>{capitalize(item)}</li>);
+	const listKeywords = props.career.keywords.map((item) => <li key={item}>{capitalize(item)}</li>);
 
 	const [ article, setCareer ] = useState({});
 
@@ -22,18 +27,18 @@ function CareerShow(props) {
 	return (
 		<div>
 			<div>
-				<h3>{props.career.name}</h3>
+				<h2>{props.career.name}</h2>
         <sm>{props.career.type}</sm>
         <div className="space"></div>
 				<p>
-					<h4>Job Description: </h4>
+					<h3>Description </h3>
 					{props.career.description}
 				</p>
 			</div>
 
-      <Row> 
+      <Row>
 			<Col md={4} >
-				<h3>Wages:</h3>
+				<h3>Wages</h3>
 				<ul key="Entry {props.career.salary_ranges.entry}">Entry: ${props.career.salary_ranges.entry}</ul>
 
 				<ul key="Median {props.career.salary_ranges.median}">Median: ${props.career.salary_ranges.median}</ul>
@@ -41,30 +46,25 @@ function CareerShow(props) {
 				<ul key="Mean {props.career.salary_ranges.mean}">Mean: ${props.career.salary_ranges.mean}</ul>
 			</Col>
 
-			<Col md={5} >
+			<Col md={4} >
 				<h3>Education</h3>
-				<li>{props.career.education}</li>
+				<p>{props.career.education}</p>
 			</Col>
 
-			<Col md={2} >
+			<Col md={4} >
 				<h3>Projection</h3>
-				<ul>
-					<li>Growth Rate: {props.career.outlook}%</li>
-				</ul>
+				<p>Growth Rate: {props.career.outlook}%</p>
 			</Col>
 </Row>
 
       <Row>
       <Col md={4} >
-			<div> 
+			<div>
 				<h3>Important Subjects</h3>
 				<ul>{listSubjects}</ul>
 			</div>
       </Col>
-      
-
-      
-      <Col md={2}>
+      <Col md={4}>
 			<div>
 				<h3>Keywords:</h3>
 				<ul>{listKeywords}</ul>
