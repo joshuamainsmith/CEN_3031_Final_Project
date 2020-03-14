@@ -8,7 +8,8 @@ function useQuery() {
 }
 
 function Search(props) {
-	let query = useQuery()
+	let query = useQuery();
+	let median_wage, growth_rate;
 	const [ loadedCareers, setLoadedCareers ] = useState([]);
 	const [ keyword, setKeyword ] = useState('');
 	const [ careerID ] = useState(props.match.params.id);
@@ -32,7 +33,31 @@ function Search(props) {
 		fetchCareers();
 	}, []);
 
+	function medianWage(career) {
+		return (
+			<div className="col-12">
+				<p>Median Wage: ${career.salary_ranges.median.toLocaleString()}</p>
+			</div>
+		)
+	}
+
+	function growthRate(career) {
+		return (
+			<div className="col-12">
+				<p>Growth Rate: {career.outlook}%</p>
+			</div>
+		)
+	}
+
 	const careerList = loadedCareers.map((career) => {
+		if (career.salary_ranges && career.salary_ranges.median) {
+			median_wage = medianWage(career);
+		}
+
+		if (career.outlook) {
+			growth_rate = growthRate(career);
+		}
+
 		return (
 			<div className="row" key={career._id}>
 				<div className="col-12">
@@ -41,12 +66,8 @@ function Search(props) {
 				<div className="col-12">
 					<p>{career.description}</p>
 				</div>
-				<div className="col-12">
-					<p>Median Wage: ${career.salary_ranges.median}</p>
-				</div>
-				<div className="col-12">
-					<p>Growth Rate: {career.outlook}</p>
-				</div>
+				{median_wage}
+				{growth_rate}
 			</div>
 		);
 	});
