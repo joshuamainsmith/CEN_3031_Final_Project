@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import './Search.css';
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from 'react-router-dom';
+import { PromiseProvider } from 'mongoose';
 
 function useQuery() {
 	return new URLSearchParams(useLocation().search);
 }
 
-
-function Search() {
+function Search(props) {
 	let query = useQuery()
 	const [ loadedCareers, setLoadedCareers ] = useState([]);
 	const [ keyword, setKeyword ] = useState('');
+	const [ careerID ] = useState(props.match.params.id);
 
 	useEffect(() => {
 		const fetchCareers = async () => {
@@ -36,15 +36,16 @@ function Search() {
 		return (
 			<div className="row" key={career._id}>
 				<div className="col-12">
-					
-					<h3>{career.name}</h3>
-					<Link to="/careers" />
+					<h3 color><Link to={"/career/" + career._id}>{career.name}</Link></h3>
 				</div>
 				<div className="col-12">
 					<p>{career.description}</p>
 				</div>
 				<div className="col-12">
-					<p>{career._id}</p>
+					<p>Median Wage: ${career.salary_ranges.median}</p>
+				</div>
+				<div className="col-12">
+					<p>{career.outlook}</p>
 				</div>
 			</div>
 		);
@@ -52,6 +53,8 @@ function Search() {
 
 	return (
 		<div>
+			<h2 className='school-name'>Florida Middle School</h2>
+
 			<h1>Careers</h1>
 			{careerList}
 		</div>

@@ -7,6 +7,7 @@ import CreateView from './views/CreateView/CreateView';
 //import Credit from './components/footer/Credit';
 import Search from './views/SearchView/Search';
 import EditView from './views/EditView/EditView';
+import IndexList from './views/IndexView/IndexList';
 import ShowView from './views/ShowView/ShowView';
 
 const App = () => {
