@@ -25,7 +25,7 @@ function CreateView(props) {
 		console.log(career);
 		event.preventDefault();
 		async function postCareer() {
-			fetch('http://localhost:5000/api/careers', {
+			fetch('/api/careers', {
 				method: 'post',
 				body: JSON.stringify(career),
 				headers: {
