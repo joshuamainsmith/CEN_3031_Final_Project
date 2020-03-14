@@ -70,14 +70,25 @@ exports.remove = (req, res) => {
 };
 
 exports.search = (req, res) => {
-	/* Add your code. Make sure to send the documents as a JSON response.*/
-	Career.find({}).sort({ code: 1 }).exec(function(err, careers) {
-		if (err) {
-			res.status(400).json({ error: 'There was an issue with your request.' });
-		} else {
-			res.send(careers);
-		}
-	});
+    let keyword = req.query.keyword
+
+    if (keyword) {
+      Career.find({$text: {$search: keyword}}).sort({code: 1}).exec(function(err, careers) {
+          if (err) {
+              res.status(400).json({error: 'There was an issue with your request.'})
+          } else {
+              res.send(careers);
+          }
+      });
+    } else {
+      Career.find({}).sort({code: 1}).exec(function(err, careers) {
+          if (err) {
+              res.status(400).json({error: 'There was an issue with your request.'})
+          } else {
+              res.send(careers);
+          }
+      });
+    }
 };
 
 /*
