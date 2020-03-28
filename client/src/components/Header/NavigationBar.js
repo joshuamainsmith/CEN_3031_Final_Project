@@ -77,6 +77,7 @@ const NavigationBar = () => {
 							<button className="btn btn-outline-success my-2 my-sm-0" type="submit">
 								Search
 							</button>
+							
 						</form>
 					</div>
 				</nav>

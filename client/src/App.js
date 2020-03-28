@@ -9,6 +9,7 @@ import Search from './views/SearchView/Search';
 import EditView from './views/EditView/EditView';
 import IndexList from './views/IndexView/IndexList';
 import ShowView from './views/ShowView/ShowView';
+import UserList from './views/IndexView/UserList';
 
 const App = () => {
 	return (
@@ -25,9 +26,11 @@ const App = () => {
 							<Route exact path="/careers" component={Search} />
 							<Route exact path="/career" component={CreateView} />
 							
+							<Route exact path="careers" component={IndexList} />
 							<Route exact path="/career/:id" component={ShowView} /> 
 							<Route exact path="/career/:id/edit" component={EditView} />
 							
+							<Route exact path="/users" component={UserList} />
 							<Route component={NotFound} />
 						</Switch>
 					</div>
