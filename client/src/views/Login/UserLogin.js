@@ -42,17 +42,17 @@ const Login = () => {
 
 							<div className="row align-items-center" />
 							<div className="form-group">
-								<input type="submit" value="Login" className="btn float-right login_btn" />
+								<input type="submit" value="Login" className="btn float-right login_btn blue" />
 							</div>
 						</form>
 					</div>
 
 					<div class="card-footer">
 						<div class="d-flex justify-content-center links">
-							Don't have an account?<a href="#">Sign Up</a>
+							Don't have an account?<a href="user/signup">Sign Up</a>
 						</div>
 						<div class="d-flex justify-content-center">
-							<a href="#">Forgot your password?</a>
+							<a href="user/recovery">Forgot your password?</a>
 						</div>
 					</div>
 				</div>

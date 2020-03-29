@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Form, Row, Col, FormGroup, Button, Label, Input } from 'reactstrap';
 
-
-const EditView = props => {
+const EditView = (props) => {
 	const initialState = {
 		name: '',
 		type: '',
@@ -25,7 +24,7 @@ const EditView = props => {
 		console.log(career);
 		event.preventDefault();
 		async function postCareer() {
-			fetch('/api/careers', {
+			fetch('/api/careers/' + career._id, {
 				method: 'put',
 				body: JSON.stringify(career),
 				headers: {
@@ -41,25 +40,24 @@ const EditView = props => {
 					console.log('Error: ', error);
 				});
 		}
-        postCareer()
-    }
+		postCareer();
+	}
 	const [ careerId, setCareerId ] = useState(props.match.params.id);
 
-    	useEffect(() => {
+	useEffect(() => {
 		const fetchCareers = async () => {
 			const response = await fetch('/api/careers/' + careerId);
 
 			const responseData = await response.json();
-            setCareer(responseData);
-            setCareerId(careerId);
+			setCareer(responseData);
+			setCareerId(careerId);
 		};
 
 		fetchCareers();
 	}, []);
 
-
 	return (
-    <div className="form-wrapper">
+		<div className="form-wrapper">
 			<Form id="career-create-form" className="container">
 				<Row form>
 					<Col md={6}>
@@ -70,7 +68,7 @@ const EditView = props => {
 								name="name"
 								id="careerName"
 								value={career.name}
-								onChange={handleChange}											
+								onChange={handleChange}
 							/>
 						</FormGroup>
 					</Col>
@@ -118,7 +116,7 @@ const EditView = props => {
 								name="keywords"
 								id="careerKeywords"
 								value={career.keywords}
-								onChange={handleChange}									
+								onChange={handleChange}
 							/>
 						</FormGroup>
 					</Col>
@@ -136,7 +134,7 @@ const EditView = props => {
 								name="important_subjects"
 								id="importantSubjects"
 								value={career.important_subjects}
-								onChange={handleChange}								
+								onChange={handleChange}
 							/>
 						</FormGroup>
 					</Col>
@@ -213,8 +211,8 @@ const EditView = props => {
 							<Label check>
 								<Input
 									type="radio"
-                                    name="education"
-                                    onChange={handleChange}
+									name="education"
+									onChange={handleChange}
 									checked={career.education === 'none'}
 								/>
 								None
@@ -273,17 +271,18 @@ const EditView = props => {
 
 				<Row form>
 					<Col md={12}>
-						<Button color="primary" className="float-right">
+						<Button href="/careers" color="primary" className="float-right" onClick={handleSubmit}>
 							Save
-						</Button>{' '}
+						</Button>
+
 						<a href="/careers" id="cancel" name="cancel" className="btn btn-secondary float-left">
 							Cancel
 						</a>
 					</Col>
 				</Row>
 			</Form>
-        </div>
-    );
-}
+		</div>
+	);
+};
 
 export default EditView;

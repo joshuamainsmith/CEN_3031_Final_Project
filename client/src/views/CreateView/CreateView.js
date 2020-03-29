@@ -261,7 +261,7 @@ const CreateView = props => {
 
 				<Row form>
 					<Col md={12}>
-						<Button color="primary" className="float-right">
+						<Button href="/careers" color="primary" className="float-right">
 							Save
 						</Button>{' '}
 						<a href="/careers" id="cancel" name="cancel" className="btn btn-secondary float-left">
