@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import './CreateView.css';
 import { Form, Row, Col, FormGroup, Button, Label, Input } from 'reactstrap';
 
-function CreateView(props) {
+//Can use the 'function CreateView(props) {}' method or the arrow function as bellow for hooks
+const CreateView = props => {
 	const initialState = {
 		name: '',
 		type: '',

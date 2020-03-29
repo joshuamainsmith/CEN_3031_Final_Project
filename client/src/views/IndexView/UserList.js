@@ -1,8 +1,8 @@
 import React from 'react';
 
 const UserList = () => {
-    return(
-        <div>This is the user list view</div>
+    return (
+    <div>This is the user view list </div>
     );
 };
 

@@ -77,6 +77,7 @@ const NavigationBar = () => {
 							<button className="btn btn-outline-success my-2 my-sm-0" type="submit">
 								Search
 							</button>
+							<img src="user-avatar.png" height="40" width="40"></img>
 						</form>
 					</div>
 				</nav>
