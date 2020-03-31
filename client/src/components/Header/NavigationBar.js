@@ -25,7 +25,7 @@ const NavigationBar = () => {
 					<div className="collapse navbar-collapse" id="navbarSupportedContent">
 						<ul className="navbar-nav mr-auto">
 							<li className="nav-item active">
-								
+
 								<a className="nav-link" href="/home">
 									Home
 									<span className="sr-only">(current)</span>
@@ -33,14 +33,14 @@ const NavigationBar = () => {
 
 							</li>
 							<li className="nav-item">
-								
+
 								<a className="nav-link" href="/careers">
 									Search
 								</a>
 
 							</li>
 							<li className="nav-item dropdown">
-								
+
 								<a
 									className="nav-link dropdown-toggle"
 									href="#"
@@ -54,7 +54,7 @@ const NavigationBar = () => {
 								</a>
 
 								<div className="dropdown-menu" aria-labelledby="navbarDropdown">
-									
+
 									<a className="dropdown-item" href="/career">
 										Create Career
 									</a>
@@ -62,7 +62,7 @@ const NavigationBar = () => {
 									<a className="dropdown-item" href="/careers">
 										Search Careers
 									</a>
-									
+
 								</div>
 							</li>
 						</ul>
@@ -81,9 +81,9 @@ const NavigationBar = () => {
 					</div>
 				</nav>
 				<div>
-				<h1 className='school-name sn-1'>Florida Middle</h1>
-				<img className='logo' src="logo.jpg"></img>
-				<h1 className='school-name sn-2'>School</h1>
+					<h1 className='school-name sn-1'>Florida Middle</h1>
+					<img className='logo' src="logo.jpg"></img>
+					<h1 className='school-name sn-2'>School</h1>
 				</div>
 			</main>
 		</div>
