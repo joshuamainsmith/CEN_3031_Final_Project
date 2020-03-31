@@ -12,23 +12,22 @@ const mongoose = require('mongoose'),
 // };
 
 exports.create = async (req, res) => {
+	let career = req.body;
+	career.salary_ranges = {};
+	career.salary_ranges.entry = career.entry_wage;
+	career.salary_ranges.median = career.median_wage;
+	career.salary_ranges.mean = career.mean_wage;
+	career.outlook = career.growth_rate;
+	career.important_subjects = career.important_subjects.split(',').map((e) => String(e).trim());
+	career.keywords = career.keywords.split(',').map((e) => String(e).trim());
 
-    let career = req.body;
-    career.salary_ranges = {}
-    career.salary_ranges.entry = career.entry_wage
-    career.salary_ranges.median = career.median_wage
-    career.salary_ranges.mean = career.mean_wage
-    career.outlook = career.growth_rate
-    career.important_subjects = career.important_subjects.split(',').map(e => String(e).trim());
-    career.keywords = career.keywords.split(',').map(e => String(e).trim());
-
-    Career.create(career, function (err, career) {
-        if (err) {
-            res.status(400).send(err);
-        } else {
-            res.send(career);
-        }
-    });
+	Career.create(career, function(err, career) {
+		if (err) {
+			res.status(400).send(err);
+		} else {
+			res.send(career);
+		}
+	});
 };
 
 exports.read = (req, res) => {
@@ -40,7 +39,27 @@ exports.read = (req, res) => {
 
 /* Update a career - note the order in which this function is called by the router*/
 exports.update = (req, res) => {
-	const career = req.career;
+	let career = req.body;
+	console.log(career);
+	career.salary_ranges = {};
+	career.salary_ranges.entry = career.entry_wage;
+	career.salary_ranges.median = career.median_wage;
+	career.salary_ranges.mean = career.mean_wage;
+	career.outlook = career.growth_rate;
+	console.log(typeof career.important_subjects);
+	console.log(typeof career.keywords);
+	if (typeof career.important_subjects === 'object') {
+		career.important_subjects = career.important_subjects[0].split(',').map((e) => String(e).trim());
+	} else {
+		career.important_subjects = career.important_subjects.split(',').map((e) => String(e).trim());
+	}
+
+	if (typeof career.keywords === 'object') {
+		career.keywords = career.keywords[0].split(',').map((e) => String(e).trim());
+	} else {
+		career.keywords = career.keywords.split(',').map((e) => String(e).trim());
+	}
+
 	if (career) {
 		Career.findOneAndUpdate({ _id: career._id }, req.body, { new: true }, function(err, career) {
 			if (err) {
@@ -70,25 +89,25 @@ exports.remove = (req, res) => {
 };
 
 exports.search = (req, res) => {
-    let keyword = req.query.keyword
+	let keyword = req.query.keyword;
 
-    if (keyword) {
-      Career.find({$text: {$search: keyword}}).sort({code: 1}).exec(function(err, careers) {
-          if (err) {
-              res.status(400).json({error: 'There was an issue with your request.'})
-          } else {
-              res.send(careers);
-          }
-      });
-    } else {
-      Career.find({}).sort({code: 1}).exec(function(err, careers) {
-          if (err) {
-              res.status(400).json({error: 'There was an issue with your request.'})
-          } else {
-              res.send(careers);
-          }
-      });
-    }
+	if (keyword) {
+		Career.find({ $text: { $search: keyword } }).sort({ code: 1 }).exec(function(err, careers) {
+			if (err) {
+				res.status(400).json({ error: 'There was an issue with your request.' });
+			} else {
+				res.send(careers);
+			}
+		});
+	} else {
+		Career.find({}).sort({ code: 1 }).exec(function(err, careers) {
+			if (err) {
+				res.status(400).json({ error: 'There was an issue with your request.' });
+			} else {
+				res.send(careers);
+			}
+		});
+	}
 };
 
 /*

@@ -11,7 +11,7 @@ function CareerShow(props) {
 	const listSubjects = props.career.important_subjects.map((item) => <li key={item}>{capitalize(item)}</li>);
 	const listKeywords = props.career.keywords.map((item) => <li key={item}>{capitalize(item)}</li>);
 
-	const [ article, setCareer ] = useState({});
+	const [ career, setCareer ] = useState({});
 
 	async function handleDelete() {
 		console.log(props.career._id);
@@ -53,7 +53,9 @@ function CareerShow(props) {
 
 			<Col md={4} >
 				<h3>Projection</h3>
-				<p>Growth Rate: {props.career.outlook}%</p>
+				<ul>
+					<li>{props.career.outlook}</li>
+				</ul>
 			</Col>
 </Row>
 
@@ -79,6 +81,11 @@ function CareerShow(props) {
 					</Button>
 					<a href="/careers" id="cancel" name="cancel" className="btn btn-secondary float-left">
 						Cancel
+					</a>
+					<a href={`/career/${props.career._id}/edit`} id="edit" name="edit" >
+						<Button color="danger" className="float-right" name="edit" >
+							Edit
+						</Button>
 					</a>
 				</Col>
 			</Row>
