@@ -3,7 +3,9 @@ const path = require('path'),
     mongoose = require('mongoose'),
     morgan = require('morgan'),
     bodyParser = require('body-parser'),
-    careersRouter = require('../routes/careersRouter.js');
+    careersRouter = require('../routes/careersRouter.js'),
+    careerClustersRouter = require('../routes/CareerClustersRouter.js'),
+    usersRouter = require('../routes/UsersRouter.js');
 
 module.exports.init = () => {
     /*
@@ -40,6 +42,8 @@ module.exports.init = () => {
 
     // add a router
     app.use('/api/careers/', careersRouter);
+    app.use('/api/career_clusters/', careerClustersRouter);
+    app.use('/api/users/', usersRouter)
 
     if (process.env.NODE_ENV === 'production') {
         // Serve any static files
