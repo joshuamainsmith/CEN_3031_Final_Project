@@ -1,8 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import './NavigationBar.css';
 
 const NavigationBar = () => {
+	const [dropdownOpen, setOpen] = useState(false);
+  
+	const toggle = () => setOpen(!dropdownOpen);
+
 	return (
 		<div>
 			<main>
@@ -77,7 +82,21 @@ const NavigationBar = () => {
 							<button className="btn btn-outline-success my-2 my-sm-0" type="submit">
 								Search
 							</button>
-							<img src="user-avatar.png" height="40" width="40"></img>
+							<ButtonDropdown isOpen={dropdownOpen} toggle={toggle}>
+								<DropdownToggle caret>
+									<img id="userIcon" src="user-avatar.png" height="40" width="40"></img>									
+								</DropdownToggle>
+								<DropdownMenu>									
+									<DropdownItem>View Profile</DropdownItem>
+									<DropdownItem divider />
+									<DropdownItem href="/careers">Browse Career</DropdownItem>
+									<DropdownItem>Browse Cluster</DropdownItem>
+									<DropdownItem href="/users">Browse Users</DropdownItem>
+									<DropdownItem>Invite User</DropdownItem>
+									<DropdownItem divider />
+									<DropdownItem href="/user/login">Logout</DropdownItem>
+								</DropdownMenu>
+							</ButtonDropdown>
 						</form>
 					</div>
 				</nav>
