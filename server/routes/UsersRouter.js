@@ -1,4 +1,4 @@
-const users = require('../controllers/CareerClustersController.js'),
+const users = require('../controllers/UsersController.js'),
     express = require('express'),
     usersRouter = express.Router();
 /*
