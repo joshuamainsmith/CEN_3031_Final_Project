@@ -49,13 +49,13 @@ exports.update = (req, res) => {
 	console.log(typeof career.important_subjects);
 	console.log(typeof career.keywords);
 	if (typeof career.important_subjects === 'object') {
-		career.important_subjects = career.important_subjects[0].split(',').map((e) => String(e).trim());
+		career.important_subjects = career.important_subjects.map((e) => String(e).trim());
 	} else {
 		career.important_subjects = career.important_subjects.split(',').map((e) => String(e).trim());
 	}
 
 	if (typeof career.keywords === 'object') {
-		career.keywords = career.keywords[0].split(',').map((e) => String(e).trim());
+		career.keywords = career.keywords.map((e) => String(e).trim());
 	} else {
 		career.keywords = career.keywords.split(',').map((e) => String(e).trim());
 	}
