@@ -13,6 +13,7 @@ import UserList from './views/IndexView/UserList';
 import UserLogin from './views/Login/UserLogin';
 import Signup from './views/Login/Signup';
 import Recovery from './views/Login/Recovery';
+import CreateUser from './views/CreateView/CreateUser';
 
 const App = () => {
 	return (
@@ -32,7 +33,9 @@ const App = () => {
 							<Route exact path="careers" component={IndexList} />
 							<Route exact path="/career/:id" component={ShowView} />
 							<Route exact path="/career/:id/edit" component={EditView} />
+							
 							<Route exact path="/users" component={UserList} />
+							<Route exact path="/user" component={CreateUser} />
 
 							<Route exact path="/user/login" component={UserLogin} />
 							<Route exact path="/user/signup" component={Signup} />

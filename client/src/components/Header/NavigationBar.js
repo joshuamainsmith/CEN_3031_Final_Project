@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
-import { Link } from 'react-router-dom';
+//import { Link } from 'react-router-dom';
+import Gator from './logo.jpg';
+import UserAvatar from './user-avatar.png';
 import './NavigationBar.css';
 
 const NavigationBar = () => {
@@ -9,9 +11,9 @@ const NavigationBar = () => {
 	const toggle = () => setOpen(!dropdownOpen);
 
 	return (
-		<div>
-			<main>
-				<nav className="navbar navbar-expand-lg navbar-blue bg-dark">
+		<div> 
+			<main className="top-bar_network_fixed js-top-bar top-bar">
+				<nav className="navbar navbar-expand-lg navbar-blue bg-dark ">
 					<a className="navbar-brand" href="/home">
 						Career Finder
 					</a>
@@ -77,7 +79,7 @@ const NavigationBar = () => {
 							</button>
 							<ButtonDropdown isOpen={dropdownOpen} toggle={toggle}>
 								<DropdownToggle caret >
-									<img id="userIcon" src="user-avatar.png" height="40" width="40" />
+									<img id="userIcon" src={UserAvatar} alt="user-icon-avatar" height="40" width="40" />
 								</DropdownToggle>
 								<DropdownMenu right>
 									<DropdownItem>View Profile</DropdownItem>
@@ -95,7 +97,7 @@ const NavigationBar = () => {
 				</nav>
 				<div>
 					<h1 className="school-name sn-1">Florida Middle</h1>
-					<img className="logo" src="logo.jpg" />
+					<img className="logo" src={Gator} alt="website logo"/>
 					<h1 className="school-name sn-2">School</h1>
 				</div>
 			</main>

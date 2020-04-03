@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, Row, Col, FormGroup, Label, Input } from 'reactstrap';
+import { InputGroup, Input, InputGroupAddon, InputGroupText } from 'reactstrap';
 
 const Login = () => {
 	return (
@@ -25,11 +25,14 @@ const Login = () => {
 						<form>
 							<div className="input-group form-group">
 								<div className="input-group-prepend">
-									<span className="input-group-text">
-										<i className="fas fa-user" />
-									</span>
+									
 								</div>
-								<input type="text" className="form-control" placeholder="username" />
+								<InputGroup>
+									<Input placeholder="username" />
+									<InputGroupAddon addonType="append">
+										<InputGroupText>@example.com</InputGroupText>
+									</InputGroupAddon>
+								</InputGroup>
 							</div>
 							<div className="input-group form-group">
 								<div className="input-group-prepend">
@@ -42,7 +45,7 @@ const Login = () => {
 
 							<div className="row align-items-center" />
 							<div className="form-group">
-								<input type="submit" value="Login" className="btn float-right login_btn blue" />
+								<input type="submit" value="Login" className="btn float-right login_btn blue" disabled="disabled"/>
 							</div>
 						</form>
 					</div>
