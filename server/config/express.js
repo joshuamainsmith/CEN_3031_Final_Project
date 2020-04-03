@@ -7,6 +7,7 @@ const path = require('path'),
     careerClustersRouter = require('../routes/CareerClustersRouter.js'),
     usersRouter = require('../routes/UsersRouter.js');
 
+
 module.exports.init = () => {
     /*
         connect to database
@@ -17,6 +18,7 @@ module.exports.init = () => {
     });
     mongoose.set('useCreateIndex', true);
     mongoose.set('useFindAndModify', false);
+    mongoose.set('useUnifiedTopology', true);
 
     // initialize app
     const app = express();
