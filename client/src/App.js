@@ -13,6 +13,8 @@ import UserList from './views/IndexView/UserList';
 import UserLogin from './views/Login/UserLogin';
 import Signup from './views/Login/Signup';
 import Recovery from './views/Login/Recovery';
+import IndexClusters from './views/IndexView/IndexClusters';
+import ShowCluster from './views/ShowView/ShowCluster';
 
 const App = () => {
 	return (
@@ -34,6 +36,9 @@ const App = () => {
 							<Route exact path="/career/:id/edit" component={EditView} />
 							<Route exact path="/users" component={UserList} />
 
+							<Route exact path="/clusters" component={IndexClusters} />
+							<Route exact path="/cluster/:id" component={ShowCluster} />
+							
 							<Route exact path="/user/login" component={UserLogin} />
 							<Route exact path="/user/signup" component={Signup} />
 							<Route exact path="/user/recovery" component={Recovery} />
