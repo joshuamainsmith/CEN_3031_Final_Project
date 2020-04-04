@@ -1,62 +1,56 @@
-import React from 'react';
+import React, {useState, useContext} from 'react';
 import { Form, Row, Col, FormGroup, Label, Input } from 'reactstrap';
+import AuthService from '../../Services/AuthService'
+import Message from '../../components/Message/Message'
+import { AuthContext } from '../../Context/AuthContext'
 
-const Login = () => {
+const Login = (props) => {
+	const [user, setUser] = useState({username: "", password: ""});
+	const [message, setMessage] = useState(null);
+	const authContext = useContext(AuthContext)
+
+	const onChange = e => {
+		e.preventDefault();
+		setUser({...user, [e.target.name] : e.target.value});
+		console.log(user);
+	}
+
+	const onSubmit = e => {
+		e.preventDefault();
+		AuthService.login(user).then(data => {
+			console.log(data)
+			const { isAuthenticated, user, message } = data;
+
+			if(isAuthenticated) {
+				authContext.setUser(user);
+				authContext.setIsAuthenticated(isAuthenticated);
+				props.history.push('/careers')
+			} else {
+				setMessage(message);
+			}
+		});
+	}
+
 	return (
-		<div className="container">
-			<div className="d-flex justify-content-center h-100">
-				<div className="card">
-					<div className="card-header">
-						<h3>Sign In</h3>
-						<div className="d-flex justify-content-end social_icon">
-							<span>
-								<i className="fab fa-facebook-square" />
-							</span>
-							<span>
-								<i className="fab fa-google-plus-square" />
-							</span>
-							<span>
-								<i className="fab fa-twitter-square" />
-							</span>
-						</div>
-					</div>
-
-					<div className="card-body">
-						<form>
-							<div className="input-group form-group">
-								<div className="input-group-prepend">
-									<span className="input-group-text">
-										<i className="fas fa-user" />
-									</span>
-								</div>
-								<input type="text" className="form-control" placeholder="username" />
-							</div>
-							<div className="input-group form-group">
-								<div className="input-group-prepend">
-									<span className="input-group-text">
-										<i className="fas fa-key" />
-									</span>
-								</div>
-								<input type="password" className="form-control" placeholder="password" />
-							</div>
-
-							<div className="row align-items-center" />
-							<div className="form-group">
-								<input type="submit" value="Login" className="btn float-right login_btn blue" />
-							</div>
-						</form>
-					</div>
-
-					<div className="card-footer">
-						<div className="d-flex justify-content-center links">
-							Don't have an account?<a href="/user/signup">Sign Up</a>
-						</div>
-						<div className="d-flex justify-content-center">
-							<a href="/user/recovery">Forgot your password?</a>
-						</div>
-					</div>
-				</div>
-			</div>
+		<div>
+			<form onSubmit={onSubmit}>
+				<h3>Please Sign In</h3>
+				<label htmlFor="username" className="sr-only">Username: </label>
+				<input type="text"
+							name="username"
+							onChange={onChange}
+							className="form-control"
+							placeholder="Enter Username"/>
+				<label htmlFor="password" className="sr-only">Password: </label>
+				<input type="password"
+							name="password"
+							onChange={onChange}
+							className="form-control"
+							placeholder="Enter Password"/>
+				<button className="btn btn-lg btn-primary btn-block"
+								type="submit">Log in </button>
+			</form>
+			{message ? <Message message={message}/> : null}
 		</div>
 	);
 };

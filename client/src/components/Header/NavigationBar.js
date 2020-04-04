@@ -5,38 +5,73 @@ import AuthService from '../../Services/AuthService'
 import { AuthContext } from '../../Context/AuthContext'
 import './NavigationBar.css';
 
-const NavigationBar = () => {
+const NavigationBar = (props) => {
 	const {isAuthenticated, user, setIsAuthenticated, setUser} = useContext(AuthContext);
 	const [ dropdownOpen, setOpen ] = useState(false);
 
 	const toggle = () => setOpen(!dropdownOpen);
 
+	const onClickLogoutHandler = (props) => {
+		AuthService.logout().then(data => {
+			if(data.sucess) {
+				setUser(data.user);
+				setIsAuthenticated(false);
+			}
+		})
+	}
+
+	const unauthenticatedNav = () => {
+			return (
+				<>
+				<li className="nav-item active">
+					<a className="nav-link" href="/user/login">
+						Login
+						<span className="sr-only">(current)</span>
+					</a>
+				</li>
+				<li className="nav-item active">
+					<a className="nav-link" href="/user/signup">
+						Register
+						<span className="sr-only">(current)</span>
+					</a>
+				</li>
+				</>
+			)
+	}
+
 	const authenticatedAdminNav = () => {
 		return (
-			user.role === "admin" ?
-			<li className="nav-item dropdown">
-				<a
-					className="nav-link dropdown-toggle"
-					href="#"
-					id="navbarDropdown"
-					role="button"
-					data-toggle="dropdown"
-					aria-haspopup="true"
-					aria-expanded="false"
-				>
-					Admin
-				</a>
-
-				<div className="dropdown-menu" aria-labelledby="navbarDropdown">
-					<a className="dropdown-item" href="/career">
-						Create Career
+			<>
+			{
+				user.role === "admin" ?
+				<li className="nav-item dropdown">
+					<a
+						className="nav-link dropdown-toggle"
+						href="#"
+						id="navbarDropdown"
+						role="button"
+						data-toggle="dropdown"
+						aria-haspopup="true"
+						aria-expanded="false"
+					>
+						Admin
 					</a>
 
-					<a className="dropdown-item" href="/careers">
-						Search Careers
-					</a>
-				</div>
-			</li> : null
+					<div className="dropdown-menu" aria-labelledby="navbarDropdown">
+						<a className="dropdown-item" href="/career">
+							Create Career
+						</a>
+
+						<a className="dropdown-item" href="/careers">
+							Search Careers
+						</a>
+					</div>
+				</li> : null
+			}
+			<button type="button"
+							className="btn btn-link nav-item nav-link"
+							onClick={onClickLogoutHandler}>Logout</button>
+			</>
 		)
 	}
 
@@ -72,7 +107,7 @@ const NavigationBar = () => {
 									Search
 								</a>
 							</li>
-							{ isAuthenticated ? authenticatedAdminNav() : "" }
+							{ isAuthenticated ? authenticatedAdminNav() : unauthenticatedNav() }
 						</ul>
 						<form className="form-inline my-2 my-lg-0" action="/careers">
 							<input
@@ -97,7 +132,7 @@ const NavigationBar = () => {
 									<DropdownItem href="/users">Browse Users</DropdownItem>
 									<DropdownItem>Invite User</DropdownItem>
 									<DropdownItem divider />
-									<DropdownItem href="/user/login">Logout</DropdownItem>
+									<DropdownItem href="/user/login">Login</DropdownItem>
 								</DropdownMenu>
 							</ButtonDropdown>
 						</form>
