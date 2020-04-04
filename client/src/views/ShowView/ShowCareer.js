@@ -23,8 +23,6 @@ function CareerShow(props) {
 		}
 	}
 
-	const { buttonLabel, className } = props;
-
 	const [ modal, setModal ] = useState(false);
 
 	const toggle = () => setModal(!modal);
@@ -86,7 +84,7 @@ function CareerShow(props) {
 					<Button color="danger" className="float-right" name="delete" onClick={toggle}>
 						Delete
 					</Button>
-					<Modal isOpen={modal} toggle={toggle} className={className}>
+					<Modal isOpen={modal} toggle={toggle} className={props.className}>
 						<ModalHeader toggle={toggle}>Confirm Deletion of {props.career.name}</ModalHeader>
 						<ModalBody>Are you sure you want to delete?</ModalBody>
 						<ModalFooter>

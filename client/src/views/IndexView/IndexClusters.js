@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './IndexClusters.css';
 import { Link, useLocation } from 'react-router-dom';
-import { PromiseProvider } from 'mongoose';
 
 function useQuery() {
 	return new URLSearchParams(useLocation().search);
@@ -31,19 +30,19 @@ function IndexClusters(props) {
 
 		fetchClusters();
 	}, []);
-	
+
 
 	const clusterList = loadedClusters.map((cluster) => {
-		
+
 		return (
 			<div className="row" key={cluster._id}>
 				<div className="col-12">
 					<h3><Link to={"/cluster/" + cluster._id}>{cluster.name}</Link></h3>
 				</div>
-				
+
 				<div className="col-12">
 					<p>{cluster.description}</p>
-				</div>				
+				</div>
 			</div>
 		);
 	});

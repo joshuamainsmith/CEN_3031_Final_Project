@@ -14,7 +14,6 @@ const EditCluster = props => {
 	}
 
 	function handleSubmit(event) {
-		console.log(cluster);
 		event.preventDefault();
 		async function postCluster() {
 			fetch('/api/career_clusters/' + cluster._id, {
@@ -47,8 +46,8 @@ const EditCluster = props => {
 		};
 
 		fetchClusters();
-    }, []);
-    
+  }, []);
+
     return(
         <div className="form-wrapper">
             <Form id="career-create-form" className="container">
@@ -64,7 +63,7 @@ const EditCluster = props => {
 								onChange={handleChange}
 							/>
 						</FormGroup>
-					</Col>					
+					</Col>
 				</Row>
 
 				<Row form>
