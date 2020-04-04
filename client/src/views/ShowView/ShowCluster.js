@@ -19,16 +19,17 @@ function ShowCluster(props) {
 	useEffect(() => {
 		const fetchCareers = async () => {
 			let uri;
-			const keyword = query.get('keyword')
-			if (keyword) {
-				uri = '/api/careers?keyword=' + keyword
+			const cluster = query.get('cluster')
+            console.log(cluster);
+			if (cluster) {
+                uri = '/api/careers?cluster=' + cluster
 			} else {
 				uri = '/api/careers'
 			}
 			const response = await fetch(uri);
 			const responseData = await response.json();
 
-			setKeyword(keyword);
+			setKeyword(cluster);
             setLoadedCareers(responseData);
         };
         
@@ -48,17 +49,20 @@ function ShowCluster(props) {
 		
 
 	const careerList = loadedCareers.map((career) => {
-		
+
+        if (career.type == loadedCluster.name) {            
 		return (
 			<div className="row" key={career._id}>
 				<div className="col-12">
-					<h3 color><Link to={"/career/" + career._id}>{career.type}</Link></h3>
+					<h3 color><Link to={"/career/" + career._id}>{career.name}</Link></h3>
 				</div>
 				<div className="col-12">
 					<p>{career.description}</p>
+					<p>{career.type}</p>
 				</div>				
 			</div>
-		);
+        );
+        }
 	});
 
 	return (
@@ -68,6 +72,6 @@ function ShowCluster(props) {
             {careerList}
 		</div>
 	);
-};
+}
 
 export default ShowCluster;
