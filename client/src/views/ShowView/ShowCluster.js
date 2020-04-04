@@ -20,8 +20,9 @@ function ShowCluster(props) {
 		const fetchCareers = async () => {
 			let uri;
 			const cluster = query.get('cluster')
+            console.log(cluster);
 			if (cluster) {
-				uri = '/api/careers?cluster=' + cluster
+                uri = '/api/careers?cluster=' + cluster
 			} else {
 				uri = '/api/careers'
 			}
@@ -48,7 +49,12 @@ function ShowCluster(props) {
 		
 
 	const careerList = loadedCareers.map((career) => {
-		
+        console.log(career.name);
+		console.log(career.type);
+		console.log(loadedCluster.name);
+        
+
+        if (career.type == loadedCluster.name) {
 		return (
 			<div className="row" key={career._id}>
 				<div className="col-12">
@@ -56,9 +62,11 @@ function ShowCluster(props) {
 				</div>
 				<div className="col-12">
 					<p>{career.description}</p>
+					<p>{career.type}</p>
 				</div>				
 			</div>
-		);
+        );
+        }
 	});
 
 	return (
