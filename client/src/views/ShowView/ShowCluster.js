@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Button, Row, Col, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import './ShowCluster.css';
 import { Link, useLocation } from 'react-router-dom';
-// import { PromiseProvider } from 'mongoose';
 
 function useQuery() {
 	return new URLSearchParams(useLocation().search);
