@@ -76,16 +76,12 @@ const NavigationBar = (props) => {
 							<a className="dropdown-item" href="/cluster/create">
 								Create Career Cluster
 							</a>
-							<a className="dropdown-item" href="/user/create">
-								Create User
-							</a>
 							<a className="dropdown-item" href="/careers">
 								Search Careers
 							</a>
 							<a className="dropdown-item" href="/clusters">
 								Search Career Clusters
 							</a>
-
 							<a className="dropdown-item" href="/users">
 								Search Users
 							</a>
