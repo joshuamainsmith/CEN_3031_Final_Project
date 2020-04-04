@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Button, Row, Col } from 'reactstrap';
+import { Button, Row, Col, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import './ShowCluster.css';
 import { Link, useLocation } from 'react-router-dom';
 import { PromiseProvider } from 'mongoose';
@@ -47,6 +47,23 @@ function ShowCluster(props) {
 		fetchCareers();
 	}, []);
 
+	async function handleDelete() {
+		
+		try {
+			fetch(`/api/career_clusters/${clusterId}`, { method: 'delete' });
+
+			props.history.push('/clusters/');
+		} catch (error) {
+			console.error(error);
+		}
+	}
+
+	const { buttonLabel, className } = props;
+
+	const [ modal, setModal ] = useState(false);
+
+	const toggle = () => setModal(!modal);
+
 	const careerList = loadedCareers.map((career) => {
 		console.log(career.name);
 		console.log(career.type);
@@ -62,7 +79,6 @@ function ShowCluster(props) {
 					</div>
 					<div className="col-12">
 						<p>{career.description}</p>
-						
 					</div>
 				</div>
 			);
@@ -76,9 +92,28 @@ function ShowCluster(props) {
 			{careerList}
 			<Row>
 				<Col md={12}>
-					<Button color="danger" className="float-right" name="edit">
-						Edit
-					</Button>
+				
+						<Button color="danger" className="float-right" name="delete" onClick={toggle}>
+							Delete
+						</Button>
+
+						<Modal isOpen={modal} toggle={toggle} className={className}>
+							<ModalHeader toggle={toggle}>Confirm deletion of {loadedCluster.name}</ModalHeader>
+							<ModalBody>Are you sure you want to delete?</ModalBody>
+							<ModalFooter>
+								<Button color="danger" className="float-left" onClick={handleDelete}>
+									Confirm
+								</Button>{' '}
+								<Button color="warning" onClick={toggle}>
+									Cancel
+								</Button>
+							</ModalFooter>
+						</Modal>
+						<a href={`/cluster/${clusterId}/edit`} id="edit" name="edit">
+						<Button color="warning" className="float-left" name="edit">
+							Edit
+						</Button>
+					</a>
 				</Col>
 			</Row>
 		</div>
