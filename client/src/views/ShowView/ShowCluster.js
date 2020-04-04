@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Button, Row, Col, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import './ShowCluster.css';
 import { Link, useLocation } from 'react-router-dom';
-import { PromiseProvider } from 'mongoose';
 
 function useQuery() {
 	return new URLSearchParams(useLocation().search);
@@ -13,9 +12,7 @@ function ShowCluster(props) {
 	const [ loadedCareers, setLoadedCareers ] = useState([]);
 	const [ clusterId, setClusterId ] = useState(props.match.params.id);
 	const [ loadedCluster, setLoadedCluster ] = useState({ salary_ranges: {}, important_subjects: [], keywords: [] });
-	const [ keyword, setKeyword ] = useState('');
 	const [ cluster, setCluster ] = useState({});
-	//const [ careerID ] = useState(props.match.params.id);
 
 	useEffect(() => {
 		const fetchCareers = async () => {
@@ -30,7 +27,6 @@ function ShowCluster(props) {
 			const response = await fetch(uri);
 			const responseData = await response.json();
 
-			setKeyword(cluster);
 			setLoadedCareers(responseData);
 		};
 
@@ -48,7 +44,7 @@ function ShowCluster(props) {
 	}, []);
 
 	async function handleDelete() {
-		
+
 		try {
 			fetch(`/api/career_clusters/${clusterId}`, { method: 'delete' });
 
@@ -89,7 +85,7 @@ function ShowCluster(props) {
 			{careerList}
 			<Row>
 				<Col md={12}>
-				
+
 						<Button color="danger" className="float-right" name="delete" onClick={toggle}>
 							Delete
 						</Button>

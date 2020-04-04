@@ -4,10 +4,8 @@ import Home from './views/Home/Home';
 import NotFound from './views/NotFound';
 import NavigationBar from './components/Header/NavigationBar';
 import CreateCareer from './views/CreateView/CreateCareer';
-//import Credit from './components/footer/Credit';
 import Search from './views/SearchView/Search';
 import EditCareer from './views/EditView/EditCareer';
-import IndexCareer from './views/IndexView/IndexCareer';
 import ShowCareer from './views/ShowView/ShowCareer';
 import UserList from './views/IndexView/UserList';
 import UserLogin from './views/Login/UserLogin';
@@ -35,7 +33,6 @@ const App = () => {
 							<Route exact path="/careers" component={Search} />
 							<Route exact path="/career" component={CreateCareer} />
 
-							<Route exact path="careers" component={IndexCareer} />
 							<Route exact path="/career/:id" component={ShowCareer} />
 							<Route exact path="/career/:id/edit" component={EditCareer} />
 
