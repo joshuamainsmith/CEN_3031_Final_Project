@@ -1,6 +1,5 @@
 import React, { useContext, useState } from 'react';
 import { ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
-import { Link } from 'react-router-dom';
 import AuthService from '../../Services/AuthService'
 import { AuthContext } from '../../Context/AuthContext'
 import Gator from './logo.jpg';
@@ -49,7 +48,7 @@ const NavigationBar = (props) => {
 				<li className="nav-item dropdown">
 					<a
 						className="nav-link dropdown-toggle"
-						href="#"
+						href="/"
 						id="navbarDropdown"
 						role="button"
 						data-toggle="dropdown"
@@ -118,7 +117,7 @@ const NavigationBar = (props) => {
 							</li>
 							<li className="nav-item">
 								<a className="nav-link" href="/careers">
-									Search
+									Search Careers
 								</a>
 							</li>
 							{ isAuthenticated ? authenticatedAdminNav() : unauthenticatedNav() }

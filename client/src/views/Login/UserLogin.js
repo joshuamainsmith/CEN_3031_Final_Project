@@ -1,5 +1,4 @@
 import React, {useState, useContext} from 'react';
-import { Form, Row, Col, FormGroup, Label, Input } from 'reactstrap';
 import AuthService from '../../Services/AuthService'
 import Message from '../../components/Message/Message'
 import { AuthContext } from '../../Context/AuthContext'

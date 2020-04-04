@@ -1,6 +1,4 @@
 import React, {useState, useRef, useEffect} from 'react';
-import { FormGroup, FormControl } from 'react-bootstrap';
-import { Label, Button } from 'reactstrap';
 import AuthService from '../../Services/AuthService'
 import Message from '../../components/Message/Message'
 
