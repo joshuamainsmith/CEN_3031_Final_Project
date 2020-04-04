@@ -87,11 +87,11 @@ function CareerShow(props) {
 						Delete
 					</Button>
 					<Modal isOpen={modal} toggle={toggle} className={className}>
-						<ModalHeader toggle={toggle}>Modal title</ModalHeader>
+						<ModalHeader toggle={toggle}>Confirm Deletion of {props.career.name}</ModalHeader>
 						<ModalBody>Are you sure you want to delete?</ModalBody>
 						<ModalFooter>
 							<Button color="primary" onClick={handleDelete}>
-								Delete
+								Confirm
 							</Button>{' '}
 							<Button color="secondary" onClick={toggle}>
 								Cancel
@@ -103,7 +103,7 @@ function CareerShow(props) {
 						Cancel
 					</a>
 					<a href={`/career/${props.career._id}/edit`} id="edit" name="edit">
-						<Button color="danger" className="float-right" name="edit">
+						<Button color="warning" className="float-right" name="edit">
 							Edit
 						</Button>
 					</a>
