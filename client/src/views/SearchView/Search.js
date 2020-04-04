@@ -18,6 +18,7 @@ function Search(props) {
 		const fetchCareers = async () => {
 			let uri;
 			const keyword = query.get('keyword')
+			console.log(keyword);
 			if (keyword) {
 				uri = '/api/careers?keyword=' + keyword
 			} else {

@@ -16,16 +16,16 @@ function IndexClusters(props) {
 	useEffect(() => {
 		const fetchClusters = async () => {
 			let uri;
-			const keyword = query.get('keyword')
-			if (keyword) {
-				uri = '/api/career_clusters?keyword=' + keyword
+			const cluster = query.get('cluster')
+			if (cluster) {
+				uri = '/api/career_clusters?cluster=' + cluster
 			} else {
 				uri = '/api/career_clusters/'
 			}
 			const response = await fetch(uri);
 			const responseData = await response.json();
 
-			setKeyword(keyword);
+			setKeyword(cluster);
 			setloadedClusters(responseData);
 		};
 

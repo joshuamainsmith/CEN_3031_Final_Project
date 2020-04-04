@@ -90,6 +90,17 @@ exports.remove = (req, res) => {
 
 exports.search = (req, res) => {
 	let keyword = req.query.keyword;
+	let cluster = req.query.cluster;
+
+	if (cluster) {
+		Career.find({ type: cluster}).exec(function(err, careers) {
+			if (err) {
+				res.status(400).json({ error: 'There was an issue with your request.' });
+			} else {
+				res.send(careers);
+			}
+		});
+	}
 
 	if (keyword) {
 		Career.find({ $text: { $search: keyword } }).sort({ code: 1 }).exec(function(err, careers) {
