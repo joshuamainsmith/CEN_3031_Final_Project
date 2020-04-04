@@ -57,21 +57,13 @@ function ShowCluster(props) {
 				<div className="row" key={career._id}>
 					<div className="col-12">
 						<h3 color>
-							<Link to={'/career/' + career._id}>{career.type}</Link>
+							<Link to={'/career/' + career._id}>{career.name}</Link>
 						</h3>
 					</div>
 					<div className="col-12">
 						<p>{career.description}</p>
-						<p>{career.type}</p>
+						
 					</div>
-					<Row form>
-						<Col md={12}>
-						<Button color="danger" className="float-right" name="edit">
-							Edit
-						</Button>
-					
-					</Col>
-					</Row>
 				</div>
 			);
 		}
@@ -82,6 +74,13 @@ function ShowCluster(props) {
 			<h1>{loadedCluster.name}</h1>
 			<p>{loadedCluster.description}</p>
 			{careerList}
+			<Row>
+				<Col md={12}>
+					<Button color="danger" className="float-right" name="edit">
+						Edit
+					</Button>
+				</Col>
+			</Row>
 		</div>
 	);
 }
