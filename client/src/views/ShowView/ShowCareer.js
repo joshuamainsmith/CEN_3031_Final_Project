@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Row, Col, Button, ModalHeader, ModalBody, ModalFooter, Modal } from 'reactstrap';
-import './ShowView.css';
+import './ShowCareer.css';
 
 function capitalize(str) {
 	return str.charAt(0).toUpperCase() + str.slice(1);
@@ -112,7 +112,7 @@ function CareerShow(props) {
 		</div>
 	);
 }
-const ShowView = (props) => {
+const ShowCareer = (props) => {
 	const [ careerId, setCareerId ] = useState(props.match.params.id);
 	const [ loadedCareer, setLoadedCareer ] = useState({ salary_ranges: {}, important_subjects: [], keywords: [] });
 
@@ -132,4 +132,4 @@ const ShowView = (props) => {
 	return <CareerShow career={loadedCareer} history={props.history} />;
 };
 
-export default ShowView;
+export default ShowCareer;

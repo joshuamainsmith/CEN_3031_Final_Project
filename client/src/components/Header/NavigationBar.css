@@ -32,6 +32,12 @@
 	background-color: #08bd9a;
 } */
 
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
 .school-name {
 	color: navy;
 }

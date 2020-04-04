@@ -5,7 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 //Hook function
 function Credit() {
 	return (
-		<div className="fixed-bottom absolute">
+		<div className="fixed-bottom ">
 			<div className="Credit">
 				<h1>Florida Middle School Career's Website</h1>
 				<p>Career's Website Designed by the studens in the CEN3031 class at University of Florida.</p>

@@ -11,8 +11,8 @@ const NavigationBar = () => {
 	const toggle = () => setOpen(!dropdownOpen);
 
 	return (
-		<div> 
-			<main className="top-bar_network_fixed js-top-bar top-bar">
+		<div>
+			<main className="top-bar_network_fixed js-top-bar top-bar" role="menubar">
 				<nav className="navbar navbar-expand-lg navbar-blue bg-dark ">
 					<a className="navbar-brand" href="/home">
 						Career Finder
@@ -59,9 +59,21 @@ const NavigationBar = () => {
 									<a className="dropdown-item" href="/career">
 										Create Career
 									</a>
-
+									<a className="dropdown-item" href="/cluster/create">
+										Create Career Cluster
+									</a>
+									<a className="dropdown-item" href="/user/create">
+										Create User
+									</a>
 									<a className="dropdown-item" href="/careers">
 										Search Careers
+									</a>
+									<a className="dropdown-item" href="/clusters">
+										Search Career Clusters
+									</a>
+
+									<a className="dropdown-item" href="/users">
+										Search Users
 									</a>
 								</div>
 							</li>
@@ -78,7 +90,7 @@ const NavigationBar = () => {
 								Search
 							</button>
 							<ButtonDropdown isOpen={dropdownOpen} toggle={toggle}>
-								<DropdownToggle caret >
+								<DropdownToggle caret>
 									<img id="userIcon" src={UserAvatar} alt="user-icon-avatar" height="40" width="40" />
 								</DropdownToggle>
 								<DropdownMenu right>
@@ -97,7 +109,7 @@ const NavigationBar = () => {
 				</nav>
 				<div>
 					<h1 className="school-name sn-1">Florida Middle</h1>
-					<img className="logo" src={Gator} alt="website logo"/>
+					<img className="logo" src={Gator} alt="website logo" />
 					<h1 className="school-name sn-2">School</h1>
 				</div>
 			</main>
