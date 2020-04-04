@@ -27,8 +27,12 @@ export default {
 
   logout: () => {
     return fetch('/api/users/logout')
-      .then(res => res.json())
-      .then(data => data);
+      .then(res => {
+          if(res.status !== 401)
+            return res.json().then(data => data)
+          else
+            return { isAuthenticated: false, user: {username: "", role: ""}}
+      })
   },
 
   isAuthenticated: () => {

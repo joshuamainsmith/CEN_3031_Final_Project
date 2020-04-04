@@ -14,9 +14,11 @@ const NavigationBar = (props) => {
 
 	const onClickLogoutHandler = (props) => {
 		AuthService.logout().then(data => {
+			console.log(data);
 			if(data.sucess) {
 				setUser(data.user);
 				setIsAuthenticated(false);
+				props.history.push('/user/login');
 			}
 		})
 	}
@@ -27,13 +29,11 @@ const NavigationBar = (props) => {
 				<li className="nav-item active">
 					<a className="nav-link" href="/user/login">
 						Login
-						<span className="sr-only">(current)</span>
 					</a>
 				</li>
 				<li className="nav-item active">
 					<a className="nav-link" href="/user/signup">
 						Register
-						<span className="sr-only">(current)</span>
 					</a>
 				</li>
 				</>
@@ -43,47 +43,58 @@ const NavigationBar = (props) => {
 	const authenticatedAdminNav = () => {
 		return (
 			<>
-			{
-				user.role === "admin" ?
-				<li className="nav-item dropdown">
-					<a
-						className="nav-link dropdown-toggle"
-						href="/"
-						id="navbarDropdown"
-						role="button"
-						data-toggle="dropdown"
-						aria-haspopup="true"
-						aria-expanded="false"
-					>
-						Admin
+				<li className="nav-item active">
+					<a className="nav-link" href="/home">
+						Home
+						<span className="sr-only">(current)</span>
 					</a>
+				</li>
+				<li className="nav-item">
+					<a className="nav-link" href="/careers">
+						Search Careers
+					</a>
+				</li>
+				{
+					user.role === "admin" ?
+					<li className="nav-item dropdown">
+						<a
+							className="nav-link dropdown-toggle"
+							href="/"
+							id="navbarDropdown"
+							role="button"
+							data-toggle="dropdown"
+							aria-haspopup="true"
+							aria-expanded="false"
+						>
+							Admin
+						</a>
 
-					<div className="dropdown-menu" aria-labelledby="navbarDropdown">
-						<a className="dropdown-item" href="/career">
-							Create Career
-						</a>
-						<a className="dropdown-item" href="/cluster/create">
-							Create Career Cluster
-						</a>
-						<a className="dropdown-item" href="/user/create">
-							Create User
-						</a>
-						<a className="dropdown-item" href="/careers">
-							Search Careers
-						</a>
-						<a className="dropdown-item" href="/clusters">
-							Search Career Clusters
-						</a>
+						<div className="dropdown-menu" aria-labelledby="navbarDropdown">
+							<a className="dropdown-item" href="/career">
+								Create Career
+							</a>
+							<a className="dropdown-item" href="/cluster/create">
+								Create Career Cluster
+							</a>
+							<a className="dropdown-item" href="/user/create">
+								Create User
+							</a>
+							<a className="dropdown-item" href="/careers">
+								Search Careers
+							</a>
+							<a className="dropdown-item" href="/clusters">
+								Search Career Clusters
+							</a>
 
-						<a className="dropdown-item" href="/users">
-							Search Users
-						</a>
-					</div>
-				</li> : null
-			}
-			<button type="button"
-							className="btn btn-link nav-item nav-link"
-							onClick={onClickLogoutHandler}>Logout</button>
+							<a className="dropdown-item" href="/users">
+								Search Users
+							</a>
+						</div>
+					</li> : null
+				}
+				<button type="button"
+								className="btn btn-link nav-item nav-link"
+								onClick={onClickLogoutHandler}>Logout</button>
 			</>
 		)
 	}
@@ -109,46 +120,23 @@ const NavigationBar = (props) => {
 
 					<div className="collapse navbar-collapse" id="navbarSupportedContent">
 						<ul className="navbar-nav mr-auto">
-							<li className="nav-item active">
-								<a className="nav-link" href="/home">
-									Home
-									<span className="sr-only">(current)</span>
-								</a>
-							</li>
-							<li className="nav-item">
-								<a className="nav-link" href="/careers">
-									Search Careers
-								</a>
-							</li>
 							{ isAuthenticated ? authenticatedAdminNav() : unauthenticatedNav() }
 						</ul>
-						<form className="form-inline my-2 my-lg-0" action="/careers">
-							<input
-								className="form-control mr-sm-2"
-								type="search"
-								placeholder="Search"
-								aria-label="Search"
-								name="keyword"
-							/>
-							<button className="btn btn-outline-success my-2 my-sm-0" type="submit">
-								Search
-							</button>
-							<ButtonDropdown isOpen={dropdownOpen} toggle={toggle}>
-								<DropdownToggle caret>
-									<img id="userIcon" src={UserAvatar} alt="user-icon-avatar" height="40" width="40" />
-								</DropdownToggle>
-								<DropdownMenu right>
-									<DropdownItem>View Profile</DropdownItem>
-									<DropdownItem divider />
-									<DropdownItem href="/careers">Browse Career</DropdownItem>
-									<DropdownItem>Browse Cluster</DropdownItem>
-									<DropdownItem href="/users">Browse Users</DropdownItem>
-									<DropdownItem>Invite User</DropdownItem>
-									<DropdownItem divider />
-									<DropdownItem href="/user/login">Login</DropdownItem>
-								</DropdownMenu>
-							</ButtonDropdown>
-						</form>
+						{
+							isAuthenticated ?
+								<form className="form-inline my-2 my-lg-0" action="/careers">
+									<input
+										className="form-control mr-sm-4"
+										type="search"
+										placeholder="Search Careers"
+										aria-label="Search"
+										name="keyword"
+									/>
+									<button className="btn btn-outline-success my-2 my-sm-0" type="submit">
+										Search
+									</button>
+								</form> : null
+						}
 					</div>
 				</nav>
 				<div>
