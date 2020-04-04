@@ -11,7 +11,7 @@ function CareerShow(props) {
 	const listSubjects = props.career.important_subjects.map((item) => <li key={item}>{capitalize(item)}</li>);
 	const listKeywords = props.career.keywords.map((item) => <li key={item}>{capitalize(item)}</li>);
 
-	const [ career, setCareer ] = useState({});
+	// const [ career, setCareer ] = useState({});
 
 	async function handleDelete() {
 		console.log(props.career._id);

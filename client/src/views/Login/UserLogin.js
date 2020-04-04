@@ -47,11 +47,11 @@ const Login = () => {
 						</form>
 					</div>
 
-					<div class="card-footer">
-						<div class="d-flex justify-content-center links">
+					<div className="card-footer">
+						<div className="d-flex justify-content-center links">
 							Don't have an account?<a href="/user/signup">Sign Up</a>
 						</div>
-						<div class="d-flex justify-content-center">
+						<div className="d-flex justify-content-center">
 							<a href="/user/recovery">Forgot your password?</a>
 						</div>
 					</div>
