@@ -1,12 +1,44 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import AuthService from '../../Services/AuthService'
+import { AuthContext } from '../../Context/AuthContext'
 import './NavigationBar.css';
 
 const NavigationBar = () => {
+	const {isAuthenticated, user, setIsAuthenticated, setUser} = useContext(AuthContext);
 	const [ dropdownOpen, setOpen ] = useState(false);
 
 	const toggle = () => setOpen(!dropdownOpen);
+
+	const authenticatedAdminNav = () => {
+		return (
+			user.role === "admin" ?
+			<li className="nav-item dropdown">
+				<a
+					className="nav-link dropdown-toggle"
+					href="#"
+					id="navbarDropdown"
+					role="button"
+					data-toggle="dropdown"
+					aria-haspopup="true"
+					aria-expanded="false"
+				>
+					Admin
+				</a>
+
+				<div className="dropdown-menu" aria-labelledby="navbarDropdown">
+					<a className="dropdown-item" href="/career">
+						Create Career
+					</a>
+
+					<a className="dropdown-item" href="/careers">
+						Search Careers
+					</a>
+				</div>
+			</li> : null
+		)
+	}
 
 	return (
 		<div>
@@ -40,29 +72,7 @@ const NavigationBar = () => {
 									Search
 								</a>
 							</li>
-							<li className="nav-item dropdown">
-								<a
-									className="nav-link dropdown-toggle"
-									href="#"
-									id="navbarDropdown"
-									role="button"
-									data-toggle="dropdown"
-									aria-haspopup="true"
-									aria-expanded="false"
-								>
-									Admin
-								</a>
-
-								<div className="dropdown-menu" aria-labelledby="navbarDropdown">
-									<a className="dropdown-item" href="/career">
-										Create Career
-									</a>
-
-									<a className="dropdown-item" href="/careers">
-										Search Careers
-									</a>
-								</div>
-							</li>
+							{ isAuthenticated ? authenticatedAdminNav() : "" }
 						</ul>
 						<form className="form-inline my-2 my-lg-0" action="/careers">
 							<input
