@@ -38,8 +38,9 @@ function IndexClusters(props) {
 		return (
 			<div className="row" key={cluster._id}>
 				<div className="col-12">
-					<h3 color><Link to={"/cluster/" + cluster._id}>{cluster.name}</Link></h3>
+					<h3><Link to={"/cluster/" + cluster._id}>{cluster.name}</Link></h3>
 				</div>
+				
 				<div className="col-12">
 					<p>{cluster.description}</p>
 				</div>				

@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
-import { Link } from 'react-router-dom';
+//import { Link } from 'react-router-dom';
+import Gator from './logo.jpg';
+import UserAvatar from './user-avatar.png';
 import './NavigationBar.css';
 
 const NavigationBar = () => {
@@ -10,8 +12,8 @@ const NavigationBar = () => {
 
 	return (
 		<div>
-			<main>
-				<nav className="navbar navbar-expand-lg navbar-blue bg-dark">
+			<main className="top-bar_network_fixed js-top-bar top-bar" role="menubar">
+				<nav className="navbar navbar-expand-lg navbar-blue bg-dark ">
 					<a className="navbar-brand" href="/home">
 						Career Finder
 					</a>
@@ -57,9 +59,21 @@ const NavigationBar = () => {
 									<a className="dropdown-item" href="/career">
 										Create Career
 									</a>
-
+									<a className="dropdown-item" href="/cluster/create">
+										Create Career Cluster
+									</a>
+									<a className="dropdown-item" href="/user/create">
+										Create User
+									</a>
 									<a className="dropdown-item" href="/careers">
 										Search Careers
+									</a>
+									<a className="dropdown-item" href="/clusters">
+										Search Career Clusters
+									</a>
+
+									<a className="dropdown-item" href="/users">
+										Search Users
 									</a>
 								</div>
 							</li>
@@ -76,8 +90,8 @@ const NavigationBar = () => {
 								Search
 							</button>
 							<ButtonDropdown isOpen={dropdownOpen} toggle={toggle}>
-								<DropdownToggle caret >
-									<img id="userIcon" src="user-avatar.png" height="40" width="40" />
+								<DropdownToggle caret>
+									<img id="userIcon" src={UserAvatar} alt="user-icon-avatar" height="40" width="40" />
 								</DropdownToggle>
 								<DropdownMenu right>
 									<DropdownItem>View Profile</DropdownItem>
@@ -95,7 +109,7 @@ const NavigationBar = () => {
 				</nav>
 				<div>
 					<h1 className="school-name sn-1">Florida Middle</h1>
-					<img className="logo" src="logo.jpg" />
+					<img className="logo" src={Gator} alt="website logo" />
 					<h1 className="school-name sn-2">School</h1>
 				</div>
 			</main>

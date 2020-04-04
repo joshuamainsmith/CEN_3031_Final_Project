@@ -58,7 +58,7 @@ function ShowCluster(props) {
 		return (
 			<div className="row" key={career._id}>
 				<div className="col-12">
-					<h3 color><Link to={"/career/" + career._id}>{career.name}</Link></h3>
+					<h3 color><Link to={"/career/" + career._id}>{career.type}</Link></h3>
 				</div>
 				<div className="col-12">
 					<p>{career.description}</p>
@@ -76,6 +76,6 @@ function ShowCluster(props) {
             {careerList}
 		</div>
 	);
-}
+};
 
 export default ShowCluster;

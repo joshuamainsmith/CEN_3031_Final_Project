@@ -1,6 +1,6 @@
 {
-	"short_name": "React App",
-	"name": "Create React App Sample",
+	"short_name": "Career Finder",
+	"name": "Career Finder Website Project",
 	"icons": [
 		{
 			"src": "404-error-not-found.png",
@@ -8,12 +8,12 @@
 			"type": "image/x-icon"
 		},
 		{
-			"src": "logo.jpg",
+			"src": "src/components/Header/logo.jpg",
 			"type": "image/jpg",
 			"sizes": "1287x758"
 		},
 		{
-			"src": "user-avatar.png",
+			"src": "src/component/Header/user-avatar.png",
 			"type": "image/png",
 			"sizes": "221x228"
 		}

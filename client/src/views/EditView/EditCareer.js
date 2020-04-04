@@ -1,9 +1,7 @@
-import React, { useState } from 'react';
-import './CreateView.css';
+import React, { useState, useEffect } from 'react';
 import { Form, Row, Col, FormGroup, Button, Label, Input } from 'reactstrap';
 
-//Can use the 'function CreateView(props) {}' method or the arrow function as bellow for hooks
-const CreateView = props => {
+const EditCareer = (props) => {
 	const initialState = {
 		name: '',
 		type: '',
@@ -26,8 +24,8 @@ const CreateView = props => {
 		console.log(career);
 		event.preventDefault();
 		async function postCareer() {
-			fetch('/api/careers', {
-				method: 'post',
+			fetch('/api/careers/' + career._id, {
+				method: 'put',
 				body: JSON.stringify(career),
 				headers: {
 					Accept: 'application/json',
@@ -44,10 +42,23 @@ const CreateView = props => {
 		}
 		postCareer();
 	}
+	const [ careerId, setCareerId ] = useState(props.match.params.id);
+
+	useEffect(() => {
+		const fetchCareers = async () => {
+			const response = await fetch('/api/careers/' + careerId);
+
+			const responseData = await response.json();
+			setCareer(responseData);
+			setCareerId(careerId);
+		};
+
+		fetchCareers();
+	}, []);
 
 	return (
 		<div className="form-wrapper">
-			<Form id="career-create-form" className="container" onSubmit={handleSubmit}>
+			<Form id="career-create-form" className="container">
 				<Row form>
 					<Col md={6}>
 						<FormGroup>
@@ -56,7 +67,7 @@ const CreateView = props => {
 								type="text"
 								name="name"
 								id="careerName"
-								value={career.title}
+								value={career.name}
 								onChange={handleChange}
 							/>
 						</FormGroup>
@@ -193,7 +204,7 @@ const CreateView = props => {
 				<Row form>
 					<FormGroup tag="fieldset">
 						<Label>Education</Label>
-						<small id="descriptionHelp" class="form-text text-muted">
+						<small id="descriptionHelp" className="form-text text-muted">
 							Lowest education needed for career.
 						</small>
 						<FormGroup check>
@@ -201,7 +212,6 @@ const CreateView = props => {
 								<Input
 									type="radio"
 									name="education"
-									value="none"
 									onChange={handleChange}
 									checked={career.education === 'none'}
 								/>
@@ -261,9 +271,10 @@ const CreateView = props => {
 
 				<Row form>
 					<Col md={12}>
-						<Button color="primary" className="float-right">
+						<Button href="/careers" color="primary" className="float-right" onClick={handleSubmit}>
 							Save
-						</Button>{' '}
+						</Button>
+
 						<a href="/careers" id="cancel" name="cancel" className="btn btn-secondary float-left">
 							Cancel
 						</a>
@@ -272,6 +283,6 @@ const CreateView = props => {
 			</Form>
 		</div>
 	);
-}
+};
 
-export default CreateView;
+export default EditCareer;
