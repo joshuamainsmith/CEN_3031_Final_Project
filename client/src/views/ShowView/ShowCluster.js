@@ -65,9 +65,6 @@ function ShowCluster(props) {
 	const toggle = () => setModal(!modal);
 
 	const careerList = loadedCareers.map((career) => {
-		console.log(career.name);
-		console.log(career.type);
-		console.log(loadedCluster.name);
 
 		if (career.type === loadedCluster.name) {
 			return (
