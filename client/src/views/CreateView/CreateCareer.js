@@ -1,7 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import './CreateCareer.css';
 import { Form, Row, Col, FormGroup, Button, Label, Input } from 'reactstrap';
 
-const EditView = (props) => {
+//Can use the 'function CreateView(props) {}' method or the arrow function as bellow for hooks
+const CreateCareer = props => {
 	const initialState = {
 		name: '',
 		type: '',
@@ -24,8 +26,8 @@ const EditView = (props) => {
 		console.log(career);
 		event.preventDefault();
 		async function postCareer() {
-			fetch('/api/careers/' + career._id, {
-				method: 'put',
+			fetch('/api/careers', {
+				method: 'post',
 				body: JSON.stringify(career),
 				headers: {
 					Accept: 'application/json',
@@ -42,23 +44,10 @@ const EditView = (props) => {
 		}
 		postCareer();
 	}
-	const [ careerId, setCareerId ] = useState(props.match.params.id);
-
-	useEffect(() => {
-		const fetchCareers = async () => {
-			const response = await fetch('/api/careers/' + careerId);
-
-			const responseData = await response.json();
-			setCareer(responseData);
-			setCareerId(careerId);
-		};
-
-		fetchCareers();
-	}, []);
 
 	return (
 		<div className="form-wrapper">
-			<Form id="career-create-form" className="container">
+			<Form id="career-create-form" className="container" onSubmit={handleSubmit}>
 				<Row form>
 					<Col md={6}>
 						<FormGroup>
@@ -67,7 +56,7 @@ const EditView = (props) => {
 								type="text"
 								name="name"
 								id="careerName"
-								value={career.name}
+								value={career.title}
 								onChange={handleChange}
 							/>
 						</FormGroup>
@@ -204,7 +193,7 @@ const EditView = (props) => {
 				<Row form>
 					<FormGroup tag="fieldset">
 						<Label>Education</Label>
-						<small id="descriptionHelp" className="form-text text-muted">
+						<small id="descriptionHelp" class="form-text text-muted">
 							Lowest education needed for career.
 						</small>
 						<FormGroup check>
@@ -212,6 +201,7 @@ const EditView = (props) => {
 								<Input
 									type="radio"
 									name="education"
+									value="none"
 									onChange={handleChange}
 									checked={career.education === 'none'}
 								/>
@@ -271,10 +261,9 @@ const EditView = (props) => {
 
 				<Row form>
 					<Col md={12}>
-						<Button href="/careers" color="primary" className="float-right" onClick={handleSubmit}>
+						<Button color="primary" className="float-right">
 							Save
-						</Button>
-
+						</Button>{' '}
 						<a href="/careers" id="cancel" name="cancel" className="btn btn-secondary float-left">
 							Cancel
 						</a>
@@ -283,6 +272,6 @@ const EditView = (props) => {
 			</Form>
 		</div>
 	);
-};
+}
 
-export default EditView;
+export default CreateCareer;
