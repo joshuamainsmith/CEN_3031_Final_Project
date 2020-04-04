@@ -19,16 +19,16 @@ function ShowCluster(props) {
 	useEffect(() => {
 		const fetchCareers = async () => {
 			let uri;
-			const keyword = query.get('keyword')
-			if (keyword) {
-				uri = '/api/careers?keyword=' + keyword
+			const cluster = query.get('cluster')
+			if (cluster) {
+				uri = '/api/careers?cluster=' + cluster
 			} else {
 				uri = '/api/careers'
 			}
 			const response = await fetch(uri);
 			const responseData = await response.json();
 
-			setKeyword(keyword);
+			setKeyword(cluster);
             setLoadedCareers(responseData);
         };
         
