@@ -21,7 +21,7 @@ function IndexCareer(props) {
 			
 		</dvi>
 	);
-}
+};
 
 const IndexList = (props) => {
 	const [ careerName ] = useState(props.match.params.id);
