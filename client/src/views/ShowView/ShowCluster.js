@@ -50,7 +50,9 @@ function ShowCluster(props) {
 
 	const careerList = loadedCareers.map((career) => {
 
-        if (career.type == loadedCluster.name) {            
+    
+    if (career.type == loadedCluster.name) {    
+
 		return (
 			<div className="row" key={career._id}>
 				<div className="col-12">
