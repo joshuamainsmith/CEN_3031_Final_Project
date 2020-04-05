@@ -26,11 +26,20 @@
 	padding: 14px 25px;
 	text-align: center;
 	text-decoration: none;
-}
+}*/
 
 .nav-link:hover {
-	background-color: #08bd9a;
-} */
+	background-color: limegreen;
+}
+
+.header-sty {
+	font-size: 30px;
+}
+
+.m-sty {
+	border-right: 5px solid limegreen;
+	border-left: 5px solid limegreen;
+}
 
 .nav {
   display: flex;
