@@ -7,7 +7,7 @@ const NavigationBar = () => {
 		<div>
 			<main>
 				<nav className="navbar navbar-expand-lg navbar-blue bg-dark">
-					<a className="navbar-brand" href="#">
+					<a className="navbar-brand header-sty" href="#" >
 						Career Finder
 					</a>
 					<button
@@ -26,18 +26,18 @@ const NavigationBar = () => {
 						<ul className="navbar-nav mr-auto">
 							<li className="nav-item active">
 								<Link to="/Home">
-									<a className="nav-link" href="/home">
+									<a className="nav-link header-sty" href="/home">
 										Home
 										<span className="sr-only">(current)</span>
 									</a>
 								</Link>
 							</li>
 							<li className="nav-item">
-								<a className="nav-link" href="/careers">
+								<a className="nav-link header-sty" href="/careers">
 									Search
 								</a>
 							</li>
-							<li className="nav-item dropdown">
+							<li className="nav-item dropdown header-sty">
 								<a
 									className="nav-link dropdown-toggle"
 									href="#"

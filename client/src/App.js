@@ -9,12 +9,13 @@ import IndexView from './views/IndexView/IndexList';
 import Search from './views/SearchView/Search';
 import EditView from './views/EditView/EditView';
 import ShowView from './views/ShowView/ShowView';
+import './components/Header/NavigationBar.css';
 
 const App = () => {
 	return (
 		<div>
 			<NavigationBar />
-			<div className="container">
+			<div className="container m-sty">
 				<Router>
 					<div>
 						<Switch>
