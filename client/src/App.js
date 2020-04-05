@@ -3,13 +3,14 @@ import { Route, Switch, Redirect, BrowserRouter as Router } from 'react-router-d
 import Home from './views/Home/Home';
 import NotFound from './views/NotFound';
 import NavigationBar from './components/Header/NavigationBar';
+import Credit from './components/footer/Credit';
 import CreateView from './views/CreateView/CreateView';
 import IndexView from './views/IndexView/IndexList';
 // import Credit from './components/Footer/Credit';
 import Search from './views/SearchView/Search';
 import EditView from './views/EditView/EditView';
 import ShowView from './views/ShowView/ShowView';
-import './components/Header/NavigationBar.css';
+import './App.css';
 
 const App = () => {
 	return (
@@ -35,6 +36,7 @@ const App = () => {
 					</div>
 				</Router>
 			</div>
+			<Credit />
 		</div>
 	);
 };
