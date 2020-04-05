@@ -7,10 +7,10 @@ import './Credit.css';
 const Credit = () => {
 	return (
 		<div className="f-sty">
-			<div className="Credit">
+			{/* <div className="Credit">
 				<h1>Florida Middle School Career's Website</h1>
 				<p>Career's Website Designed by the studens in the CEN3031 class at University of Florida.</p>
-			</div>
+			</div> */}
 		</div>
 	);
 }
