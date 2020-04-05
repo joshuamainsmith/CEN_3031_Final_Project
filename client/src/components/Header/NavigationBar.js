@@ -44,19 +44,19 @@ const NavigationBar = (props) => {
 		return (
 			<>
 				<li className="nav-item active">
-					<a className="nav-link" href="/home">
+					<a className="nav-link header-sty" href="/home">
 						Home
 						<span className="sr-only">(current)</span>
 					</a>
 				</li>
 				<li className="nav-item">
-					<a className="nav-link" href="/careers">
+					<a className="nav-link header-sty" href="/careers">
 						Search Careers
 					</a>
 				</li>
 				{
 					user.role === "admin" ?
-					<li className="nav-item dropdown">
+					<li className="nav-item dropdown header-sty">
 						<a
 							className="nav-link dropdown-toggle"
 							href="/"
@@ -70,19 +70,19 @@ const NavigationBar = (props) => {
 						</a>
 
 						<div className="dropdown-menu" aria-labelledby="navbarDropdown">
-							<a className="dropdown-item" href="/career">
+							<a className="dropdown-item header-sty" href="/career">
 								Create Career
 							</a>
-							<a className="dropdown-item" href="/cluster/create">
+							<a className="dropdown-item header-sty" href="/cluster/create">
 								Create Career Cluster
 							</a>
-							<a className="dropdown-item" href="/careers">
+							<a className="dropdown-item header-sty" href="/careers">
 								Search Careers
 							</a>
-							<a className="dropdown-item" href="/clusters">
+							<a className="dropdown-item header-sty" href="/clusters">
 								Search Career Clusters
 							</a>
-							<a className="dropdown-item" href="/users">
+							<a className="dropdown-item header-sty" href="/users">
 								Search Users
 							</a>
 						</div>
@@ -99,7 +99,7 @@ const NavigationBar = (props) => {
 		<div>
 			<main className="top-bar_network_fixed js-top-bar top-bar" role="menubar">
 				<nav className="navbar navbar-expand-lg navbar-blue bg-dark ">
-					<a className="navbar-brand" href="/home">
+					<a className="navbar-brand header-sty" href="/home">
 						Career Finder
 					</a>
 					<button
