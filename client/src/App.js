@@ -19,6 +19,7 @@ import CreateCluster from './views/CreateView/CreateCluster';
 import EditCluster from './views/EditView/EditCluster';
 import EditUser from './views/EditView/EditUser';
 import './App.css';
+import PrivateRoute from './components/PrivateRoute'
 
 const App = () => {
 	return (
@@ -31,25 +32,25 @@ const App = () => {
 							<Route exact path="/">
 								<Redirect to="/home" />
 							</Route>
-							<Route exact path="/home" component={Home} />
-							<Route exact path="/careers" component={Search} />
-							<Route exact path="/career" component={CreateCareer} />
+							<PrivateRoute exact path="/home" component={Home} />
+							<PrivateRoute exact path="/careers" component={Search} />
+							<PrivateRoute exact path="/career" component={CreateCareer} />
 
-							<Route exact path="/career/:id" component={ShowCareer} />
-							<Route exact path="/career/:id/edit" component={EditCareer} />
+							<PrivateRoute exact path="/career/:id" component={ShowCareer} />
+							<PrivateRoute exact path="/career/:id/edit" component={EditCareer} />
 
-							<Route exact path="/cluster/create" component={CreateCluster} />
-							<Route exact path="/clusters" component={IndexClusters} />
-							<Route exact path="/cluster/:id" component={ShowCluster} />
-							<Route exact path="/cluster/:id/edit" component={EditCluster} />
+							<PrivateRoute exact path="/cluster/create" component={CreateCluster} />
+							<PrivateRoute exact path="/clusters" component={IndexClusters} />
+							<PrivateRoute exact path="/cluster/:id" component={ShowCluster} />
+							<PrivateRoute exact path="/cluster/:id/edit" component={EditCluster} />
 
-							<Route exact path="/users" component={UserList} />
-							<Route exact path="/user/create" component={CreateUser} />
+							<PrivateRoute exact path="/users" component={UserList} />
+							<PrivateRoute exact path="/user/create" component={CreateUser} />
 
 							<Route exact path="/user/login" component={UserLogin} />
 							<Route exact path="/user/signup" component={Signup} />
 							<Route exact path="/user/recovery" component={Recovery} />
-							<Route exact path="/user/:id/edit" component={EditUser} />
+							<PrivateRoute exact path="/user/:id/edit" component={EditUser} />
 
 							<Route component={NotFound} />
 						</Switch>
