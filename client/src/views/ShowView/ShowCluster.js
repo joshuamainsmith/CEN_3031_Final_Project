@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Button, Row, Col, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import './ShowCluster.css';
 import { Link, useLocation } from 'react-router-dom';
+import { AuthContext } from '../../Context/AuthContext'
 
 function useQuery() {
 	return new URLSearchParams(useLocation().search);
@@ -9,6 +10,7 @@ function useQuery() {
 
 function ShowCluster(props) {
 	let query = useQuery();
+	const {isAuthenticated, user, setIsAuthenticated, setUser} = useContext(AuthContext);
 	const [ loadedCareers, setLoadedCareers ] = useState([]);
 	const [ clusterId, setClusterId ] = useState(props.match.params.id);
 	const [ loadedCluster, setLoadedCluster ] = useState({ salary_ranges: {}, important_subjects: [], keywords: [] });
@@ -54,6 +56,42 @@ function ShowCluster(props) {
 		}
 	}
 
+	const adminButtons = () => {
+		return (
+			<>
+				{
+					user.role === "admin" ?
+					<Row>
+						<Col md={12}>
+
+								<Button color="danger" className="float-right" name="delete" onClick={toggle}>
+									Delete
+								</Button>
+
+								<Modal isOpen={modal} toggle={toggle} className={className}>
+									<ModalHeader toggle={toggle}>Confirm deletion of {loadedCluster.name}</ModalHeader>
+									<ModalBody>Are you sure you want to delete?</ModalBody>
+									<ModalFooter>
+										<Button color="danger" className="float-left" onClick={handleDelete}>
+											Confirm
+										</Button>{' '}
+										<Button color="warning" onClick={toggle}>
+											Cancel
+										</Button>
+									</ModalFooter>
+								</Modal>
+								<a href={`/cluster/${clusterId}/edit`} id="edit" name="edit">
+								<Button color="warning" className="float-left" name="edit">
+									Edit
+								</Button>
+							</a>
+						</Col>
+					</Row> : null
+				}
+			</>
+		)
+	}
+
 	const { buttonLabel, className } = props;
 
 	const [ modal, setModal ] = useState(false);
@@ -83,32 +121,7 @@ function ShowCluster(props) {
 			<h1>{loadedCluster.name}</h1>
 			<p>{loadedCluster.description}</p>
 			{careerList}
-			<Row>
-				<Col md={12}>
-
-						<Button color="danger" className="float-right" name="delete" onClick={toggle}>
-							Delete
-						</Button>
-
-						<Modal isOpen={modal} toggle={toggle} className={className}>
-							<ModalHeader toggle={toggle}>Confirm deletion of {loadedCluster.name}</ModalHeader>
-							<ModalBody>Are you sure you want to delete?</ModalBody>
-							<ModalFooter>
-								<Button color="danger" className="float-left" onClick={handleDelete}>
-									Confirm
-								</Button>{' '}
-								<Button color="warning" onClick={toggle}>
-									Cancel
-								</Button>
-							</ModalFooter>
-						</Modal>
-						<a href={`/cluster/${clusterId}/edit`} id="edit" name="edit">
-						<Button color="warning" className="float-left" name="edit">
-							Edit
-						</Button>
-					</a>
-				</Col>
-			</Row>
+			{ adminButtons() }
 		</div>
 	);
 }

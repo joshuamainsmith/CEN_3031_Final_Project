@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Row, Col, Button, ModalHeader, ModalBody, ModalFooter, Modal } from 'reactstrap';
+import { AuthContext } from '../../Context/AuthContext'
 import './ShowCareer.css';
 
 function capitalize(str) {
@@ -7,13 +8,52 @@ function capitalize(str) {
 }
 
 function CareerShow(props) {
+	const {isAuthenticated, user, setIsAuthenticated, setUser} = useContext(AuthContext);
+
 	const listSubjects = props.career.important_subjects.map((item) => <li key={item}>{capitalize(item)}</li>);
 	const listKeywords = props.career.keywords.map((item) => <li key={item}>{capitalize(item)}</li>);
 
 	//const [ career, setCareer ] = useState({});
 
+	const adminButtons = () => {
+		return (
+			<>
+				{
+					user.role === "admin" ?
+					<Row>
+						<Col md={12}>
+							<Button color="danger" className="float-right" name="delete" onClick={toggle}>
+								Delete
+							</Button>
+							<Modal isOpen={modal} toggle={toggle} className={props.className}>
+								<ModalHeader toggle={toggle}>Confirm Deletion of {props.career.name}</ModalHeader>
+								<ModalBody>Are you sure you want to delete?</ModalBody>
+								<ModalFooter>
+									<Button color="primary" onClick={handleDelete}>
+										Confirm
+									</Button>{' '}
+									<Button color="secondary" onClick={toggle}>
+										Cancel
+									</Button>
+								</ModalFooter>
+							</Modal>
+
+							<a href="/careers" id="cancel" name="cancel" className="btn btn-secondary float-left">
+								Cancel
+							</a>
+							<a href={`/career/${props.career._id}/edit`} id="edit" name="edit">
+								<Button color="warning" className="float-right" name="edit">
+									Edit
+								</Button>
+							</a>
+						</Col>
+					</Row> : null
+				}
+			</>
+		)
+	}
+
 	async function handleDelete() {
-		console.log(props.career._id);
 		try {
 			fetch(`/api/careers/${props.career._id}`, { method: 'delete' });
 
@@ -31,10 +71,10 @@ function CareerShow(props) {
 		<div>
 			<div>
 				<h2>{props.career.name}</h2>
-				<sm>{props.career.type}</sm>
+				<p>{props.career.type}</p>
 				<div className="space" />
+				<h3>Description </h3>
 				<p>
-					<h3>Description </h3>
 					{props.career.description}
 				</p>
 			</div>
@@ -78,35 +118,7 @@ function CareerShow(props) {
 					</div>
 				</Col>
 			</Row>
-
-			<Row form>
-				<Col md={12}>
-					<Button color="danger" className="float-right" name="delete" onClick={toggle}>
-						Delete
-					</Button>
-					<Modal isOpen={modal} toggle={toggle} className={props.className}>
-						<ModalHeader toggle={toggle}>Confirm Deletion of {props.career.name}</ModalHeader>
-						<ModalBody>Are you sure you want to delete?</ModalBody>
-						<ModalFooter>
-							<Button color="primary" onClick={handleDelete}>
-								Confirm
-							</Button>{' '}
-							<Button color="secondary" onClick={toggle}>
-								Cancel
-							</Button>
-						</ModalFooter>
-					</Modal>
-
-					<a href="/careers" id="cancel" name="cancel" className="btn btn-secondary float-left">
-						Cancel
-					</a>
-					<a href={`/career/${props.career._id}/edit`} id="edit" name="edit">
-						<Button color="warning" className="float-right" name="edit">
-							Edit
-						</Button>
-					</a>
-				</Col>
-			</Row>
+			{ adminButtons() }
 		</div>
 	);
 }
