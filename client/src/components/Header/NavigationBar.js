@@ -44,19 +44,19 @@ const NavigationBar = (props) => {
 		return (
 			<>
 				<li className="nav-item active">
-					<a className="nav-link header-sty" href="/home">
+					<a className="nav-link" href="/home">
 						Home
 						<span className="sr-only">(current)</span>
 					</a>
 				</li>
 				<li className="nav-item">
-					<a className="nav-link header-sty" href="/careers">
+					<a className="nav-link" href="/careers">
 						Search Careers
 					</a>
 				</li>
 				{
 					user.role === "admin" ?
-					<li className="nav-item dropdown header-sty">
+					<li className="nav-item dropdown">
 						<a
 							className="nav-link dropdown-toggle"
 							href="/"
@@ -70,78 +70,79 @@ const NavigationBar = (props) => {
 						</a>
 
 						<div className="dropdown-menu" aria-labelledby="navbarDropdown">
-							<a className="dropdown-item header-sty" href="/career">
+							<a className="dropdown-item" href="/career">
 								Create Career
 							</a>
-							<a className="dropdown-item header-sty" href="/cluster/create">
+							<a className="dropdown-item" href="/cluster/create">
 								Create Career Cluster
 							</a>
-							<a className="dropdown-item header-sty" href="/careers">
+							<a className="dropdown-item" href="/careers">
 								Search Careers
 							</a>
-							<a className="dropdown-item header-sty" href="/clusters">
+							<a className="dropdown-item" href="/clusters">
 								Search Career Clusters
 							</a>
-							<a className="dropdown-item header-sty" href="/users">
+							<a className="dropdown-item" href="/users">
 								Search Users
 							</a>
 						</div>
 					</li> : null
 				}
 				<button type="button"
-								className="btn btn-link nav-item nav-link header-sty"
+								className="btn btn-link nav-item nav-link"
 								onClick={onClickLogoutHandler}>Logout</button>
 			</>
 		)
 	}
 
 	return (
-		<div>
-			<main className="top-bar_network_fixed js-top-bar top-bar" role="menubar">
-				<nav className="navbar navbar-expand-lg navbar-blue bg-dark ">
-					<a className="navbar-brand header-sty" href="/home">
-						Career Finder
-					</a>
-					<button
-						className="navbar-toggler"
-						type="button"
-						data-toggle="collapse"
-						data-target="#navbarSupportedContent"
-						aria-controls="navbarSupportedContent"
-						aria-expanded="false"
-						aria-label="Toggle navigation"
-					>
-						<span className="navbar-toggler-icon" />
-					</button>
+		<>
+			<nav className="navbar navbar-expand-xl navbar-light bg-light ">
+				<a className="navbar-brand" href="/home">
+					Career Finder
+				</a>
+				<button
+					className="navbar-toggler"
+					type="button"
+					data-toggle="collapse"
+					data-target="#navbarSupportedContent"
+					aria-controls="navbarSupportedContent"
+					aria-expanded="false"
+					aria-label="Toggle navigation"
+				>
+					<span className="navbar-toggler-icon" />
+				</button>
 
-					<div className="collapse navbar-collapse" id="navbarSupportedContent">
-						<ul className="navbar-nav mr-auto">
-							{ isAuthenticated ? authenticatedAdminNav() : unauthenticatedNav() }
-						</ul>
-						{
-							isAuthenticated ?
-								<form className="form-inline my-2 my-lg-0" action="/careers">
-									<input
-										className="form-control mr-sm-4"
-										type="search"
-										placeholder="Search Careers"
-										aria-label="Search"
-										name="keyword"
-									/>
-									<button className="btn btn-outline-success my-2 my-sm-0" type="submit">
-										Search
-									</button>
-								</form> : null
-						}
-					</div>
-				</nav>
-				<div>
-					<h1 className="school-name sn-1">Florida Middle</h1>
-					<img className="logo" src={Gator} alt="website logo" />
-					<h1 className="school-name sn-2">School</h1>
+				<div className="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul className="navbar-nav mr-auto">
+						{ isAuthenticated ? authenticatedAdminNav() : unauthenticatedNav() }
+					</ul>
+					{
+						isAuthenticated ?
+							<form className="form-inline my-2 my-lg-0" action="/careers">
+								<input
+									className="form-control mr-sm-4"
+									type="search"
+									placeholder="Search Careers"
+									aria-label="Search"
+									name="keyword"
+								/>
+								<button className="btn btn-outline-success my-2 my-sm-0" type="submit">
+									Search
+								</button>
+							</form> : null
+					}
 				</div>
-			</main>
-		</div>
+			</nav>
+			<div className="container">
+				<div className="row">
+					<div className="col-sm-12 text-center">
+						<img className="logo" src={Gator} alt="website logo" />
+						<h1 className="school-name">Florida Middle School</h1>
+					</div>
+				</div>
+			</div>
+		</>
 	);
 };
 
