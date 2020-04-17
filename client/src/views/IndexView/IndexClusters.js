@@ -9,8 +9,6 @@ function useQuery() {
 function IndexClusters(props) {
 	let query = useQuery();
 	const [ loadedClusters, setloadedClusters ] = useState([]);
-	const [ keyword, setKeyword ] = useState('');
-	const [ careerID ] = useState(props.match.params.id);
 
 	useEffect(() => {
 		const fetchClusters = async () => {
@@ -24,7 +22,6 @@ function IndexClusters(props) {
 			const response = await fetch(uri);
 			const responseData = await response.json();
 
-			setKeyword(cluster);
 			setloadedClusters(responseData);
 		};
 

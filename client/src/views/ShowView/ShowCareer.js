@@ -8,7 +8,7 @@ function capitalize(str) {
 }
 
 function CareerShow(props) {
-	const {isAuthenticated, user, setIsAuthenticated, setUser} = useContext(AuthContext);
+	const {user} = useContext(AuthContext);
 
 	const listSubjects = props.career.important_subjects.map((item) => <li key={item}>{capitalize(item)}</li>);
 	const listKeywords = props.career.keywords.map((item) => <li key={item}>{capitalize(item)}</li>);
@@ -122,6 +122,7 @@ function CareerShow(props) {
 		</div>
 	);
 }
+
 const ShowCareer = (props) => {
 	const [ careerId, setCareerId ] = useState(props.match.params.id);
 	const [ loadedCareer, setLoadedCareer ] = useState({ salary_ranges: {}, important_subjects: [], keywords: [] });

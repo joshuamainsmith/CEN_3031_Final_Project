@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Row, Col, Label, Container, Input } from 'reactstrap';
-import { Link } from 'react-router-dom';
+import { Row, Col, Label, Container } from 'reactstrap';
 
 const UserList = () => {
   const [loadedUsers, setLoadedUsers] = useState([]);
