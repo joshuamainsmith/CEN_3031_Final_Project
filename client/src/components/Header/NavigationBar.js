@@ -92,7 +92,7 @@ const NavigationBar = (props) => {
 
 	return (
 		<>
-			<nav className="navbar navbar-expand-xl navbar-light bg-light ">
+			<nav className="navbar navbar-expand-xl navbar-light bg-light navbar-fixed-top">
 				<a className="navbar-brand" href="/home">
 					Career Finder
 				</a>

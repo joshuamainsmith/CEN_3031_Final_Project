@@ -5,11 +5,23 @@ import { Link } from 'react-router-dom';
 
 function Home() {
 	return (
-		<div className="discover-btn">
-			<Link to="/careers">
-				<Button color="primary">Discover your Future</Button>
-			</Link>
+		<div className="page-header header-filter">
+			<div className="container">
+				<div className="row">
+					<div className="col-md-12 col-md-offset-2 text-center">
+						<h1 className="title">Career Finder</h1>
+						<h4 className="title">A place to research careers.</h4>
+						<a
+							href="/careers"
+							class="btn btn-info btn-fill btn-round"
+							target="_blank"
+							>Discover your future</a
+						>
+					</div>
+				</div>
+			</div>
 		</div>
+
 	);
 }
 
