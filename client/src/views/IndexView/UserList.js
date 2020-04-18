@@ -3,58 +3,80 @@ import { Row, Col, Label, Container, Button } from 'reactstrap';
 //import { Link } from 'react-router-dom';
 
 const UserList = (props) => {
-  const [loadedUsers, setLoadedUsers] = useState([]);
-  
-  useEffect(() => {
-    const fetchUsers = async () => {
-      const response = await fetch('/api/users/');
-      const responseData = await response.json();
-      console.log(responseData)
-      setLoadedUsers(responseData);
-    };
+	const [ loadedUsers, setLoadedUsers ] = useState([]);
 
-    fetchUsers();
-  }, []);
+	useEffect(() => {
+		const fetchUsers = async () => {
+			const response = await fetch('/api/users/');
+			const responseData = await response.json();
+			console.log(responseData);
 
-  	async function handleDelete() {
+			setLoadedUsers(responseData);
+		};
+
+		fetchUsers();
+	}, []);
+
+	const userList = loadedUsers.map((user) => {
+		
+		return (
+			<Row key={user._id}>
+				<Col md={6} xs="auto">
+					<Label>
+						<h5>{user.username}</h5>
+					</Label>
+				</Col>
+				<Col md={6} xs="auto">
+					<Label>
+						<h5>{user.role}</h5>
+					</Label>
+					<Button href={'/user/' + user._id + '/edit'} color="warning">
+						Edit
+					</Button>{' '}
+					{'  '}
+					<Button onClick={() => handleDelete(user._id)} color="danger">
+						Delete
+					</Button>
+				</Col>
+			</Row>
+		);
+	});
+
+	async function handleDelete(userId) {
+		
 		try {
-			fetch(`/api/users/${props.user._id}`, { method: 'delete' });
+			// Delete off the backend
+			const response = await fetch(`/api/users/${userId}`, { method: 'delete' });
+			// Delete off the frontend 
+			const index = loadedUsers.findIndex((user) => user._id === userId);
+			
+			const updatedUsers = [...loadedUsers]; 
+			updatedUsers.splice(index, 1);
+			setLoadedUsers(updatedUsers);
 
-			props.history.push('/users/');
 		} catch (error) {
 			console.error(error);
 		}
 	}
 
-  const userList = loadedUsers.map((user) => {
-    return (
-      <Row key={user._id}>
-        <Col md={6} xs="auto">
-          <Label><h5>{user.username}</h5></Label>
-        </Col>
-        <Col md={6} xs="auto">
-          <Label><h5>{user.role}</h5></Label>
-          <Button href={"/user/" + user._id + "/edit"} color="warning" >Edit</Button> {'  '}
-          <Button href={"/users/" + user._id }onClick={handleDelete} color="danger">Delete</Button>
-
-        </Col>
-      </Row>
-    )
-  })
-    return (
-        <Container>
-            <Row>
-                <Col md={6} xs="auto">
-                    <Label><h3>Username</h3></Label>
-                </Col>
-                <Col md={6} xs="auto">
-                    <Label><h3>Role</h3></Label>
-                </Col>
-            </Row>
-            <hr />
-            {userList}
-         </Container>
-    );
+	return (
+		<Container>
+			<Row>
+				<Col md={6} xs="auto">
+					<Label>
+						<h3>Username</h3>
+					</Label>
+				</Col>
+				<Col md={6} xs="auto">
+					<Label>
+						<h3>Role</h3>
+					</Label>
+				</Col>
+			</Row>
+			<hr />
+			{userList}
+		</Container>
+	);
 };
 
 export default UserList;

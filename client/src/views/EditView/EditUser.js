@@ -3,93 +3,95 @@ import { Row, Col, Label, Container, Button, Form, FormGroup, Input } from 'reac
 //import { Link } from 'react-router-dom';
 
 const EditUser = (props) => {
-  
-  	const initialState = {
-        username:'',
-        role:''
-    };
-    
+	const initialState = {
+		username: '',
+		role: ''
+	};
+
 	const [ user, setUser ] = useState(initialState);
 
 	function handleChange(event) {
 		setUser({ ...user, [event.target.name]: event.target.value });
 	}
 
-	function handleSubmit(event) {
+	async function handleSubmit(event) {
 		console.log(user);
 		event.preventDefault();
-		async function postUser() {
-			fetch('/api/users/' + user._id, {
+		try {
+			const response = await fetch('/api/users/' + user._id, {
 				method: 'put',
 				body: JSON.stringify(user),
 				headers: {
 					Accept: 'application/json',
 					'Content-Type': 'application/json'
 				}
-			})
-				.then((response) => response.json())
-				.then((data) => {
-					props.history.push('/user/' + data._id);
-				})
-				.catch((error) => {
-					console.log('Error: ', error);
-				});
+			});
+			//const data = await response.json();
+			props.history.push('/users');
+		} catch (error) {
+			console.log('Error: ', error);
 		}
-		postUser();
-    }
-    
-    const [userId, setUserId] = useState(props.match.params._id);
+	}
+
+	const [ userId, setUserId ] = useState(props.match.params.id);
 
 	useEffect(() => {
+		console.log('userID', userId);
 		const fetchUsers = async () => {
-			const response = await fetch('/api/user/' + userId);
+			const response = await fetch('/api/users/' + userId);
 
 			const responseData = await response.json();
+			console.log('response data', responseData);
+			responseData['username'] = responseData.username;
+			responseData['role'] = responseData.role;
+
 			setUser(responseData);
 			setUserId(userId);
 		};
 
 		fetchUsers();
-    }, []);
+	}, []);
 
-    return (
-        <Container>
-            <Row>
-                <Col md={6} xs="auto">
-                    <Label><h3>Username</h3></Label>
-                </Col>
-                <Col md={6} xs="auto">
-                    <Label><h3>Role</h3></Label>
-                </Col>
-            </Row>
-            <hr />
-            <Form id="user-create-form" className="container">
+	return (
+		<Container>
+			<Row>
+				<Col md={6} xs="auto">
+					<Label>
+						<h3>Username</h3>
+					</Label>
+				</Col>
+				<Col md={6} xs="auto">
+					<Label>
+						<h3>Role</h3>
+					</Label>
+				</Col>
+			</Row>
+			<hr />
+			<Form id="user-create-form" className="container" onSubmit={handleSubmit}>
 				<Row form>
 					<Col md={6}>
 						<FormGroup>
-							
 							<Input
 								type="text"
-								name="user"
+								name="username"
 								id="userName"
-								value={user.name}
+								value={user.username}
 								onChange={handleChange}
 							/>
 						</FormGroup>
 					</Col>
 					<Col md={6}>
 						<FormGroup>
-							
-                    <Input type="text" name="role" id="userRole" value={user.role} onChange={handleChange}>
-				</Input>
-
+							<Input type="select" name="role" id="userRole" value={user.role} onChange={handleChange}>
+								<option>user</option>
+								<option>admin</option>
+							</Input>
 						</FormGroup>
 					</Col>
 				</Row>
-        </Form>
-        				<Row form>
+				<Row form>
 					<Col md={12}>
-						<Button href="/users" color="primary" className="float-right" onClick={handleSubmit}>
+						<Button color="primary" className="float-right" type="submit">
 							Save
 						</Button>
 
@@ -98,9 +100,9 @@ const EditUser = (props) => {
 						</a>
 					</Col>
 				</Row>
-
-        </Container>
-    );
+			</Form>
+		</Container>
+	);
 };
 
 export default EditUser;

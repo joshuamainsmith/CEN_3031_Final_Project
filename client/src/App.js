@@ -19,7 +19,7 @@ import CreateCluster from './views/CreateView/CreateCluster';
 import EditCluster from './views/EditView/EditCluster';
 import EditUser from './views/EditView/EditUser';
 import './App.css';
-import PrivateRoute from './components/PrivateRoute'
+import PrivateRoute from './components/PrivateRoute';
 
 const App = () => {
 	return (
@@ -57,7 +57,6 @@ const App = () => {
 					</div>
 				</Router>
 			</div>
-				
 		</div>
 	);
 };
