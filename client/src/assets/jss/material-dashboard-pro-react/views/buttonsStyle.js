@@ -1,6 +1,6 @@
-import { grayColor } from "assets/jss/material-dashboard-pro-react.js";
+import { grayColor } from "../../material-dashboard-pro-react.js";
 
-import buttonGroupStyle from "assets/jss/material-dashboard-pro-react/buttonGroupStyle.js";
+import buttonGroupStyle from "../buttonGroupStyle.js";
 
 const buttonsStyle = {
   cardTitle: {

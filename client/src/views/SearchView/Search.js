@@ -73,7 +73,6 @@ function Search(props) {
 		}
 
 		return (
-			<GridContainer>
 				<GridItem xs={12} sm={12}>
 					<Card product className={classes.cardHover}>
 						<CardHeader className={classes.cardHeaderHover}>
@@ -92,15 +91,16 @@ function Search(props) {
 						</CardFooter>
 					</Card>
 				</GridItem>
-			</GridContainer>
 		);
 	});
 
 	return (
-		<div>
+		<>
 			<Heading title="Careers" textAlign="center" />
-			{careerList}
-		</div>
+			<GridContainer>
+				{careerList}
+			</GridContainer>
+		</>
 	);
 }
 
