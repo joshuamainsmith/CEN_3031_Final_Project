@@ -6,8 +6,10 @@ import {
 } from "../../material-dashboard-pro-react.js";
 
 import hoverCardStyle from "../hoverCardStyle.js";
+import cardBodyStyle from "../components/cardBodyStyle.js"
 
 const dashboardStyle = {
+  ...cardBodyStyle,
   ...hoverCardStyle,
   tooltip,
   cardTitle: {

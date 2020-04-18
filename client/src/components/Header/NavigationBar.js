@@ -129,14 +129,6 @@ const NavigationBar = (props) => {
 					}
 				</div>
 			</nav>
-			<div className="container">
-				<div className="row">
-					<div className="col-sm-12 text-center">
-						<img className="logo" src={Gator} alt="website logo" />
-						<h1 className="school-name">Florida Middle School</h1>
-					</div>
-				</div>
-			</div>
 		</>
 	);
 };
