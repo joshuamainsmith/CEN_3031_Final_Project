@@ -25,7 +25,7 @@ const App = () => {
 	return (
 		<div>
 			<NavigationBar />
-			<div className="container">
+			<div className="container m-sty">
 				<Router>
 					<div id="content-wrap">
 						<Switch>
