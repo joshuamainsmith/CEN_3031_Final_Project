@@ -1,6 +1,8 @@
 import React, {useState, useRef, useEffect} from 'react';
 import AuthService from '../../Services/AuthService'
 import Message from '../../components/Message/Message'
+import { AuthContext } from '../../Context/AuthContext'
+import './UserLogin.css';
 
 const Signup = (props) => {
 	const [user, setUser] = useState({username: "", password: ""});
@@ -36,26 +38,43 @@ const Signup = (props) => {
 	}
 
 	return (
-		<div>
-			<form onSubmit={onSubmit}>
-				<h3>Please Register</h3>
-				<label htmlFor="username" className="sr-only">Username: </label>
-				<input type="text"
-							name="username"
-							onChange={onChange}
-							className="form-control"
-							placeholder="Enter Username"/>
-				<label htmlFor="password" className="sr-only">Password: </label>
-				<input type="password"
-							name="password"
-							onChange={onChange}
-							className="form-control"
-							placeholder="Enter Password"/>
-				<button className="btn btn-lg btn-primary btn-block"
-								type="submit">Register </button>
-			</form>
-			{message ? <Message message={message}/> : null}
+		<>
+		<div className="container">
+			<div className="row">
+				<div className="col-sm-9 col-md-7 col-lg-5 mx-auto">
+					<div className="card card-signin my-5">
+						<div className="card-body">
+							<h5 className="card-title text-center">Please Register</h5>
+							<form className="form-signin" onSubmit={onSubmit}>
+								<div className="form-label-group">
+									<input type="text"
+												 id="username"
+												 name="username"
+											   onChange={onChange}
+											   className="form-control"
+											   placeholder="Username" required autofocus></input>
+									<label htmlFor="username">Enter Username</label>
+								</div>
+
+								<div className="form-label-group">
+									<input type="password"
+												 id="password"
+												 name="password"
+												 onChange={onChange}
+												 className="form-control"
+												 placeholder="Password" required></input>
+									<label htmlFor="password">Enter Password</label>
+								</div>
+								<button className="btn btn-lg btn-primary btn-block text-uppercase"
+												type="submit">Register</button>
+							</form>
+							{message ? <Message message={message}/> : null}
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
+		</>
 	);
 };
 

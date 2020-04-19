@@ -39,7 +39,7 @@ const NavigationBar = (props) => {
 		return (
 			<>
 				<li className="nav-item active">
-					<a className="nav-link" href="/home">
+					<a className="nav-link" href="/">
 						Home
 						<span className="sr-only">(current)</span>
 					</a>
@@ -95,7 +95,7 @@ const NavigationBar = (props) => {
 	return (
 		<>
 			<nav className="navbar navbar-expand-xl navbar-light bg-light navbar-fixed-top">
-				<a className="navbar-brand" href="/home">
+				<a className="navbar-brand" href="/">
 					Career Finder
 				</a>
 				<button

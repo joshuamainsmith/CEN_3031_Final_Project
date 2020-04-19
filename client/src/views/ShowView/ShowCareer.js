@@ -146,7 +146,7 @@ function CareerShow(props) {
 		<GridItem xs={12} sm={6} md={4}>
 			<Card>
 				<CardBody>
-					<h4 className={classes.cardTitle}>{capitalize(item)}</h4>
+					<a href={"https://www.khanacademy.org/search?page_search_query=" + item}><h4 className={classes.cardTitle}>{capitalize(item)}</h4></a>
 				</CardBody>
 			</Card>
 		</GridItem>
