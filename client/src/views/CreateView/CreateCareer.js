@@ -14,7 +14,8 @@ const CreateCareer = props => {
 		median_wage: '',
 		mean_wage: '',
 		growth_rate: '',
-		education: ''
+		education: '', 
+		videoLink: ''
 	};
 	const [ career, setCareer ] = useState(initialState);
 
@@ -258,7 +259,22 @@ const CreateCareer = props => {
 						</FormGroup>
 					</FormGroup>
 				</Row>
+<Row form>
+												<Col md={10}>
+						<FormGroup>
+							<Label>Video Link</Label>
+							<Input
+								type="text"
+								name="name"
+								id="videoLink"
+								placeholder="https://www.youtube.com/watch?v=STYw2OTOveY&list=RDCMUCK4KMPJbJSaRtRY_MxSUzlw&start_radio=1"
+								value={career.videoLink}
+								onChange={handleChange}
+							/>
+						</FormGroup>
+					</Col>
 
+</Row>
 				<Row form>
 					<Col md={12}>
 						<Button color="primary" className="float-right">
