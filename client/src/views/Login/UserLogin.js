@@ -12,7 +12,7 @@ const Login = (props) => {
 	const onChange = e => {
 		e.preventDefault();
 		setUser({...user, [e.target.name] : e.target.value});
-		console.log(user);
+		
 	}
 
 	const onSubmit = e => {

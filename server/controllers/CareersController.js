@@ -46,8 +46,7 @@ exports.update = (req, res) => {
 	career.salary_ranges.median = career.median_wage;
 	career.salary_ranges.mean = career.mean_wage;
 	career.outlook = career.growth_rate;
-	console.log(typeof career.important_subjects);
-	console.log(typeof career.keywords);
+	
 	if (typeof career.important_subjects === 'object') {
 		career.important_subjects = career.important_subjects.map((e) => String(e).trim());
 	} else {
@@ -93,7 +92,7 @@ exports.search = (req, res) => {
 	let cluster = req.query.cluster;
 
 	if (cluster) {
-		Career.find({ type: cluster}).exec(function(err, careers) {
+		Career.find({ type: cluster }).exec(function(err, careers) {
 			if (err) {
 				res.status(400).json({ error: 'There was an issue with your request.' });
 			} else {

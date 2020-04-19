@@ -21,20 +21,32 @@ function useQuery() {
 	return new URLSearchParams(useLocation().search);
 }
 
+function Page(props) {
+	return <button onClick={() => props.setIndex(props.pageNumber)}> {props.pageNumber} </button>;
+}
+
 function Search(props) {
 	let query = useQuery();
 	let median_wage, growth_rate;
 	const [ loadedCareers, setLoadedCareers ] = useState([]);
+<<<<<<< HEAD
+=======
+	const [ keyword, setKeyword ] = useState('');
+	const [ index, setIndex ] = useState(1);
+	//const [ careerID ] = useState(props.match.params.id);
+	// Create a limit, 10
+	const limit = 3;
+>>>>>>> master
 
 	useEffect(() => {
 		const fetchCareers = async () => {
 			let uri;
-			const keyword = query.get('keyword')
+			const keyword = query.get('keyword');
 
 			if (keyword) {
-				uri = '/api/careers?keyword=' + keyword
+				uri = '/api/careers?keyword=' + keyword;
 			} else {
-				uri = '/api/careers'
+				uri = '/api/careers';
 			}
 			const response = await fetch(uri);
 			const responseData = await response.json();
@@ -50,7 +62,7 @@ function Search(props) {
 			<div className="col-12">
 				<p>Median Wage: ${career.salary_ranges.median.toLocaleString()}</p>
 			</div>
-		)
+		);
 	}
 
 	function growthRate(career) {
@@ -58,7 +70,14 @@ function Search(props) {
 			<div className="col-12">
 				<p>Growth Rate: {career.outlook}%</p>
 			</div>
-		)
+		);
+	}
+
+	const totalPages = Math.ceil(loadedCareers.length / limit);
+	//
+	const renderedPages = [];
+	for (let i = 1; i <= totalPages; i++) {
+		renderedPages.push(<Page setIndex={setIndex} pageNumber={i} />);
 	}
 
 	const classes = useStyles();
