@@ -8,8 +8,10 @@ const logger = require('heroku-logger')
 const cookieExtractor = req => {
   let token = null;
   if(req && req.headers.cookie) {
+    logger.error('cookie extractor cookie: ' + req.header.cookie)
     token = req.headers.cookie.split("=")[1];
   }
+  logger.error('cookie extractor token: ' + token)
   return token;
 }
 
