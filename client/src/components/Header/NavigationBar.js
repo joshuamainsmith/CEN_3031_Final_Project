@@ -95,7 +95,7 @@ const NavigationBar = (props) => {
 	return (
 		<>
 			<nav className="navbar navbar-expand-xl navbar-light bg-light navbar-fixed-top">
-				<a className="navbar-brand" href="/">
+				<a className="navbar-brand header-sty" href="/">
 					Career Finder
 				</a>
 				<button
