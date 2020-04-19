@@ -4,17 +4,20 @@ import AuthService from '../../Services/AuthService'
 import { AuthContext } from '../../Context/AuthContext'
 import Gator from './logo.jpg';
 import './NavigationBar.css';
+import { withRouter } from 'react-router-dom';
 
 const NavigationBar = (props) => {
+	
 	const {isAuthenticated, user, setIsAuthenticated, setUser} = useContext(AuthContext);
 	const [ dropdownOpen, setOpen ] = useState(false);
 
 	const toggle = () => setOpen(!dropdownOpen);
 
-	const onClickLogoutHandler = (props) => {
+	const onClickLogoutHandler = () => {
+		
 		AuthService.logout().then(data => {
-			console.log(data);
-			if(data.sucess) {
+			
+			if(data.success) {
 				setUser(data.user);
 				setIsAuthenticated(false);
 				props.history.push('/user/login');
@@ -88,7 +91,7 @@ const NavigationBar = (props) => {
 					</li> : null
 				}
 				<button type="button"
-								className="btn btn-link nav-item nav-link header-sty"
+								className="btn btn-link nav-item nav-link"
 								onClick={onClickLogoutHandler}>Logout</button>
 			</>
 		)
@@ -144,4 +147,4 @@ const NavigationBar = (props) => {
 	);
 };
 
-export default NavigationBar;
+export default withRouter (NavigationBar);

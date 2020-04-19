@@ -7,12 +7,15 @@ import './Credit.css';
 const Credit = () => {
 	return (
 		<footer id="footer">
-			<div>
-				<h1>Florida Middle School Career's Website</h1>
-				<p>Career's Website Designed by the studens in the CEN3031 class at University of Florida.</p>
+			<div class="footer-container">
+				<p class="footer-text">Florida Middle School Career's Website</p>
+				<p class="footer-text">
+					Career's Website Designed by the studens in the CEN3031 class at University of Florida.
+				</p>
+				<div> LOGO </div> 
 			</div>
 		</footer>
 	);
-}
+};
 
 export default Credit;

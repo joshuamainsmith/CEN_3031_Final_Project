@@ -2,3 +2,16 @@
 	border-right: 1px solid limegreen;
 	border-left: 1px solid limegreen;
 }
+
+.parent-container {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+}
+
+.sidebar {
+	grid-column: 1/2;
+}
+
+#content-wrap {
+	grid-column: 2/6;
+}

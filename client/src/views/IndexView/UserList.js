@@ -18,7 +18,6 @@ const UserList = (props) => {
 	}, []);
 
 	const userList = loadedUsers.map((user) => {
-		
 		return (
 			<Row key={user._id}>
 				<Col md={6} xs="auto">
@@ -43,17 +42,15 @@ const UserList = (props) => {
 	});
 
 	async function handleDelete(userId) {
-		
 		try {
 			// Delete off the backend
 			const response = await fetch(`/api/users/${userId}`, { method: 'delete' });
-			// Delete off the frontend 
+			// Delete off the frontend
 			const index = loadedUsers.findIndex((user) => user._id === userId);
-			
-			const updatedUsers = [...loadedUsers]; 
+
+			const updatedUsers = [ ...loadedUsers ];
 			updatedUsers.splice(index, 1);
 			setLoadedUsers(updatedUsers);
-
 		} catch (error) {
 			console.error(error);
 		}

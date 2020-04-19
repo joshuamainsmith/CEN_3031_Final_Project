@@ -3,7 +3,7 @@ import { Route, Switch, Redirect, BrowserRouter as Router } from 'react-router-d
 import Home from './views/Home/Home';
 import NotFound from './views/NotFound';
 import NavigationBar from './components/Header/NavigationBar';
-//import Credit from './components/footer/Credit';
+import Credit from './components/footer/Credit';
 import CreateCareer from './views/CreateView/CreateCareer';
 import Search from './views/SearchView/Search';
 import EditCareer from './views/EditView/EditCareer';
@@ -24,10 +24,12 @@ import PrivateRoute from './components/PrivateRoute';
 const App = () => {
 	return (
 		<div>
-			<NavigationBar />
-			<div className="container m-sty">
+			<div>
 				<Router>
-					<div id="content-wrap">
+					<NavigationBar />
+					<div className="parent-container">
+					<div className="sidebar">Sidebar</div>
+					<div className="container m-sty" id="content-wrap">
 						<Switch>
 							<Route exact path="/">
 								<Redirect to="/home" />
@@ -55,7 +57,9 @@ const App = () => {
 							<Route component={NotFound} />
 						</Switch>
 					</div>
+				</div>
 				</Router>
+				<Credit />
 			</div>
 		</div>
 	);
