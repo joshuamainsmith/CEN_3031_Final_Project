@@ -18,15 +18,15 @@ passport.use(new JwtStrategy({
 }, (payload, done) => {
   User.findById({_id: payload.sub}, (err, user) => {
     if(err) {
-			console.log('passport.js error with the db')
+			console.error('passport.js error with the db')
 			return done(err, false);
 		}
 
     if(user) {
-				console.log('passport.js returning user')
+				console.error('passport.js returning user')
 				return done(null, user);
 		} else {
-			console.log('passport.js couldnt find user')
+			console.error('passport.js couldnt find user')
       return done(null, false);
     }
   })
