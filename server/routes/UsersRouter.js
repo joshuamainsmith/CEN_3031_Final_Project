@@ -23,7 +23,7 @@ usersRouter.get('/logout/', passport.authenticate('jwt', { session: false }), (r
 });
 
 // usersRouter.get('/:userId', usersController.read);
-usersRouter.put('/:userId', passport.authenticate('jwt', { session: false }), usersController.update);
+usersRouter.put('/:userId', usersController.update);
 usersRouter.delete('/:userId', usersController.remove);
 
 const signToken = (userID) => {
@@ -90,6 +90,6 @@ usersRouter.get('/:id', passport.authenticate('jwt', { session: false }), (req, 
 });
 
 // Adding middleware to set param :listingId
-// usersRouter.param('userId', usersController.userByID);
+usersRouter.param('userId', usersController.userByID);
 
 module.exports = usersRouter;

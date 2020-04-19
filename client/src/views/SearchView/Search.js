@@ -57,7 +57,7 @@ function Search(props) {
 	}
 
 	const totalPages = Math.ceil(loadedCareers.length / limit);
-	//
+	
 	const renderedPages = [];
 	for (let i = 1; i <= totalPages; i++) {
 		renderedPages.push(<Page setIndex={setIndex} pageNumber={i} />);

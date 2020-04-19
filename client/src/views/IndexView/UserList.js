@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Row, Col, Label, Container, Button } from 'reactstrap';
+import { Row, Col, Label, Container, Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 //import { Link } from 'react-router-dom';
 
 const UserList = (props) => {
@@ -16,6 +16,10 @@ const UserList = (props) => {
 
 		fetchUsers();
 	}, []);
+
+	const [modal, setModal] = useState(false);
+
+  	const toggle = () => setModal(!modal);
 
 	const userList = loadedUsers.map((user) => {
 		return (

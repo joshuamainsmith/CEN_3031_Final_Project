@@ -70,18 +70,7 @@ function CareerShow(props) {
 
 	return (
 		<div>
-			<ReactPlayer url="https://www.youtube.com/watch?v=STYw2OTOveY"></ReactPlayer>
-			    <Media>
-      <Media left href="https://www.biography.com/business-figure/elon-musk">
-        <Media object data-src="elon-musk-1100x733.jpg" alt="Elon Musk" />
-      </Media>
-      <Media body>
-        <Media heading>
-          Celebrity Engineer
-        </Media>
-        Elon Musk is an engineer.
-      </Media>
-    </Media>
+			<ReactPlayer url={ props.career.video_link }></ReactPlayer>
 
 			<div>
 				<h2>{props.career.name}</h2>
