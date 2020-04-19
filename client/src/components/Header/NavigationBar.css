@@ -29,17 +29,9 @@
 	text-decoration: none;
 }*/
 
-.nav-link:hover {
-	background-color: limegreen;
-}
-
 .header-sty {
-	font-size: 20px;
-}
-
-.m-sty {
-	border-right: 5px solid limegreen;
-	border-left: 5px solid limegreen;
+	font-size: 25px;
+	text-transform: uppercase;
 }
 
 .nav {
@@ -62,7 +54,9 @@
 }
 
 .logo {
-	width: 90px;
-	height: 70px;
-	margin-bottom: 10px;
+	/* display: block; */
+	max-width: 90px;
+	max-height: 70px;
+	width: auto;
+	height: auto;
 }

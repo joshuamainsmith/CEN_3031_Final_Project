@@ -18,6 +18,7 @@ import CreateUser from './views/CreateView/CreateUser';
 import CreateCluster from './views/CreateView/CreateCluster';
 import EditCluster from './views/EditView/EditCluster';
 import EditUser from './views/EditView/EditUser';
+
 import './App.css';
 import PrivateRoute from './components/PrivateRoute';
 
@@ -25,14 +26,11 @@ const App = () => {
 	return (
 		<div>
 			<NavigationBar />
-			<div className="container m-sty">
+			<div className="container">
 				<Router>
 					<div id="content-wrap">
 						<Switch>
-							<Route exact path="/">
-								<Redirect to="/home" />
-							</Route>
-							<PrivateRoute exact path="/home" component={Home} />
+							<PrivateRoute exact path="/" component={Home} />
 							<PrivateRoute exact path="/careers" component={Search} />
 							<PrivateRoute exact path="/career" component={CreateCareer} />
 

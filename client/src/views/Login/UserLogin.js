@@ -2,6 +2,7 @@ import React, {useState, useContext} from 'react';
 import AuthService from '../../Services/AuthService'
 import Message from '../../components/Message/Message'
 import { AuthContext } from '../../Context/AuthContext'
+import './UserLogin.css';
 
 const Login = (props) => {
 	const [user, setUser] = useState({username: "", password: ""});
@@ -24,31 +25,49 @@ const Login = (props) => {
 				authContext.setIsAuthenticated(isAuthenticated);
 				props.history.push('/careers')
 			} else {
+				console.log(message);
 				setMessage(message);
 			}
 		});
 	}
 
 	return (
-		<div>
-			<form onSubmit={onSubmit}>
-				<h3>Please Sign In</h3>
-				<label htmlFor="username" className="sr-only">Username: </label>
-				<input type="text"
-							name="username"
-							onChange={onChange}
-							className="form-control"
-							placeholder="Enter Username"/>
-				<label htmlFor="password" className="sr-only">Password: </label>
-				<input type="password"
-							name="password"
-							onChange={onChange}
-							className="form-control"
-							placeholder="Enter Password"/>
-				<button className="btn btn-lg btn-primary btn-block"
-								type="submit">Log in </button>
-			</form>
-			{message ? <Message message={message}/> : null}
+		<div className="container">
+			<div className="row">
+				<div className="col-sm-9 col-md-7 col-lg-5 mx-auto">
+					<div className="card card-signin my-5">
+						<div className="card-body">
+							<h5 className="card-title text-center">Sign In</h5>
+							<form className="form-signin" onSubmit={onSubmit}>
+								<div className="form-label-group">
+									<input type="text"
+												 id="username"
+												 name="username"
+											   onChange={onChange}
+											   className="form-control"
+											   placeholder="Username" required autofocus></input>
+									<label htmlFor="username">Username</label>
+								</div>
+
+								<div className="form-label-group">
+									<input type="password"
+												 id="password"
+												 name="password"
+												 onChange={onChange}
+												 className="form-control"
+												 placeholder="Password" required></input>
+									<label htmlFor="password">Password</label>
+								</div>
+								<button className="btn btn-lg btn-primary btn-block text-uppercase"
+												type="submit">Sign in</button>
+								<hr className="my-4"/>
+									<a class="btn btn-sm" href="/user/signup">Register</a>
+									<a class="btn btn-sm float-right" href="/home">Forgot password?</a>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	);
 };

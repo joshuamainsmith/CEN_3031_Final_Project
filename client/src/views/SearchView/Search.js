@@ -1,6 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import './Search.css';
 import { Link, useLocation } from 'react-router-dom';
+// @material-ui/core components
+import { makeStyles } from "@material-ui/core/styles";
+
+// core components
+import GridContainer from "../../components/Grid/GridContainer.js";
+import GridItem from "../../components/Grid/GridItem.js";
+import Card from "../../components/Card/Card.js";
+import CardBody from "../../components/Card/CardBody.js";
+import CardHeader from "../../components/Card/CardHeader.js";
+import CardFooter from "../../components/Card/CardFooter.js";
+import Heading from "../../components/Heading/Heading.js";
+
+import styles from "../../assets/jss/material-dashboard-pro-react/views/gridSystemStyle.js";
+
+const useStyles = makeStyles(styles);
 
 function useQuery() {
 	return new URLSearchParams(useLocation().search);
@@ -14,12 +29,11 @@ function Search(props) {
 	let query = useQuery();
 	let median_wage, growth_rate;
 	const [ loadedCareers, setLoadedCareers ] = useState([]);
-	const [ keyword, setKeyword ] = useState('');
+
 	const [ index, setIndex ] = useState(1);
 	//const [ careerID ] = useState(props.match.params.id);
 	// Create a limit, 10
 	const limit = 3;
-
 	useEffect(() => {
 		const fetchCareers = async () => {
 			let uri;
@@ -33,7 +47,6 @@ function Search(props) {
 			const response = await fetch(uri);
 			const responseData = await response.json();
 
-			setKeyword(keyword);
 			setLoadedCareers(responseData);
 		};
 
@@ -63,7 +76,9 @@ function Search(props) {
 		renderedPages.push(<Page setIndex={setIndex} pageNumber={i} />);
 	}
 
-	const careerList = loadedCareers.slice(index * limit - limit, limit * index).map((career) => {
+	const classes = useStyles();
+
+	const careerList = loadedCareers.map((career) => {
 		if (career.salary_ranges && career.salary_ranges.median) {
 			median_wage = medianWage(career);
 		}
@@ -73,27 +88,34 @@ function Search(props) {
 		}
 
 		return (
-			<div className="row" key={career._id}>
-				<div className="col-12">
-					<h3>
-						<Link to={'/career/' + career._id}>{career.name}</Link>
-					</h3>
-				</div>
-				<div className="col-12">
-					<p>{career.description}</p>
-				</div>
-				{median_wage}
-				{growth_rate}
-			</div>
+				<GridItem xs={12} sm={12}>
+					<Card product className={classes.cardHover}>
+						<CardHeader className={classes.cardHeaderHover}>
+							<h3><Link to={"/career/" + career._id}>{career.name}</Link></h3>
+						</CardHeader>
+						<CardBody>
+							<p>{career.description}</p>
+						</CardBody>
+						<CardFooter product>
+							<div className={classes.price}>
+								{medianWage}
+							</div>
+							<div className={classes.price}>
+								{growthRate}
+							</div>
+						</CardFooter>
+					</Card>
+				</GridItem>
 		);
 	});
 
 	return (
-		<div>
-			<h1>Careers</h1>
-			{careerList}
-			<div className="pagination-buttons">{renderedPages}</div>
-		</div>
+		<>
+			<Heading title="Careers" textAlign="center" />
+			<GridContainer>
+				{careerList}
+			</GridContainer>
+		</>
 	);
 }
 

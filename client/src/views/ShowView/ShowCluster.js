@@ -10,11 +10,10 @@ function useQuery() {
 
 function ShowCluster(props) {
 	let query = useQuery();
-	const {isAuthenticated, user, setIsAuthenticated, setUser} = useContext(AuthContext);
+	const { user } = useContext(AuthContext);
 	const [ loadedCareers, setLoadedCareers ] = useState([]);
 	const [ clusterId, setClusterId ] = useState(props.match.params.id);
 	const [ loadedCluster, setLoadedCluster ] = useState({ salary_ranges: {}, important_subjects: [], keywords: [] });
-	const [ cluster, setCluster ] = useState({});
 
 	useEffect(() => {
 		const fetchCareers = async () => {
