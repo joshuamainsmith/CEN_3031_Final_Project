@@ -12,7 +12,8 @@ const EditCareer = (props) => {
 		median_wage: '',
 		mean_wage: '',
 		growth_rate: '',
-		education: ''
+		education: '',
+		video_link: ''
 	};
 	const [ career, setCareer ] = useState(initialState);
 
@@ -112,7 +113,7 @@ const EditCareer = (props) => {
 					<Col md={12}>
 						<FormGroup>
 							<Label>Career Keywords</Label>
-							<small id="keywordsHelp" class="form-text text-muted">
+							<small id="keywordsHelp" className="form-text text-muted">
 								A list of comma separated values.
 							</small>
 							<Input
@@ -130,7 +131,7 @@ const EditCareer = (props) => {
 					<Col md={12}>
 						<FormGroup>
 							<Label for="importantSubjects">Important Subjects</Label>
-							<small id="subjectsHelp" class="form-text text-muted">
+							<small id="subjectsHelp" className="form-text text-muted">
 								A list of comma separated values.
 							</small>
 							<Input
@@ -190,7 +191,7 @@ const EditCareer = (props) => {
 					<Col md={12}>
 						<FormGroup>
 							<Label>Growth Rate</Label>
-							<small id="growthRateHelp" class="form-text text-muted">
+							<small id="growthRateHelp" className="form-text text-muted">
 								Expected growth rate in the next year.
 							</small>
 							<Input
@@ -272,6 +273,25 @@ const EditCareer = (props) => {
 						</FormGroup>
 					</FormGroup>
 				</Row>
+
+								<Row form>
+					<Col md={12}>
+						<FormGroup>
+							<Label>Video Link</Label>
+							<small id="videoLink" className="form-text text-muted">
+								Video Explaining the career
+							</small>
+							<Input
+								type="text"
+								name="video_link"
+								id="video_link"
+								value={career.video_link}
+								onChange={handleChange}
+							/>
+						</FormGroup>
+					</Col>
+				</Row>
+
 
 				<Row form>
 					<Col md={12}>

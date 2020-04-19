@@ -74,8 +74,8 @@ usersRouter.get('/authenticated', passport.authenticate('jwt', { session: false 
 	res.status(200).json({ isAuthenticated: true, user: { username, role } });
 });
 
-
-usersRouter.get('/:id', passport.authenticate('jwt', { session: false }), (req, res) => {
+//changed session to see if this solves the logout problem
+usersRouter.get('/:id', passport.authenticate('jwt', { session: true }), (req, res) => {
 	User.findOne({ _id: req.params.id }, function(err, user) {
 		if (!user && !err) {
 			// This should return a 404 but the tests given to us to pass

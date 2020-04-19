@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { Row, Col, Button, ModalHeader, ModalBody, ModalFooter, Modal } from 'reactstrap';
+import { Button, ModalHeader, ModalBody, ModalFooter, Modal } from 'reactstrap';
 import { AuthContext } from '../../Context/AuthContext'
 import './ShowCareer.css';
+import ReactPlayer from 'react-player';
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -14,16 +15,16 @@ import CardHeader from "../../components/Card/CardHeader.js";
 import CardFooter from "../../components/Card/CardFooter.js";
 import Heading from "../../components/Heading/Heading.js";
 import CardIcon from "../../components/Card/CardIcon.js";
-import Danger from "../../components/Typography/Danger.js";
-import Icon from "@material-ui/core/Icon";
+//import Danger from "../../components/Typography/Danger.js";
+//import Icon from "@material-ui/core/Icon";
 // @material-ui/icons
 // import ContentCopy from "@material-ui/icons/ContentCopy";
-import Store from "@material-ui/icons/Store";
+//import Store from "@material-ui/icons/Store";
 import MonetizationOnIcon from '@material-ui/icons/MonetizationOn';
 // import InfoOutline from "@material-ui/icons/InfoOutline";
-import Warning from "@material-ui/icons/Warning";
-import DateRange from "@material-ui/icons/DateRange";
-import LocalOffer from "@material-ui/icons/LocalOffer";
+//import Warning from "@material-ui/icons/Warning";
+//import DateRange from "@material-ui/icons/DateRange";
+//import LocalOffer from "@material-ui/icons/LocalOffer";
 import InfoIcon from '@material-ui/icons/Info';
 import SchoolIcon from '@material-ui/icons/School';
 import ShowChartIcon from '@material-ui/icons/ShowChart';
@@ -146,7 +147,7 @@ function CareerShow(props) {
 		<GridItem xs={12} sm={6} md={4}>
 			<Card>
 				<CardBody>
-					<a href={"https://www.khanacademy.org/search?page_search_query=" + item}><h4 className={classes.cardTitle}>{capitalize(item)}</h4></a>
+					<a href={"https://www.khanacademy.org/search?page_search_query=" + item} target="_blank"><h4 className={classes.cardTitle}>{capitalize(item)}</h4></a>
 				</CardBody>
 			</Card>
 		</GridItem>
@@ -186,7 +187,7 @@ function CareerShow(props) {
 					</div>
 				</div>
 			</div>
-
+<ReactPlayer url= { props.career.video_link }></ReactPlayer>
 			<GridContainer>
 				{adminButtons()}
 

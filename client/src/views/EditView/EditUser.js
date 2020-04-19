@@ -41,7 +41,7 @@ const EditUser = (props) => {
 			const response = await fetch('/api/users/' + userId);
 
 			const responseData = await response.json();
-			console.log('response data', responseData);
+			//console.log('response data', responseData);
 			responseData['username'] = responseData.username;
 			responseData['role'] = responseData.role;
 

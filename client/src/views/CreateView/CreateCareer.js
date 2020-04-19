@@ -261,6 +261,25 @@ const CreateCareer = props => {
 
 				<Row form>
 					<Col md={12}>
+						<FormGroup>
+							<Label>Video Link</Label>
+							<small id="videoLinkDescription" class="form-text text-muted">
+								Video Explaining the career
+							</small>
+							<Input
+								type="text"
+								name="description"
+								id="video_link_description"
+								placeholder="http://example.com"
+								value={career.video_link}
+								onChange={handleChange}
+							/>
+						</FormGroup>
+					</Col>
+				</Row>
+
+				<Row form>
+					<Col md={12}>
 						<Button color="primary" className="float-right">
 							Save
 						</Button>{' '}
