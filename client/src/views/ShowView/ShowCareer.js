@@ -232,7 +232,7 @@ function CareerShow(props) {
                 <MonetizationOnIcon />
               </CardIcon>
 							<p className={classes.cardCategory}>Mean Wage</p>
-              <h3 className={classes.cardTitle}>{props.career.salary_ranges.entry ? "$" + props.career.salary_ranges.mean.toLocaleString() : "N/A"}</h3>
+              <h3 className={classes.cardTitle}>{props.career.salary_ranges.mean ? "$" + props.career.salary_ranges.mean.toLocaleString() : "N/A"}</h3>
             </CardHeader>
             <CardFooter stats onClick={() => basicInfo('Mean Wage', 'The mean wage is the average wage that employees receive for the same work performed during a given period of time. It is determined by adding together all of the wages of employees in a specific job or industry and dividing that total by the number of employees.')}>
 							<div className={alertClasses.center}>
@@ -251,7 +251,7 @@ function CareerShow(props) {
                 <MonetizationOnIcon />
               </CardIcon>
 							<p className={classes.cardCategory}>Median Wage</p>
-              <h3 className={classes.cardTitle}>{props.career.salary_ranges.entry ? "$" + props.career.salary_ranges.median.toLocaleString() : "N/A"}</h3>
+              <h3 className={classes.cardTitle}>{props.career.salary_ranges.median ? "$" + props.career.salary_ranges.median.toLocaleString() : "N/A"}</h3>
             </CardHeader>
             <CardFooter stats onClick={() => basicInfo('Median Wage', 'Median wage is the limit between the amount earned by 50 percent of workers who are the lowest paid and 50 percent of workers who are the highest paid in a particular job or industry occupation.')}>
               <div className={classes.stats}>
