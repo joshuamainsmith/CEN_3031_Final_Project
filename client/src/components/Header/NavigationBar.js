@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { withRouter } from 'react-router-dom';
 import AuthService from '../../Services/AuthService'
 import { AuthContext } from '../../Context/AuthContext'
@@ -9,6 +9,7 @@ const NavigationBar = (props) => {
 	
 	const {isAuthenticated, user, setIsAuthenticated, setUser} = useContext(AuthContext);
 
+	const [ dropdownOpen, setOpen ] = useState(false);
 	const toggle = () => setOpen(!dropdownOpen);
 
 	const onClickLogoutHandler = () => {

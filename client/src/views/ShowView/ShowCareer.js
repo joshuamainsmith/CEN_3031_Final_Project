@@ -179,8 +179,6 @@ function CareerShow(props) {
 
 	return (
 		<div>
-			<ReactPlayer url={ props.career.video_link }></ReactPlayer>
-
 			<div>
 				<h2>{props.career.name}</h2>
 				<p>{props.career.type}</p>
