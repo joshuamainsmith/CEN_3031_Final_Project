@@ -38,11 +38,11 @@ export default {
   isAuthenticated: () => {
     return fetch('/api/users/authenticated')
       .then(res => {
-        if(res.status !== 401)
-          console.log("AuthService: not 401 data: " + data)
+        if(res.status !== 401) {
+          console.log("AuthService: not 401, authenticated")
           return res.json().then(data => data);
-        else {
-          console.lgo("AuthService: 401, not authenticated.")
+        } else {
+          console.log("AuthService: 401, not authenticated.")
           return { isAuthenticated: false, user: {username: "", role: ""}}
         }
       })
