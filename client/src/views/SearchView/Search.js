@@ -29,15 +29,11 @@ function Search(props) {
 	let query = useQuery();
 	let median_wage, growth_rate;
 	const [ loadedCareers, setLoadedCareers ] = useState([]);
-<<<<<<< HEAD
-=======
-	const [ keyword, setKeyword ] = useState('');
+
 	const [ index, setIndex ] = useState(1);
 	//const [ careerID ] = useState(props.match.params.id);
 	// Create a limit, 10
 	const limit = 3;
->>>>>>> master
-
 	useEffect(() => {
 		const fetchCareers = async () => {
 			let uri;
