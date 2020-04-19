@@ -7,6 +7,7 @@ const logger = require('heroku-logger')
 
 const cookieExtractor = req => {
   let token = null;
+  logger.error('cookie extractor cookie: ' + req.header.cookie)
   if(req && req.headers.cookie) {
     logger.error('cookie extractor cookie: ' + req.header.cookie)
     token = req.headers.cookie.split("=")[1];
@@ -20,6 +21,7 @@ passport.use(new JwtStrategy({
   jwtFromRequest: cookieExtractor,
   secretOrKey: "NoobCoder"
 }, (payload, done) => {
+  logger.error('passport.js payload: ' + payload)
   User.findById({_id: payload.sub}, (err, user) => {
     if(err) {
       logger.error('passport.js error with the db')
