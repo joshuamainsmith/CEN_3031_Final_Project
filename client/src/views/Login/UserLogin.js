@@ -12,7 +12,6 @@ const Login = (props) => {
 	const onChange = e => {
 		e.preventDefault();
 		setUser({...user, [e.target.name] : e.target.value});
-		
 	}
 
 	const onSubmit = e => {
@@ -45,7 +44,7 @@ const Login = (props) => {
 												 name="username"
 											   onChange={onChange}
 											   className="form-control"
-											   placeholder="Username" required autofocus></input>
+											   placeholder="Username" required autoFocus></input>
 									<label htmlFor="username">Username</label>
 								</div>
 
@@ -61,8 +60,8 @@ const Login = (props) => {
 								<button className="btn btn-lg btn-primary btn-block text-uppercase"
 												type="submit">Sign in</button>
 								<hr className="my-4"/>
-									<a class="btn btn-sm" href="/user/signup">Register</a>
-									<a class="btn btn-sm float-right" href="/home">Forgot password?</a>
+									<a className="btn btn-sm" href="/user/signup">Register</a>
+									<a className="btn btn-sm float-right" href="/home">Forgot password?</a>
 							</form>
 						</div>
 					</div>

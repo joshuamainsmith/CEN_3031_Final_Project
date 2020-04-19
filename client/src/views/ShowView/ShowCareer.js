@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { Row, Col, Button, ModalHeader, ModalBody, ModalFooter, Modal } from 'reactstrap';
+import { Button, ModalHeader, ModalBody, ModalFooter, Modal } from 'reactstrap';
 import { AuthContext } from '../../Context/AuthContext'
 import './ShowCareer.css';
 // @material-ui/core components
@@ -14,16 +14,11 @@ import CardHeader from "../../components/Card/CardHeader.js";
 import CardFooter from "../../components/Card/CardFooter.js";
 import Heading from "../../components/Heading/Heading.js";
 import CardIcon from "../../components/Card/CardIcon.js";
-import Danger from "../../components/Typography/Danger.js";
-import Icon from "@material-ui/core/Icon";
+
 // @material-ui/icons
 // import ContentCopy from "@material-ui/icons/ContentCopy";
-import Store from "@material-ui/icons/Store";
+
 import MonetizationOnIcon from '@material-ui/icons/MonetizationOn';
-// import InfoOutline from "@material-ui/icons/InfoOutline";
-import Warning from "@material-ui/icons/Warning";
-import DateRange from "@material-ui/icons/DateRange";
-import LocalOffer from "@material-ui/icons/LocalOffer";
 import InfoIcon from '@material-ui/icons/Info';
 import SchoolIcon from '@material-ui/icons/School';
 import ShowChartIcon from '@material-ui/icons/ShowChart';
