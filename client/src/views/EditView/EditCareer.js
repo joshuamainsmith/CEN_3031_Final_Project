@@ -47,8 +47,12 @@ const EditCareer = (props) => {
 	useEffect(() => {
 		const fetchCareers = async () => {
 			const response = await fetch('/api/careers/' + careerId);
-
+			
 			const responseData = await response.json();
+			responseData['mean_wage'] = responseData.salary_ranges.mean;
+			responseData['median_wage'] = responseData.salary_ranges.median;
+			responseData['entry_wage'] = responseData.salary_ranges.entry;
+			responseData['growth_rate'] = responseData.outlook;
 			setCareer(responseData);
 			setCareerId(careerId);
 		};
@@ -90,7 +94,7 @@ const EditCareer = (props) => {
 					<Col md={12}>
 						<FormGroup>
 							<Label>Career Description</Label>
-							<small id="descriptionHelp" class="form-text text-muted">
+							<small id="descriptionHelp" className="form-text text-muted">
 								A brief description of the career.
 							</small>
 							<Input

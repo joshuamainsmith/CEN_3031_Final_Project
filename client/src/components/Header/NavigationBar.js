@@ -1,9 +1,8 @@
 import React, { useContext, useState } from 'react';
-import { ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+//import { ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 import AuthService from '../../Services/AuthService'
 import { AuthContext } from '../../Context/AuthContext'
 import Gator from './logo.jpg';
-import UserAvatar from './user-avatar.png';
 import './NavigationBar.css';
 
 const NavigationBar = (props) => {

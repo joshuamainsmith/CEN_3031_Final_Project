@@ -1,18 +1,16 @@
 const mongoose = require('mongoose'),
 	User = require('../models/UserModel.js');
 
-
 exports.create = async (req, res) => {
+	let user = req.body;
 
-    let user = req.body;
-
-    User.create(user, function (err, user) {
-        if (err) {
-            res.status(400).send(err);
-        } else {
-            res.send(user);
-        }
-    });
+	User.create(user, function(err, user) {
+		if (err) {
+			res.status(400).send(err);
+		} else {
+			res.send(user);
+		}
+	});
 };
 
 exports.read = (req, res) => {
@@ -24,9 +22,10 @@ exports.read = (req, res) => {
 
 /* Update a user - note the order in which this function is called by the router*/
 exports.update = (req, res) => {
-	const user = req.user;
+	const user = req.user; // you
+	console.log('User ID that we are trying to find: ', user._id);
 	if (user) {
-		User.findOneAndUpdate({ _id: user._id }, req.body, { new: true }, function(err, user) {
+		User.findOneAndUpdate({ _id: req.params.userId }, req.body, { new: true }, function(err, user) {
 			if (err) {
 				res.status(400).send(err);
 			} else {
@@ -51,25 +50,25 @@ exports.remove = (req, res) => {
 };
 
 exports.search = (req, res) => {
-    let keyword = req.query.keyword
+	let keyword = req.query.keyword;
 
-    if (keyword) {
-      User.find({$text: {$search: keyword}}).exec(function(err, users) {
-          if (err) {
-              res.status(400).json({error: 'There was an issue with your request.'})
-          } else {
-              res.send(users);
-          }
-      });
-    } else {
-      User.find({}).exec(function(err, users) {
-          if (err) {
-              res.status(400).json({error: 'There was an issue with your request.'})
-          } else {
-              res.send(users);
-          }
-      });
-    }
+	if (keyword) {
+		User.find({ $text: { $search: keyword } }).exec(function(err, users) {
+			if (err) {
+				res.status(400).json({ error: 'There was an issue with your request.' });
+			} else {
+				res.send(users);
+			}
+		});
+	} else {
+		User.find({}).exec(function(err, users) {
+			if (err) {
+				res.status(400).json({ error: 'There was an issue with your request.' });
+			} else {
+				res.send(users);
+			}
+		});
+	}
 };
 
 /*
@@ -82,6 +81,7 @@ exports.userByID = (req, res, next, id) => {
 			// expect a 200, therefore returning a 200 with an error in the body.
 			res.status(404).json({ error: 'User not found.' });
 		} else if (err) {
+			console.log(err);
 			res.status(400).send(err);
 		} else {
 			req.user = user;

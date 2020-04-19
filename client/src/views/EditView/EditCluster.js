@@ -70,7 +70,7 @@ const EditCluster = props => {
 					<Col md={12}>
 						<FormGroup>
 							<Label>Career Description</Label>
-							<small id="descriptionHelp" class="form-text text-muted">
+							<small id="descriptionHelp" className="form-text text-muted">
 								A brief description of the cluster.
 							</small>
 							<Input
