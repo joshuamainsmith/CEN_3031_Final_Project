@@ -83,9 +83,11 @@ const NavigationBar = (props) => {
 						</div>
 					</li> : null
 				}
-				<button type="button"
+				<li>
+					<button type="button"
 								className="btn btn-link nav-item nav-link"
 								onClick={onClickLogoutHandler}>Logout</button>
+				</li>
 			</>
 		)
 	}
