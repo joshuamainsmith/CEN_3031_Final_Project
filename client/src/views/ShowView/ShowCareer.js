@@ -138,7 +138,7 @@ function CareerShow(props) {
 	}
 
 	const listSubjects = props.career.important_subjects.map((item) =>
-		<GridItem xs={12} sm={6} md={4}>
+		<GridItem xs={12} sm={6} md={4} key={item}>
 			<Card>
 				<CardBody>
 					<a href={"https://www.khanacademy.org/search?page_search_query=" + item}><h4 className={classes.cardTitle}>{capitalize(item)}</h4></a>
@@ -148,7 +148,7 @@ function CareerShow(props) {
 	);
 
 	const listKeywords = props.career.keywords.map((item) =>
-		<GridItem xs={12} sm={6}>
+		<GridItem xs={12} sm={6} key={item}>
 			<Card>
 				<CardBody>
 					<h4 className={classes.cardTitle}>{capitalize(item)}</h4>
