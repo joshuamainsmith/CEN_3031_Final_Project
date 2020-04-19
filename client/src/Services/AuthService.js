@@ -44,9 +44,10 @@ export default {
         } else {
           // console.log("AuthService: 401, not authenticated. response: " + res.json())
           // return { isAuthenticated: false, user: {username: "", role: ""}}
-          return res.json().then(data =>
-            console.log("AutheService: 401, not authenticated. data: "+ data)
+          res.json().then(data =>
+            console.log("AutheService: 401, not authenticated. data: " + data)
           );
+          return { isAuthenticated: false, user: {username: "", role: ""}}
         }
       })
   }
