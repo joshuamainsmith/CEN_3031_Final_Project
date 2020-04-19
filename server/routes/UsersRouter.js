@@ -5,6 +5,8 @@ const usersController = require('../controllers/UsersController.js'),
     passport = require('passport'),
     passportConfig = require('../config/passport'),
     JWT = require('jsonwebtoken');
+const logger = require('heroku-logger')
+
 /*
   These method calls are responsible for routing requests to the correct request handler.
   Take note that it is possible for different controller functions to handle requests to the same route.
@@ -62,6 +64,7 @@ usersRouter.post('/login/', passport.authenticate('local', {session: false}), (r
   if(req.isAuthenticated()) {
     const {_id, username, role} = req.user;
     const token = signToken(_id);
+		logger.error('UserRouter: access_token: '+ token)
     res.cookie('access_token', token, {httpOnly: true, sameSite: false});
     res.status(200).json({isAuthenticated: true, user: {username,role}})
   }
