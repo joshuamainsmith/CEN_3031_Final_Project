@@ -63,7 +63,6 @@ const UserList = (props) => {
 			const updatedUsers = [...loadedUsers];
 			updatedUsers.splice(index, 1);
 			setLoadedUsers(updatedUsers);
-
 		} catch (error) {
 			console.error(error);
 		}

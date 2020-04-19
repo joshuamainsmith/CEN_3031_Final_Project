@@ -3,7 +3,7 @@ import { Route, Switch, Redirect, BrowserRouter as Router } from 'react-router-d
 import Home from './views/Home/Home';
 import NotFound from './views/NotFound';
 import NavigationBar from './components/Header/NavigationBar';
-//import Credit from './components/footer/Credit';
+import Credit from './components/footer/Credit';
 import CreateCareer from './views/CreateView/CreateCareer';
 import Search from './views/SearchView/Search';
 import EditCareer from './views/EditView/EditCareer';
@@ -54,6 +54,7 @@ const App = () => {
 						</Switch>
 					</div>
 				</Router>
+				<Credit />
 			</div>
 		</div>
 	);

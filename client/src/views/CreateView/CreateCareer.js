@@ -14,7 +14,8 @@ const CreateCareer = props => {
 		median_wage: '',
 		mean_wage: '',
 		growth_rate: '',
-		education: ''
+		education: '', 
+		video_link: ''
 	};
 	const [ career, setCareer ] = useState(initialState);
 
@@ -55,6 +56,7 @@ const CreateCareer = props => {
 							<Input
 								type="text"
 								name="name"
+								required
 								id="careerName"
 								value={career.title}
 								onChange={handleChange}
@@ -63,14 +65,16 @@ const CreateCareer = props => {
 					</Col>
 					<Col md={6}>
 						<FormGroup>
-							<Label>Career Type</Label>
+							<Label>Cluster</Label>
 							<Input
 								type="text"
-								name="type"
+								name="select"
+								required
 								id="careerType"
 								value={career.type}
 								onChange={handleChange}
 							/>
+							<option>{ career.type }</option>
 						</FormGroup>
 					</Col>
 				</Row>
@@ -258,7 +262,22 @@ const CreateCareer = props => {
 						</FormGroup>
 					</FormGroup>
 				</Row>
+<Row form>
+												<Col md={10}>
+						<FormGroup>
+							<Label>Video Link</Label>
+							<Input
+								type="text"
+								name="video_link"
+								id="videoLink"
+								placeholder="https://www.example.com/xyxyxy"
+								value={career.video_link}
+								onChange={handleChange}
+							/>
+						</FormGroup>
+					</Col>
 
+</Row>
 				<Row form>
 					<Col md={12}>
 						<FormGroup>

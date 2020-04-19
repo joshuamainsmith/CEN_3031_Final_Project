@@ -6,12 +6,16 @@ import Gator from './logo.png';
 import './NavigationBar.css';
 
 const NavigationBar = (props) => {
+	
 	const {isAuthenticated, user, setIsAuthenticated, setUser} = useContext(AuthContext);
 
+	const toggle = () => setOpen(!dropdownOpen);
+
 	const onClickLogoutHandler = () => {
+		
 		AuthService.logout().then(data => {
-			console.log(data);
-			if(data.sucess) {
+			
+			if(data.success) {
 				setUser(data.user);
 				setIsAuthenticated(false);
 				props.history.push('/user/login');
@@ -84,11 +88,10 @@ const NavigationBar = (props) => {
 						</div>
 					</li> : null
 				}
-				<li>
-					<button type="button"
+				<button type="button"
 								className="btn btn-link nav-item nav-link"
 								onClick={onClickLogoutHandler}>Logout</button>
-				</li>
+				
 			</>
 		)
 	}

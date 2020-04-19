@@ -179,13 +179,16 @@ function CareerShow(props) {
 
 	return (
 		<div>
-			{alert}
-			<div className="container">
-				<div className="row">
-					<div className="col-sm-12 text-center">
-						<Heading title={props.career.name}/>
-					</div>
-				</div>
+			<ReactPlayer url={ props.career.video_link }></ReactPlayer>
+
+			<div>
+				<h2>{props.career.name}</h2>
+				<p>{props.career.type}</p>
+				<div className="space" />
+				<h3>Description </h3>
+				<p>
+					{props.career.description}
+				</p>
 			</div>
 <ReactPlayer url= { props.career.video_link }></ReactPlayer>
 			<GridContainer>

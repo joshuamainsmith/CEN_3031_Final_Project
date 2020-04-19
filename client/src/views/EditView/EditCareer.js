@@ -16,6 +16,7 @@ const EditCareer = (props) => {
 		video_link: ''
 	};
 	const [ career, setCareer ] = useState(initialState);
+	
 
 	function handleChange(event) {
 		setCareer({ ...career, [event.target.name]: event.target.value });
@@ -54,6 +55,7 @@ const EditCareer = (props) => {
 			responseData['median_wage'] = responseData.salary_ranges.median;
 			responseData['entry_wage'] = responseData.salary_ranges.entry;
 			responseData['growth_rate'] = responseData.outlook;
+			//responseData['video_link'] = responseData.video_link;
 			setCareer(responseData);
 			setCareerId(careerId);
 		};
@@ -79,7 +81,7 @@ const EditCareer = (props) => {
 					</Col>
 					<Col md={6}>
 						<FormGroup>
-							<Label>Career Type</Label>
+							<Label>Cluster</Label>
 							<Input
 								type="text"
 								name="type"
@@ -87,6 +89,8 @@ const EditCareer = (props) => {
 								value={career.type}
 								onChange={handleChange}
 							/>
+								<option>  </option>
+							<option>  </option>
 						</FormGroup>
 					</Col>
 				</Row>
@@ -273,6 +277,22 @@ const EditCareer = (props) => {
 						</FormGroup>
 					</FormGroup>
 				</Row>
+<Row form>
+												<Col md={10}>
+						<FormGroup>
+							<Label>Video Link</Label>
+							<Input
+								type="text"
+								name="video_link"
+								id="videoLink"
+								placeholder="https://www.example.com/xyxyxy"
+								value={career.video_link}
+								onChange={handleChange}
+							/>
+						</FormGroup>
+					</Col>
+
+</Row>
 
 								<Row form>
 					<Col md={12}>
