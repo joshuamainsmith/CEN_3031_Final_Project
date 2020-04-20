@@ -2,17 +2,20 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const JwtStrategy = require('passport-jwt').Strategy;
 const User = require('../models/UserModel');
+const logger = require('heroku-logger')
 
 
 const cookieExtractor = req => {
   let token = null;
+  logger.error('cookie extractor 1: ' + req.headers.cookie)
   if(req && req.headers.cookie) {
     let cookieObject = {};
     let cookie = req.headers.cookie
     let cookies = cookie.split(";")
     cookies = cookies.map( x => x.split("="))
     cookies.map(ck => cookieObject[ck[0]] = ck[1])
-    token = cookieObject['access_token'];
+    logger.error('cookie extractor 2: ' + cookieObject)
+    token = cookieObject['access_token']
   }
   return token;
 }
@@ -22,14 +25,18 @@ passport.use(new JwtStrategy({
   jwtFromRequest: cookieExtractor,
   secretOrKey: "NoobCoder"
 }, (payload, done) => {
+  logger.error('passport.js payload: ' + payload)
   User.findById({_id: payload.sub}, (err, user) => {
     if(err) {
+      logger.error('passport.js error with the db')
 			return done(err, false);
 		}
 
     if(user) {
+      logger.error('passport.js returning user')
 			return done(null, user);
 		} else {
+      logger.error('passport.js couldnt find user')
       return done(null, false);
     }
   })
