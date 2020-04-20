@@ -80,7 +80,7 @@ function Search(props) {
 
 	const classes = useStyles();
 
-	const careerList = loadedCareers.map((career) => {
+	const careerList = loadedCareers.slice(index * limit - limit, limit * index).map((career) => {
 		if (career.salary_ranges && career.salary_ranges.median) {
 			median_wage = medianWage(career);
 		}
