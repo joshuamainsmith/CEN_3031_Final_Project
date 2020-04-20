@@ -32,8 +32,9 @@ function Search(props) {
 
 	const [ index, setIndex ] = useState(1);
 	//const [ careerID ] = useState(props.match.params.id);
-	// Create a limit, 10
-	const limit = 3;
+	// Create a limit, 3
+	const limit = 2;
+
 	useEffect(() => {
 		const fetchCareers = async () => {
 			let uri;
@@ -53,6 +54,14 @@ function Search(props) {
 		fetchCareers();
 	}, []);
 
+	const totalPages = Math.ceil(loadedCareers.length / limit);
+	
+	const renderedPages = [];
+	for (let i = 1; i <= totalPages; i++) {
+		renderedPages.push(<Page setIndex={setIndex} pageNumber={i} />);
+	}
+
+
 	function medianWage(career) {
 		return (
 			<div className="col-12">
@@ -67,13 +76,6 @@ function Search(props) {
 				<p>Growth Rate: {career.outlook}%</p>
 			</div>
 		);
-	}
-
-	const totalPages = Math.ceil(loadedCareers.length / limit);
-	
-	const renderedPages = [];
-	for (let i = 1; i <= totalPages; i++) {
-		renderedPages.push(<Page setIndex={setIndex} pageNumber={i} />);
 	}
 
 	const classes = useStyles();
