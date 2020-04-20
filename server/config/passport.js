@@ -17,7 +17,7 @@ const cookieExtractor = req => {
     logger.error('cookie extractor 2: ' + cookieObject['access_token'])
     token = cookieObject['access_token']
   }
-  logger.error('cookie extractor 3: ' token)
+  logger.error('cookie extractor 3: ' + token)
   return token;
 }
 
