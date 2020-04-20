@@ -13,7 +13,7 @@ const cookieExtractor = req => {
     let cookie = req.headers.cookie
     let cookies = cookie.split(";")
     cookies = cookies.map( x => x.split("="))
-    cookies.map(ck => cookieObject[ck[0]] = ck[1])
+    cookies.map(ck => cookieObject[ck[0].trim()] = ck[1])
     logger.error('cookie extractor 2: ' + cookieObject['access_token'])
     token = cookieObject['access_token']
   }
