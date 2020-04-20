@@ -188,7 +188,7 @@ function CareerShow(props) {
 					{props.career.description}
 				</p>
 			</div>
-<ReactPlayer url= { props.career.video_link }></ReactPlayer>
+
 			<GridContainer>
 				{adminButtons()}
 

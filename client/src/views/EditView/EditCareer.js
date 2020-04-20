@@ -277,8 +277,8 @@ const EditCareer = (props) => {
 						</FormGroup>
 					</FormGroup>
 				</Row>
-<Row form>
-												<Col md={10}>
+			<Row form>
+					<Col md={10}>
 						<FormGroup>
 							<Label>Video Link</Label>
 							<Input
@@ -293,26 +293,6 @@ const EditCareer = (props) => {
 					</Col>
 
 </Row>
-
-								<Row form>
-					<Col md={12}>
-						<FormGroup>
-							<Label>Video Link</Label>
-							<small id="videoLink" className="form-text text-muted">
-								Video Explaining the career
-							</small>
-							<Input
-								type="text"
-								name="video_link"
-								id="video_link"
-								value={career.video_link}
-								onChange={handleChange}
-							/>
-						</FormGroup>
-					</Col>
-				</Row>
-
-
 				<Row form>
 					<Col md={12}>
 						<Button href="/careers" color="primary" className="float-right" onClick={handleSubmit}>

@@ -116,6 +116,7 @@ function Search(props) {
 			<Heading title="Careers" textAlign="center" />
 			<GridContainer>
 				{careerList}
+				{Page}
 			</GridContainer>
 		</>
 	);
