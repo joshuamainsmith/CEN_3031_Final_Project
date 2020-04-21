@@ -49,7 +49,7 @@ const EditCareer = (props) => {
 	useEffect(() => {
 		const fetchCareers = async () => {
 			const response = await fetch('/api/careers/' + careerId);
-			
+
 			const responseData = await response.json();
 			responseData['mean_wage'] = responseData.salary_ranges.mean;
 			responseData['median_wage'] = responseData.salary_ranges.median;

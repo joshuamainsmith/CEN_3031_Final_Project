@@ -28,7 +28,7 @@ function Page(props) {
 function Search(props) {
 	let query = useQuery();
 	let median_wage, growth_rate;
-	const [ loadedCareers, setLoadedCareers ] = useState([]);
+		const [ loadedCareers, setLoadedCareers ] = useState([]);
 
 	const [ index, setIndex ] = useState(1);
 	//const [ careerID ] = useState(props.match.params.id);

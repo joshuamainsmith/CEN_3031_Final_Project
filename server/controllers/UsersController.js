@@ -25,7 +25,7 @@ exports.update = (req, res) => {
 	const user = req.user; // you
 	console.log('User ID that we are trying to find: ', user._id);
 	if (user) {
-		User.findOneAndUpdate({ _id: req.params.userId }, req.body, { new: true }, function(err, user) {
+		User.findOneAndUpdate({ _id: user._id }, req.body, { new: true }, function(err, user) {
 			if (err) {
 				res.status(400).send(err);
 			} else {

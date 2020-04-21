@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from 'react';
-//import { Row, Col, Label, Container } from 'reactstrap';
-
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 // @material-ui/icons
