@@ -46,6 +46,8 @@ const CreateCareer = props => {
 		postCareer();
 	}
 
+
+
 	return (
 		<div className="form-wrapper">
 			<Form id="career-create-form" className="container" onSubmit={handleSubmit}>
@@ -68,13 +70,13 @@ const CreateCareer = props => {
 							<Label>Cluster</Label>
 							<Input
 								type="text"
-								name="select"
-								required
+								name="text"
+								
 								id="careerType"
 								value={career.type}
 								onChange={handleChange}
 							/>
-							<option>{ career.type }</option>
+							
 						</FormGroup>
 					</Col>
 				</Row>
@@ -278,24 +280,6 @@ const CreateCareer = props => {
 					</Col>
 
 </Row>
-				<Row form>
-					<Col md={12}>
-						<FormGroup>
-							<Label>Video Link</Label>
-							<small id="videoLinkDescription" class="form-text text-muted">
-								Video Explaining the career
-							</small>
-							<Input
-								type="text"
-								name="description"
-								id="video_link_description"
-								placeholder="http://example.com"
-								value={career.video_link}
-								onChange={handleChange}
-							/>
-						</FormGroup>
-					</Col>
-				</Row>
 
 				<Row form>
 					<Col md={12}>

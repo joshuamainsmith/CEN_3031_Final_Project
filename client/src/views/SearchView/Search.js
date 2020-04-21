@@ -12,7 +12,7 @@ import CardBody from "../../components/Card/CardBody.js";
 import CardHeader from "../../components/Card/CardHeader.js";
 import CardFooter from "../../components/Card/CardFooter.js";
 import Heading from "../../components/Heading/Heading.js";
-
+import Button from "../../components/CustomButtons/Button";
 import styles from "../../assets/jss/material-dashboard-pro-react/views/gridSystemStyle.js";
 
 const useStyles = makeStyles(styles);
@@ -22,7 +22,7 @@ function useQuery() {
 }
 
 function Page(props) {
-	return <button onClick={() => props.setIndex(props.pageNumber)}> {props.pageNumber} </button>;
+	return <Button onClick={() => props.setIndex(props.pageNumber)}> {props.pageNumber} </Button>;
 }
 
 function Search(props) {
@@ -33,7 +33,7 @@ function Search(props) {
 	const [ index, setIndex ] = useState(1);
 	//const [ careerID ] = useState(props.match.params.id);
 	// Create a limit, 3
-	const limit = 2;
+	const limit = 3;
 
 	useEffect(() => {
 		const fetchCareers = async () => {
@@ -116,7 +116,7 @@ function Search(props) {
 			<Heading title="Careers" textAlign="center" />
 			<GridContainer>
 				{careerList}
-				{Page}
+				<div className="pagination-buttons">{renderedPages}</div>
 			</GridContainer>
 		</>
 	);
