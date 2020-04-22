@@ -25,9 +25,9 @@ import PrivateRoute from './components/PrivateRoute';
 const App = () => {
 	return (
 		<div>
-			<NavigationBar />
 			<div className="container">
 				<Router>
+					<NavigationBar />
 					<div id="content-wrap">
 						<Switch>
 							<PrivateRoute exact path="/" component={Home} />

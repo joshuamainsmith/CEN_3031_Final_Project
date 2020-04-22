@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 // @material-ui/icons
@@ -65,7 +66,15 @@ const UserList = (props) => {
 		} catch (error) {
 			console.error(error);
 		}
-	}
+  }
+  
+  const [modal, setModal] = useState(false);
+  const [ selectedUser, setSelectedUser ] = useState({});
+  const toggle = (user) => {
+    setSelectedUser(user);
+    setModal(!modal);
+  }
+
 	const [checked, setChecked] = React.useState([]);
   const handleToggle = value => {
     const currentIndex = checked.indexOf(value);
@@ -80,22 +89,23 @@ const UserList = (props) => {
   };
   const classes = useStyles();
 
-	function fillButtons(userId) {
+	function fillButtons(user) {
 		return [
-			<Button color="success" className={classes.actionButtons} href={'/user/' + userId + '/edit'} >
+			<Button color="success" className={classes.actionButtons} href={'/user/' + user._id + '/edit'} >
 				<Edit className={classes.icon}/>
 			</Button>,
-			<Button onClick={() => handleDelete(userId)} className={classes.actionButtons} color="danger">
+			<Button onClick={() => toggle(user)} className={classes.actionButtons} color="danger">
 				<Close className={classes.icon}/>
 			</Button>
 		]
-	}
-
+  }
+  
 	const userList = loadedUsers.map((user) => {
 		return (
-			[user.username, user.role, fillButtons(user._id)]
+			[user.username, user.role, fillButtons(user)]
 		);
-	});
+  });
+  console.log('current selected user', selectedUser);
   return (
     <GridContainer>
       <GridItem xs={12}>
@@ -126,6 +136,19 @@ const UserList = (props) => {
           </CardBody>
         </Card>
       </GridItem>
+            <Modal isOpen={modal} toggle={toggle}>
+        <ModalHeader toggle={toggle}>Modal title</ModalHeader>
+        <ModalBody>
+          Confirm Deletion of {selectedUser.username} 
+        </ModalBody>
+        <ModalFooter>
+          <Button color="primary" onClick={() => {
+            handleDelete(selectedUser._id); 
+            toggle({});}}>Confirm</Button>{' '}
+          <Button color="secondary" onClick={() => toggle({})}>Cancel</Button>
+        </ModalFooter>
+      </Modal>
+
     </GridContainer>
 	);
 };

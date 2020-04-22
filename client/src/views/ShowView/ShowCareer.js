@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { Button, ModalHeader, ModalBody, ModalFooter, Modal } from 'reactstrap';
 import { AuthContext } from '../../Context/AuthContext'
+import Elon_Musk from './elon.jpg';
 import './ShowCareer.css';
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
@@ -178,6 +179,7 @@ function CareerShow(props) {
 				<div className="row">
 					<div className="col-sm-12 text-center">
 						<Heading title={props.career.name}/>
+						<img src={Elon_Musk} style={{width: 100, height:100}}/>
 					</div>
 				</div>
 			</div>

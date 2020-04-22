@@ -44,6 +44,8 @@ const EditCareer = (props) => {
 	}
 	const [ careerId, setCareerId ] = useState(props.match.params.id);
 
+	const [ clusters, setClusters ] = useState([]);
+
 	useEffect(() => {
 		const fetchCareers = async () => {
 			const response = await fetch('/api/careers/' + careerId);
@@ -57,7 +59,15 @@ const EditCareer = (props) => {
 			setCareerId(careerId);
 		};
 
+		const fetchClusters = async () => {
+			const responseCluster = await fetch('/api/career_clusters/');
+			const responseDataCluster = await responseCluster.json();
+			setClusters(responseDataCluster);
+			console.log(responseDataCluster);
+		}
+
 		fetchCareers();
+		fetchClusters();
 	}, []);
 
 	return (
@@ -78,14 +88,21 @@ const EditCareer = (props) => {
 					</Col>
 					<Col md={6}>
 						<FormGroup>
-							<Label>Career Type</Label>
+							<Label>Cluster</Label>
 							<Input
-								type="text"
+								type="select"
 								name="type"
 								id="careerType"
-								value={career.type}
+								
 								onChange={handleChange}
-							/>
+							>
+								{clusters.map(cluster => {
+									return (
+										<option selected={cluster.name === career.type} value={cluster.name}> {cluster.name} </option>
+									)
+								})}
+								
+							</Input>
 						</FormGroup>
 					</Col>
 				</Row>
