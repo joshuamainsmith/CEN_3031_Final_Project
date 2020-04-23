@@ -38,6 +38,7 @@
     "passport": "^0.4.1",
     "passport-jwt": "^4.0.0",
     "passport-local": "^1.0.0",
+    "react-player": "^1.15.3",
     "should": "^13.2.3",
     "supertest": "^4.0.2"
   },

@@ -19,7 +19,7 @@ function ShowCluster(props) {
 		const fetchCareers = async () => {
 			let uri;
 			const cluster = query.get('cluster');
-			console.log(cluster);
+			
 			if (cluster) {
 				uri = '/api/careers?cluster=' + cluster;
 			} else {

@@ -33,7 +33,8 @@ function Search(props) {
 	const [ index, setIndex ] = useState(1);
 	//const [ careerID ] = useState(props.match.params.id);
 	// Create a limit, 10
-	const limit = 3;
+	const limit = 10;
+
 	useEffect(() => {
 		const fetchCareers = async () => {
 			let uri;
@@ -70,7 +71,7 @@ function Search(props) {
 	}
 
 	const totalPages = Math.ceil(loadedCareers.length / limit);
-	//
+	
 	const renderedPages = [];
 	for (let i = 1; i <= totalPages; i++) {
 		renderedPages.push(<Page setIndex={setIndex} pageNumber={i} />);
@@ -78,7 +79,7 @@ function Search(props) {
 
 	const classes = useStyles();
 
-	const careerList = loadedCareers.map((career) => {
+	const careerList = loadedCareers.slice(index * limit - limit, limit * index).map((career) => {
 		if (career.salary_ranges && career.salary_ranges.median) {
 			median_wage = medianWage(career);
 		}
@@ -114,6 +115,7 @@ function Search(props) {
 			<Heading title="Careers" textAlign="center" />
 			<GridContainer>
 				{careerList}
+				<div className="pagination-buttons">{renderedPages}</div>
 			</GridContainer>
 		</>
 	);

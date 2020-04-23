@@ -14,7 +14,8 @@ const careerSchema = new mongoose.Schema({
   },
   outlook: String,
   education: String,
-  important_subjects: Array
+  important_subjects: Array,
+  video_link: String
 });
 
 careerSchema.index({'$**': 'text'})
