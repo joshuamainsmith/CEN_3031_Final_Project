@@ -1,4 +1,5 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
+import { withRouter } from 'react-router-dom';
 import AuthService from '../../Services/AuthService'
 import { AuthContext } from '../../Context/AuthContext'
 import Gator from './logo.png';
@@ -7,12 +8,13 @@ import './NavigationBar.css';
 const NavigationBar = (props) => {
 	const {isAuthenticated, user, setIsAuthenticated, setUser} = useContext(AuthContext);
 
-	const onClickLogoutHandler = (props) => {
+	const onClickLogoutHandler = () => {
 		AuthService.logout().then(data => {
-			console.log(data);
-			if(data.sucess) {
+			
+			if(data.success) {
 				setUser(data.user);
 				setIsAuthenticated(false);
+				
 				props.history.push('/user/login');
 			}
 		})
@@ -134,4 +136,4 @@ const NavigationBar = (props) => {
 	);
 };
 
-export default NavigationBar;
+export default withRouter (NavigationBar);

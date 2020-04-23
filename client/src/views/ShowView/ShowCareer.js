@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { Button, ModalHeader, ModalBody, ModalFooter, Modal } from 'reactstrap';
 import { AuthContext } from '../../Context/AuthContext'
 import './ShowCareer.css';
+import ReactPlayer from 'react-player';
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -181,7 +182,7 @@ function CareerShow(props) {
 					</div>
 				</div>
 			</div>
-
+<ReactPlayer url = { props.career.video_link } ></ReactPlayer>
 			<GridContainer>
 				{adminButtons()}
 

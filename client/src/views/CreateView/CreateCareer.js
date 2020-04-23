@@ -23,7 +23,7 @@ const CreateCareer = props => {
 	}
 
 	function handleSubmit(event) {
-		console.log(career);
+		
 		event.preventDefault();
 		async function postCareer() {
 			fetch('/api/careers', {
