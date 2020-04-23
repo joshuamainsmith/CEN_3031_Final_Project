@@ -33,7 +33,7 @@ function Search(props) {
 	const [ index, setIndex ] = useState(1);
 	//const [ careerID ] = useState(props.match.params.id);
 	// Create a limit, 10
-	const limit = 10;
+	const limit = 2;
 
 	useEffect(() => {
 		const fetchCareers = async () => {
