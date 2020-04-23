@@ -110,12 +110,12 @@ function Search(props) {
 	});
 
 	return (
-		<>
+		<div className="container">
 			<Heading title="Careers" textAlign="center" />
 			<GridContainer>
 				{careerList}
 			</GridContainer>
-		</>
+		</div>
 	);
 }
 

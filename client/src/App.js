@@ -26,11 +26,9 @@ const App = () => {
 	return (
 		<div>
 			<NavigationBar />
-			<div className="container">
 				<Router>
-					<div id="content-wrap">
 						<Switch>
-							<PrivateRoute exact path="/" component={Home} />
+							<Route exact path="/" component={Home} />
 							<PrivateRoute exact path="/careers" component={Search} />
 							<PrivateRoute exact path="/career" component={CreateCareer} />
 
@@ -52,9 +50,7 @@ const App = () => {
 
 							<Route component={NotFound} />
 						</Switch>
-					</div>
 				</Router>
-			</div>
 		</div>
 	);
 };
