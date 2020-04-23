@@ -43,7 +43,6 @@ const UserList = (props) => {
 		const fetchUsers = async () => {
 			const response = await fetch('/api/users/');
 			const responseData = await response.json();
-			console.log(responseData);
 
 			setLoadedUsers(responseData);
 		};
@@ -105,7 +104,7 @@ const UserList = (props) => {
 			[user.username, user.role, fillButtons(user)]
 		);
   });
-  console.log('current selected user', selectedUser);
+  
   return (
     <GridContainer>
       <GridItem xs={12}>

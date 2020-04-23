@@ -21,7 +21,7 @@ const EditCareer = (props) => {
 	}
 
 	function handleSubmit(event) {
-		console.log(career);
+		
 		event.preventDefault();
 		async function postCareer() {
 			fetch('/api/careers/' + career._id, {
@@ -63,7 +63,7 @@ const EditCareer = (props) => {
 			const responseCluster = await fetch('/api/career_clusters/');
 			const responseDataCluster = await responseCluster.json();
 			setClusters(responseDataCluster);
-			console.log(responseDataCluster);
+			
 		}
 
 		fetchCareers();
@@ -260,7 +260,7 @@ const EditCareer = (props) => {
 									onChange={handleChange}
 									checked={career.education === 'bachelors'}
 								/>
-								Bachelors
+								Bachelor's degree
 							</Label>
 						</FormGroup>
 						<FormGroup check>

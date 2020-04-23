@@ -10,10 +10,11 @@ const NavigationBar = (props) => {
 
 	const onClickLogoutHandler = () => {
 		AuthService.logout().then(data => {
-			console.log(data);
-			if(data.sucess) {
+			
+			if(data.success) {
 				setUser(data.user);
 				setIsAuthenticated(false);
+				
 				props.history.push('/user/login');
 			}
 		})
