@@ -46,18 +46,6 @@ function Home() {
 			</div>
 		</div>
 		</div>
-		<footer className="footer footer-transparent">
-		<div className="container">
-			<nav className="pull-left">
-				<ul>
-					<li><a href="/"> CEN 3031 Group 3 </a></li>
-				</ul>
-			</nav>
-			<div className="copyright">
-				Group 3 - Made with dedication
-			</div>
-		</div>
-		</footer>
 		</>
 	);
 }

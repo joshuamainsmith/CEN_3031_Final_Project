@@ -33,6 +33,11 @@ import alertStyles from "../../assets/jss/material-dashboard-pro-react/views/swe
 const useStyles = makeStyles(styles);
 const useAlertStyles = makeStyles(alertStyles);
 
+const centerStyle = {
+	marginLeft: 'auto',
+	marginRight: 'auto'
+}
+
 function capitalize(str) {
 	if(str) {
 		return str.charAt(0).toUpperCase() + str.slice(1);
@@ -182,10 +187,15 @@ function CareerShow(props) {
 					</div>
 				</div>
 			</div>
-<ReactPlayer url = { props.career.video_link } ></ReactPlayer>
 			<GridContainer>
 				{adminButtons()}
-
+				<GridItem xs={12}>
+					<Card>
+						<CardBody style={centerStyle}>
+							<ReactPlayer url = { props.career.video_link } ></ReactPlayer>
+						</CardBody>
+					</Card>
+				</GridItem>
 				<GridItem xs={12}>
 					<Card product className={classes.cardCategory}>
 					<CardHeader color={projectedGrowthColor(props.career.outlook)} stats icon>
