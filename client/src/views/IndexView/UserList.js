@@ -136,9 +136,9 @@ const UserList = (props) => {
         </Card>
       </GridItem>
             <Modal isOpen={modal} toggle={toggle}>
-        <ModalHeader toggle={toggle}>Modal title</ModalHeader>
+        <ModalHeader toggle={toggle}>Delete User</ModalHeader>
         <ModalBody>
-          Confirm Deletion of {selectedUser.username} 
+          Confirm Deletion of username: {selectedUser.username} 
         </ModalBody>
         <ModalFooter>
           <Button color="primary" onClick={() => {
