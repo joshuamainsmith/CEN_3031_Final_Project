@@ -45,7 +45,7 @@ function IndexClusters(props) {
 	});
 
 	return (
-		<div>
+		<div className="container">
 			<h1>Clusters</h1>
 			{clusterList}
 		</div>

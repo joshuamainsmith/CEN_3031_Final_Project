@@ -13,31 +13,52 @@ import Heading from "../../components/Heading/Heading.js";
 import styles from "../../assets/jss/material-dashboard-pro-react/views/gridSystemStyle.js";
 import { makeStyles } from "@material-ui/core/styles";
 
+const bgImage = require('./img/bg.jpeg')
 const useStyles = makeStyles(styles);
 
+const bgStyle = {
+  backgroundImage: `url(${bgImage})`,
+	backgroundSize: 'cover',
+	bacgroundPosition: 'center',
+	width: '100vw',
+	height: '100vh'
+};
 
 function Home() {
 	const classes = useStyles();
 	return (
-		<GridContainer>
-			<GridItem xs={12} sm={12}>
-				<Card product className={classes.cardHover}>
-					<CardHeader className={classes.cardHeaderHover}>
-						<Heading title="Career Finder" textAlign="center" />
-					</CardHeader>
-					<CardBody className="text-center">
-						<h4>We are here to help you find you a career that fits you.</h4>
-						<h5><a
-							href="/careers"
-							class="btn btn-info btn-large btn-fill btn-round"
-							>Discover your future</a
-						></h5>
-					</CardBody>
-				</Card>
-			</GridItem>
-		</GridContainer>
-
-
+		<>
+		<div
+		className="page-header header-filter"
+		style={bgStyle}
+		>
+		<div className="container">
+			<div className="row">
+				<div className="col-md-12 text-center">
+					<h1 className="title ">Career Finder</h1>
+					<h4 className="title">We are helping students around the globe find the career of their dreams.</h4>
+					<a
+						href="/careers"
+						className="btn btn-info btn-fill btn-round"
+						>Search Careers</a
+					>
+				</div>
+			</div>
+		</div>
+		</div>
+		<footer className="footer footer-transparent">
+		<div className="container">
+			<nav className="pull-left">
+				<ul>
+					<li><a href="/"> CEN 3031 Group 3 </a></li>
+				</ul>
+			</nav>
+			<div className="copyright">
+				Group 3 - Made with dedication
+			</div>
+		</div>
+		</footer>
+		</>
 	);
 }
 

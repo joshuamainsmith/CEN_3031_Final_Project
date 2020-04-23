@@ -173,7 +173,7 @@ function CareerShow(props) {
 	const toggle = () => setModal(!modal);
 
 	return (
-		<div>
+		<div className="container">
 			{alert}
 			<div className="container">
 				<div className="row">
