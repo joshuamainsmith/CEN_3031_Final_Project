@@ -69,7 +69,7 @@ const EditCareer = (props) => {
 
 		fetchCareers();
 		fetchClusters();
-	}, []);
+	}, [careerId]);
 
 	return (
 		<div className="form-wrapper">
@@ -247,11 +247,24 @@ const EditCareer = (props) => {
 									name="education"
 									value="high school"
 									onChange={handleChange}
-									checked={career.education === 'high school'}
+									checked={career.education === 'High school diploma or equivalent'}
 								/>
 								High School
 							</Label>
 						</FormGroup>
+												<FormGroup check>
+							<Label check>
+								<Input
+									type="radio"
+									name="education"
+									value="associates"
+									onChange={handleChange}
+									checked={career.education === 'Associate\'s degree'}
+								/>
+								Bachelor's degree
+							</Label>
+						</FormGroup>
+
 						<FormGroup check>
 							<Label check>
 								<Input
@@ -259,7 +272,7 @@ const EditCareer = (props) => {
 									name="education"
 									value="bachelors"
 									onChange={handleChange}
-									checked={career.education === 'bachelors'}
+									checked={career.education === 'Bachelor\'s degree'}
 								/>
 								Bachelor's degree
 							</Label>
@@ -271,7 +284,7 @@ const EditCareer = (props) => {
 									name="education"
 									value="masters"
 									onChange={handleChange}
-									checked={career.education === 'masters'}
+									checked={career.education === 'Master\'s degree'}
 								/>
 								Masters
 							</Label>
@@ -283,7 +296,7 @@ const EditCareer = (props) => {
 									name="education"
 									value="doctorate"
 									onChange={handleChange}
-									checked={career.education === 'doctorate'}
+									checked={career.education === 'Doctoral or professional degree'}
 								/>
 								Doctorate
 							</Label>

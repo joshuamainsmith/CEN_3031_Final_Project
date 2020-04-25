@@ -1,6 +1,6 @@
 import React, {useState, useContext} from 'react';
 import AuthService from '../../Services/AuthService'
-import Message from '../../components/Message/Message'
+//import Message from '../../components/Message/Message'
 import { AuthContext } from '../../Context/AuthContext'
 import './UserLogin.css';
 

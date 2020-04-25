@@ -14,7 +14,8 @@ const CreateCareer = props => {
 		median_wage: '',
 		mean_wage: '',
 		growth_rate: '',
-		education: ''
+		education: '',
+		video_link: ''
 	};
 	const [ career, setCareer ] = useState(initialState);
 
@@ -215,11 +216,24 @@ const CreateCareer = props => {
 									name="education"
 									value="high school"
 									onChange={handleChange}
-									checked={career.education === 'high school'}
+									checked={career.education === 'High School'}
 								/>
 								High School
 							</Label>
 						</FormGroup>
+												<FormGroup check>
+							<Label check>
+								<Input
+									type="radio"
+									name="education"
+									value="associates"
+									onChange={handleChange}
+									checked={career.education === 'Assocaite\'s Degree'}
+								/>
+								Associate's Degree
+							</Label>
+						</FormGroup>
+
 						<FormGroup check>
 							<Label check>
 								<Input
@@ -227,9 +241,9 @@ const CreateCareer = props => {
 									name="education"
 									value="bachelors"
 									onChange={handleChange}
-									checked={career.education === 'bachelors'}
+									checked={career.education === 'Bachelor\'s Degree'}
 								/>
-								Bachelors
+								Bachelor's Degree
 							</Label>
 						</FormGroup>
 						<FormGroup check>
@@ -239,9 +253,9 @@ const CreateCareer = props => {
 									name="education"
 									value="masters"
 									onChange={handleChange}
-									checked={career.education === 'masters'}
+									checked={career.education === 'Master\'s Degree'}
 								/>
-								Masters
+								Master's Degree
 							</Label>
 						</FormGroup>
 						<FormGroup check>
@@ -251,14 +265,29 @@ const CreateCareer = props => {
 									name="education"
 									value="doctorate"
 									onChange={handleChange}
-									checked={career.education === 'doctorate'}
+									checked={career.education === 'Doctorate'}
 								/>
 								Doctorate
 							</Label>
 						</FormGroup>
 					</FormGroup>
 				</Row>
+				<Row form>
+						<Col md={10}>
+						<FormGroup>
+							<Label>Video Link</Label>
+							<Input
+								type="text"
+								name="video_link"
+								id="videoLink"
+								placeholder="https://www.example.com/xyxyxy"
+								value={career.video_link}
+								onChange={handleChange}
+							/>
+						</FormGroup>
+					</Col>
 
+</Row>
 				<Row form>
 					<Col md={12}>
 						<Button color="primary" className="float-right">

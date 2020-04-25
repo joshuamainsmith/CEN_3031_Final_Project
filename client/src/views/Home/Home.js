@@ -1,15 +1,15 @@
 import React from 'react';
-import { Button } from 'reactstrap';
+//import { Button } from 'reactstrap';
 import './Home.css';
-import { Link } from 'react-router-dom';
+//import { Link } from 'react-router-dom';
 
-import GridContainer from "../../components/Grid/GridContainer.js";
-import GridItem from "../../components/Grid/GridItem.js";
-import Card from "../../components/Card/Card.js";
-import CardBody from "../../components/Card/CardBody.js";
-import CardHeader from "../../components/Card/CardHeader.js";
-import CardFooter from "../../components/Card/CardFooter.js";
-import Heading from "../../components/Heading/Heading.js";
+//import GridContainer from "../../components/Grid/GridContainer.js";
+//import GridItem from "../../components/Grid/GridItem.js";
+//import Card from "../../components/Card/Card.js";
+//import CardBody from "../../components/Card/CardBody.js";
+//import CardHeader from "../../components/Card/CardHeader.js";
+//import CardFooter from "../../components/Card/CardFooter.js";
+//import Heading from "../../components/Heading/Heading.js";
 import styles from "../../assets/jss/material-dashboard-pro-react/views/gridSystemStyle.js";
 import { makeStyles } from "@material-ui/core/styles";
 

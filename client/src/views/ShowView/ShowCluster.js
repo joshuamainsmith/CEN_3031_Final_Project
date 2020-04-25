@@ -42,7 +42,7 @@ function ShowCluster(props) {
 
 		fetchCluster();
 		fetchCareers();
-	}, []);
+	}, [clusterId]);
 
 	async function handleDelete() {
 

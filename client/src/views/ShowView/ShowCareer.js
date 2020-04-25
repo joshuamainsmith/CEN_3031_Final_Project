@@ -334,7 +334,7 @@ const ShowCareer = (props) => {
 		};
 
 		fetchCareers();
-	}, []);
+	}, [careerId]);
 
 	return <CareerShow career={loadedCareer} history={props.history} />;
 };

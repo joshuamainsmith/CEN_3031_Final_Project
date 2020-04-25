@@ -50,6 +50,12 @@ const NavigationBar = (props) => {
 						Clusters
 					</a>
 				</li>
+				<li className="nav-item">
+					<a className="nav-link" href="/celebs">
+						Celebrites
+					</a>
+				</li>
+
 				{
 					user.role === "admin" ?
 					<li className="nav-item dropdown">

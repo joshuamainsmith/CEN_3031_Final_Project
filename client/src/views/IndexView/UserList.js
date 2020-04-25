@@ -4,15 +4,15 @@ import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import { makeStyles } from "@material-ui/core/styles";
 // @material-ui/icons
 import Assignment from "@material-ui/icons/Assignment";
-import Dvr from "@material-ui/icons/Dvr";
-import Favorite from "@material-ui/icons/Favorite";
+//import Dvr from "@material-ui/icons/Dvr";
+//import Favorite from "@material-ui/icons/Favorite";
 import Close from "@material-ui/icons/Close";
-import Person from "@material-ui/icons/Person";
+//import Person from "@material-ui/icons/Person";
 import Edit from "@material-ui/icons/Edit";
-import Check from "@material-ui/icons/Check";
-import Remove from "@material-ui/icons/Remove";
-import Add from "@material-ui/icons/Add";
-import KeyboardArrowRight from "@material-ui/icons/KeyboardArrowRight";
+//import Check from "@material-ui/icons/Check";
+//import Remove from "@material-ui/icons/Remove";
+//import Add from "@material-ui/icons/Add";
+//import KeyboardArrowRight from "@material-ui/icons/KeyboardArrowRight";
 // core components
 import GridContainer from "../../components/Grid/GridContainer.js";
 import GridItem from "../../components/Grid/GridItem.js";
