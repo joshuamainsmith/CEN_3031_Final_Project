@@ -1,89 +1,117 @@
 import React, { useState } from 'react';
-import {
-  Carousel,
-  CarouselItem,
-  CarouselControl,
-  CarouselIndicators,
-  CarouselCaption
-} from 'reactstrap';
- 
+import './Celebs.css';
+import { Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle, Button } from 'reactstrap';
+
+import Angela from '../../assets/angela_bassett.jpg';
+import Gerard from '../../assets/gerard_butler.jpg';
+import Myron from '../../assets/myron_rolle.jpg';
+import Ken from '../../assets/ken_jeong.jpg';
+import John from '../../assets/John_Urschel.jpg';
 
 const CelebsView = (props) => {
-
-const items = [
-  {
-    src: 'data:image/../../../public/angela_bassett.jpg',
-    altText: 'Slide 1',
-    caption: 'Angela Bassett has a Masters of fine arts from Harvard University'
-  },
-  {
-    src: 'data:image/../../../public/gerard_butler.jpg',
-    altText: 'Slide 2',
-    caption: 'Gerard Butler has a law degree from Glasgow University in Scottland'
-  },
-  {
-    src: 'data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22800%22%20height%3D%22400%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20800%20400%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_15ba800aa1d%20text%20%7B%20fill%3A%23555%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A40pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_15ba800aa1d%22%3E%3Crect%20width%3D%22800%22%20height%3D%22400%22%20fill%3D%22%23777%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22285.921875%22%20y%3D%22218.3%22%3EFirst%20slide%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E',
-    altText: 'Slide 3',
-    caption: 'John Urschel as a Baltimore Raven'
-  },
-{
-    src: 'data:image/../../../public/myron_roolle.jpg',
-    altText: 'Slide 4',
-    caption: 'Myron Rolle has served as a resident at Harvard'
-},
-{
-    src: 'data:image/../../../public/ken_jeong.jpg',
-    altText: 'Slide 5',
-    caption: 'Ken Jeong has a Medical License as a physician'
-}
-];
-
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [animating, setAnimating] = useState(false);
-
-  const next = () => {
-    if (animating) return;
-    const nextIndex = activeIndex === items.length - 1 ? 0 : activeIndex + 1;
-    setActiveIndex(nextIndex);
-  }
-
-  const previous = () => {
-    if (animating) return;
-    const nextIndex = activeIndex === 0 ? items.length - 1 : activeIndex - 1;
-    setActiveIndex(nextIndex);
-  }
-
-  const goToIndex = (newIndex) => {
-    if (animating) return;
-    setActiveIndex(newIndex);
-  }
-
-  const slides = items.map((item) => {
-    return (
-      <CarouselItem
-        onExiting={() => setAnimating(true)}
-        onExited={() => setAnimating(false)}
-        key={item.src}
-      >
-        <img src={item.src} alt={item.altText} />
-        <CarouselCaption captionText={item.caption} captionHeader={item.caption} />
-      </CarouselItem>
-    );
-  });
-
-    return (
-            <Carousel
-      activeIndex={activeIndex}
-      next={next}
-      previous={previous}
-    >
-      <CarouselIndicators items={items} activeIndex={activeIndex} onClickHandler={goToIndex} />
-      {slides}
-      <CarouselControl direction="prev" directionText="Previous" onClickHandler={previous} />
-      <CarouselControl direction="next" directionText="Next" onClickHandler={next} />
-    </Carousel>
-    );
-    
+	return (
+		<div className="card-container">
+			<Card className="card">
+				<CardImg className="celeb" top width="100%" src={Angela} alt="Card image cap" />
+				<CardBody>
+					<CardTitle>Card title</CardTitle>
+					<CardSubtitle>Card subtitle</CardSubtitle>
+					<CardText>
+						Some quick example text to build on the card title and make up the bulk of the card's content.
+					</CardText>
+					<Button>Button</Button>
+				</CardBody>
+			</Card>
+			<Card className="card">
+				<CardImg className="celeb" top width="100%" src={Gerard} alt="Card image cap" />
+				<CardBody>
+					<CardTitle>Card title</CardTitle>
+					<CardSubtitle>Card subtitle</CardSubtitle>
+					<CardText>
+						Some quick example text to build on the card title and make up the bulk of the card's content.
+					</CardText>
+					<Button>Button</Button>
+				</CardBody>
+			</Card>
+			<Card className="card">
+				<CardImg className="celeb" top width="100%" src={John} alt="Card image cap" />
+				<CardBody>
+					<CardTitle>Card title</CardTitle>
+					<CardSubtitle>Card subtitle</CardSubtitle>
+					<CardText>
+						Some quick example text to build on the card title and make up the bulk of the card's content.
+					</CardText>
+					<Button>Button</Button>
+				</CardBody>
+			</Card>
+			<Card className="card">
+				<CardImg className="celeb" top width="100%" src={Ken} alt="Card image cap" />
+				<CardBody>
+					<CardTitle>Card title</CardTitle>
+					<CardSubtitle>Card subtitle</CardSubtitle>
+					<CardText>
+						Some quick example text to build on the card title and make up the bulk of the card's content.
+					</CardText>
+					<Button>Button</Button>
+				</CardBody>
+			</Card>
+			<Card className="card">
+				<CardImg className="celeb" top width="100%" src={Myron} alt="Card image cap" />
+				<CardBody>
+					<CardTitle>Card title</CardTitle>
+					<CardSubtitle>Card subtitle</CardSubtitle>
+					<CardText>
+						Some quick example text to build on the card title and make up the bulk of the card's content.
+					</CardText>
+					<Button>Button</Button>
+				</CardBody>
+			</Card>
+			<Card className="card">
+				<CardImg className="celeb" top width="100%" src={Gerard} alt="Card image cap" />
+				<CardBody>
+					<CardTitle>Card title</CardTitle>
+					<CardSubtitle>Card subtitle</CardSubtitle>
+					<CardText>
+						Some quick example text to build on the card title and make up the bulk of the card's content.
+					</CardText>
+					<Button>Button</Button>
+				</CardBody>
+			</Card>
+			<Card className="card">
+				<CardImg className="celeb" top width="100%" src={Gerard} alt="Card image cap" />
+				<CardBody>
+					<CardTitle>Card title</CardTitle>
+					<CardSubtitle>Card subtitle</CardSubtitle>
+					<CardText>
+						Some quick example text to build on the card title and make up the bulk of the card's content.
+					</CardText>
+					<Button>Button</Button>
+				</CardBody>
+			</Card>
+			<Card className="card">
+				<CardImg className="celeb" top width="100%" src={Gerard} alt="Card image cap" />
+				<CardBody>
+					<CardTitle>Card title</CardTitle>
+					<CardSubtitle>Card subtitle</CardSubtitle>
+					<CardText>
+						Some quick example text to build on the card title and make up the bulk of the card's content.
+					</CardText>
+					<Button>Button</Button>
+				</CardBody>
+			</Card>
+			<Card className="card">
+				<CardImg className="celeb" top width="100%" src={Gerard} alt="Card image cap" />
+				<CardBody>
+					<CardTitle>Card title</CardTitle>
+					<CardSubtitle>Card subtitle</CardSubtitle>
+					<CardText>
+						Some quick example text to build on the card title and make up the bulk of the card's content.
+					</CardText>
+					<Button>Button</Button>
+				</CardBody>
+			</Card>
+		</div>
+	);
 };
 
 export default CelebsView;

@@ -69,7 +69,7 @@ const EditCareer = (props) => {
 
 		fetchCareers();
 		fetchClusters();
-	}, []);
+	}, [careerId]);
 
 	return (
 		<div className="form-wrapper">
