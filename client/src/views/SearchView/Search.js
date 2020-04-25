@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './Search.css';
 import { Link, useLocation } from 'react-router-dom';
+import { Pagination, PaginationItem, PaginationLink } from 'reactstrap';
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -22,10 +23,18 @@ function useQuery() {
 }
 
 function Page(props) {
-	return <button onClick={() => props.setIndex(props.pageNumber)}> {props.pageNumber} </button>;
+	return (
+		      <PaginationItem active={props.pageNumber === props.index}>
+        <PaginationLink onClick={() => props.setIndex(props.pageNumber)} href="#">
+					{props.pageNumber}
+        </PaginationLink>
+      </PaginationItem>
+	);
+
 }
 
-function Search(props) {
+
+function Search() {
 	let query = useQuery();
 	let median_wage, growth_rate;
 		const [ loadedCareers, setLoadedCareers ] = useState([]);
@@ -70,11 +79,25 @@ function Search(props) {
 		);
 	}
 
+	const setPage = (index) => {
+		if(index < 1 || index > totalPages) {
+			return null;
+		} else {
+			setIndex(index);
+		}
+	}
+
 	const totalPages = Math.ceil(loadedCareers.length / limit);
-	
+	//console.log('Current index: ', index, ' Total Pages: ', totalPages);
 	const renderedPages = [];
-	for (let i = 1; i <= totalPages; i++) {
-		renderedPages.push(<Page setIndex={setIndex} pageNumber={i} />);
+	if(index > totalPages - 5){
+		for(let i = totalPages - 5; i <= totalPages; i++){
+			renderedPages.push(<Page setIndex={setIndex} pageNumber={i} index={index} />);
+		}
+	} else {
+		for (let i = index; i <= index + 5; i++) {
+			renderedPages.push(<Page setIndex={setIndex} pageNumber={i} index={index} />);
+		}
 	}
 
 	const classes = useStyles();
@@ -115,7 +138,22 @@ function Search(props) {
 			<Heading title="Careers" textAlign="center" />
 			<GridContainer>
 				{careerList}
-				<div className="pagination-buttons">{renderedPages}</div>
+				
+				    <Pagination aria-label="Page navigation example">
+    <PaginationItem>
+        <PaginationLink onClick={() => setIndex(1)} first href="#" />
+      </PaginationItem>
+      <PaginationItem>
+        <PaginationLink onClick={ () => setPage(index - 1)} previous href="#" />
+      </PaginationItem>
+      {renderedPages}
+      <PaginationItem>
+        <PaginationLink onClick={ () => setPage(index + 1)} next href="#" />
+      </PaginationItem>
+      <PaginationItem>
+        <PaginationLink onClick={() => setIndex(totalPages)} last href="#" />
+      </PaginationItem>
+    </Pagination>
 			</GridContainer>
 		</>
 	);
