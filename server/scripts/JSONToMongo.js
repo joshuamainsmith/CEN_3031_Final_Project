@@ -25,18 +25,32 @@ function clearAndRefill() {
     Career.deleteMany({}, (err) => {
         if (err) throw err;
     });
+    CareerCluster.deleteMany({}, (err) => {
+        if (err) throw err;
+    });
+    
 
     fs.readFile('./server/scripts/careers.json', 'utf8', (err, data) => {
         if (err) throw err;
         let careerData = JSON.parse(data);
 
-        let careerClusterData = JSON.parse(data);
+        let clusters = {};
 
         async.forEach(careerData.entries, (doc, callback) => {
             Career.create(doc, (err) => {
                 if (err) throw err;
-                callback();
+                //callback();
             });
+    
+            if(!clusters[doc.type]) {
+                clusters[doc.type] = 1;
+            CareerCluster.create({name: doc.type}, (err) => {
+                if (err) throw err;
+               
+                // clusters.agriculture = 1
+                //callback();
+            
+            })}
         }, () => {
             mongoose.connection.close();
         });
