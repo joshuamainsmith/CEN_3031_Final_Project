@@ -40,15 +40,14 @@ const NavigationBar = (props) => {
 	const authenticatedAdminNav = () => {
 		return (
 			<>
-				<li className="nav-item active">
-					<a className="nav-link" href="/">
-						Home
-						<span className="sr-only">(current)</span>
+				<li className="nav-item">
+					<a className="nav-link" href="/careers">
+						Careers
 					</a>
 				</li>
 				<li className="nav-item">
-					<a className="nav-link" href="/careers">
-						Search Careers
+					<a className="nav-link" href="/clusters">
+						Clusters
 					</a>
 				</li>
 				{
@@ -71,16 +70,16 @@ const NavigationBar = (props) => {
 								Create Career
 							</a>
 							<a className="dropdown-item" href="/cluster/create">
-								Create Career Cluster
+								Create Cluster
 							</a>
 							<a className="dropdown-item" href="/careers">
-								Search Careers
+								Careers
 							</a>
 							<a className="dropdown-item" href="/clusters">
-								Search Career Clusters
+								Clusters
 							</a>
 							<a className="dropdown-item" href="/users">
-								Search Users
+								Users
 							</a>
 						</div>
 					</li> : null

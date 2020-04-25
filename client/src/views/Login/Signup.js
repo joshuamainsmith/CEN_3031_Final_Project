@@ -48,11 +48,21 @@ const Signup = (props) => {
 							<form className="form-signin" onSubmit={onSubmit}>
 								<div className="form-label-group">
 									<input type="text"
+												 id="email"
+												 name="email"
+												 onChange={onChange}
+												 className="form-control"
+												 placeholder="Email" required autofocus></input>
+									<label htmlFor="email">Enter Email</label>
+								</div>
+
+								<div className="form-label-group">
+									<input type="text"
 												 id="username"
 												 name="username"
 											   onChange={onChange}
 											   className="form-control"
-											   placeholder="Username" required autofocus></input>
+											   placeholder="Username" required></input>
 									<label htmlFor="username">Enter Username</label>
 								</div>
 
@@ -62,7 +72,8 @@ const Signup = (props) => {
 												 name="password"
 												 onChange={onChange}
 												 className="form-control"
-												 placeholder="Password" required></input>
+												 placeholder="Password"
+												 minlength="6" required></input>
 									<label htmlFor="password">Enter Password</label>
 								</div>
 								<button className="btn btn-lg btn-primary btn-block text-uppercase"

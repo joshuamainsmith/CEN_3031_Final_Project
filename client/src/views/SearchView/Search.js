@@ -134,12 +134,12 @@ function Search() {
 	});
 
 	return (
-		<>
+		<div className="container">
 			<Heading title="Careers" textAlign="center" />
 			<GridContainer>
 				{careerList}
 				
-				    <Pagination aria-label="Page navigation example">
+				    <Pagination aria-label="Page navigation example" className="text-center">
     <PaginationItem>
         <PaginationLink onClick={() => setIndex(1)} first href="#" />
       </PaginationItem>
@@ -155,7 +155,7 @@ function Search() {
       </PaginationItem>
     </Pagination>
 			</GridContainer>
-		</>
+		</div>
 	);
 }
 

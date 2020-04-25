@@ -46,7 +46,7 @@ const EditCluster = props => {
 		};
 
 		fetchClusters();
-  }, []);
+  }, [clusterId]);
 
     return(
         <div className="form-wrapper">

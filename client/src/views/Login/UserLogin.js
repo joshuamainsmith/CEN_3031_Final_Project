@@ -60,8 +60,7 @@ const Login = (props) => {
 								<button className="btn btn-lg btn-primary btn-block text-uppercase"
 												type="submit">Sign in</button>
 								<hr className="my-4"/>
-									<a className="btn btn-sm" href="/user/signup">Register</a>
-									<a className="btn btn-sm float-right" href="/home">Forgot password?</a>
+								<a className="btn btn-sm col-md-12" href="/user/signup">Register</a>
 							</form>
 						</div>
 					</div>

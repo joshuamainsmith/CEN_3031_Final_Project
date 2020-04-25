@@ -42,7 +42,7 @@ function ShowCluster(props) {
 
 		fetchCluster();
 		fetchCareers();
-	}, []);
+	}, [clusterId]);
 
 	async function handleDelete() {
 
@@ -116,7 +116,7 @@ function ShowCluster(props) {
 	});
 
 	return (
-		<div>
+		<div className="container">
 			<h1>{loadedCluster.name}</h1>
 			<p>{loadedCluster.description}</p>
 			{careerList}

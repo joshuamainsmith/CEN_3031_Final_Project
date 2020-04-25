@@ -5,11 +5,6 @@
 const mongoose = require('mongoose'),
 	Career = require('../models/CareerModel.js');
 
-// const Example = require('../models/examples.server.model.js')
-//
-// exports.hello = function(req, res) {
-//     res.send('world')
-// };
 
 exports.create = async (req, res) => {
 	let career = req.body;
@@ -46,7 +41,7 @@ exports.update = (req, res) => {
 	career.salary_ranges.median = career.median_wage;
 	career.salary_ranges.mean = career.mean_wage;
 	career.outlook = career.growth_rate;
-	
+
 	if (typeof career.important_subjects === 'object') {
 		career.important_subjects = career.important_subjects.map((e) => String(e).trim());
 	} else {
@@ -92,7 +87,7 @@ exports.search = (req, res) => {
 	let cluster = req.query.cluster;
 
 	if (cluster) {
-		Career.find({ type: cluster }).exec(function(err, careers) {
+		Career.find({ type: cluster }).sort('name').exec(function(err, careers) {
 			if (err) {
 				res.status(400).json({ error: 'There was an issue with your request.' });
 			} else {
