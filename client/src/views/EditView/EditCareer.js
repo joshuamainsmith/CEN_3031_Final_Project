@@ -252,6 +252,19 @@ const EditCareer = (props) => {
 								High School
 							</Label>
 						</FormGroup>
+												<FormGroup check>
+							<Label check>
+								<Input
+									type="radio"
+									name="education"
+									value="associates"
+									onChange={handleChange}
+									checked={career.education === 'Associate\'s degree'}
+								/>
+								Bachelor's degree
+							</Label>
+						</FormGroup>
+
 						<FormGroup check>
 							<Label check>
 								<Input
