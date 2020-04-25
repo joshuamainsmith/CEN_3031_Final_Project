@@ -1,7 +1,7 @@
 import React, {useState, useRef, useEffect} from 'react';
 import AuthService from '../../Services/AuthService'
 import Message from '../../components/Message/Message'
-import { AuthContext } from '../../Context/AuthContext'
+//import { AuthContext } from '../../Context/AuthContext'
 import './UserLogin.css';
 
 const Signup = (props) => {

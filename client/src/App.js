@@ -19,6 +19,8 @@ import CreateCluster from './views/CreateView/CreateCluster';
 import EditCluster from './views/EditView/EditCluster';
 import EditUser from './views/EditView/EditUser';
 
+import CelebsView from './views/Celebs/CelebsView';
+
 import './App.css';
 import PrivateRoute from './components/PrivateRoute';
 
@@ -49,6 +51,8 @@ const App = () => {
 							<Route exact path="/user/signup" component={Signup} />
 							<Route exact path="/user/recovery" component={Recovery} />
 							<PrivateRoute exact path="/user/:id/edit" component={EditUser} />
+
+							<PrivateRoute exact path="/celebs" component={CelebsView} />
 
 							<Route component={NotFound} />
 						</Switch>

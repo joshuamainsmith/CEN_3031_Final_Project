@@ -12,6 +12,7 @@
 const fs = require('fs'),
       mongoose = require('mongoose'),
       Career = require('../models/CareerModel.js'),
+      CareerCluster = require('../models/CareerClusterModel.js'),
       config = require('../config/config.js'),
       async = require('async')
 
@@ -28,6 +29,8 @@ function clearAndRefill() {
     fs.readFile('./server/scripts/careers.json', 'utf8', (err, data) => {
         if (err) throw err;
         let careerData = JSON.parse(data);
+
+        let careerClusterData = JSON.parse(data);
 
         async.forEach(careerData.entries, (doc, callback) => {
             Career.create(doc, (err) => {
