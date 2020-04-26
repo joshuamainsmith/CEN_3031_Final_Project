@@ -241,7 +241,7 @@ const CreateCareer = props => {
 									name="education"
 									value="bachelors"
 									onChange={handleChange}
-									checked={career.education === 'Bachelor\'s Degree'}
+									checked={career.education === 'Bachelors'}
 								/>
 								Bachelor's Degree
 							</Label>
@@ -253,7 +253,7 @@ const CreateCareer = props => {
 									name="education"
 									value="masters"
 									onChange={handleChange}
-									checked={career.education === 'Master\'s Degree'}
+									checked={career.education === 'Masters'}
 								/>
 								Master's Degree
 							</Label>

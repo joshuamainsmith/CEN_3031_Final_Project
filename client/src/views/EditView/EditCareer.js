@@ -247,7 +247,7 @@ const EditCareer = (props) => {
 									name="education"
 									value="high school"
 									onChange={handleChange}
-									checked={career.education === 'High school diploma or equivalent' ||'High school'}
+									checked={career.education === 'High school'}
 								/>
 								High School
 							</Label>
@@ -261,7 +261,7 @@ const EditCareer = (props) => {
 									onChange={handleChange}
 									checked={career.education === 'Associate\'s degree'}
 								/>
-								Bachelor's degree
+								Associate's degree
 							</Label>
 						</FormGroup>
 
@@ -272,7 +272,7 @@ const EditCareer = (props) => {
 									name="education"
 									value="bachelors"
 									onChange={handleChange}
-									checked={career.education === 'Bachelor\'s degree' || 'bachelors'}
+									checked={career.education === 'Bachelors'}
 								/>
 								Bachelor's degree
 							</Label>
@@ -284,7 +284,7 @@ const EditCareer = (props) => {
 									name="education"
 									value="masters"
 									onChange={handleChange}
-									checked={career.education === 'Master\'s degree' || 'masters'}
+									checked={career.education === 'Masters'}
 								/>
 								Master's
 							</Label>
@@ -296,7 +296,7 @@ const EditCareer = (props) => {
 									name="education"
 									value="doctorate"
 									onChange={handleChange}
-									checked={career.education === 'Doctoral or professional degree' || 'Doctorate'}
+									checked={career.education === 'Doctorate'}
 								/>
 								Doctorate
 							</Label>
