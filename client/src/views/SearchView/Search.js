@@ -135,8 +135,6 @@ function Search() {
 		);
 	});
 
-	console.log('How many careers total:', careerList.length);
-
 	return (
 		<div className="container">
 			<Heading title="Careers" textAlign="center" />

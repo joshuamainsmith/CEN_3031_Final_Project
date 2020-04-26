@@ -36,25 +36,6 @@ const EditUser = (props) => {
 
 	const [ userId, setUserId ] = useState(props.match.params.id);
 
-	useEffect(() => {
-		
-		// const fetchUsers = async () => {
-		// 	const response = await fetch('/api/users/' + userId);
-
-		// 	const responseData = await response.json();
-		// 	console.log(responseData);
-		// 	responseData['username'] = responseData.username;
-		// 	responseData['role'] = responseData.role;
-
-		// 	setUser(responseData);
-
-		// 	setUserId(userId);
-		// };
-
-		// fetchUsers();
-	}, [userId]);
-
-
 	return (
 		<Container>
 			<Row>
