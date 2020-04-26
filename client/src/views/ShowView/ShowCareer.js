@@ -153,16 +153,6 @@ function CareerShow(props) {
 		</GridItem>
 	);
 
-	/* const listKeywords = props.career.keywords.map((item) =>
-		<GridItem xs={12} sm={6} key={item}>
-			<Card>
-				<CardBody>
-					<h4 className={classes.cardTitle}>{capitalize(item)}</h4>
-				</CardBody>
-			</Card>
-		</GridItem>
-	); */
-
 	async function handleDelete() {
 		try {
 			fetch(`/api/careers/${props.career._id}`, { method: 'delete' });
@@ -291,7 +281,7 @@ function CareerShow(props) {
               </div>
             </CardFooter>
           </Card>
-        </GridItem>				
+        </GridItem>
 			</GridContainer>
 		</div>
 	);
