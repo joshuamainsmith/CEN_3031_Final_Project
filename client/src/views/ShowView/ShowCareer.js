@@ -153,17 +153,6 @@ function CareerShow(props) {
 		</GridItem>
 	);
 
-
-	const listKeywords = props.career.keywords.map((item) =>
-		<GridItem xs={12} sm={6} key={item._id}>
-			<Card>
-				<CardBody>
-					<h4 className={classes.cardTitle}>{capitalize(item)}</h4>
-				</CardBody>
-			</Card>
-		</GridItem>
-	);
-
 	async function handleDelete() {
 		try {
 			fetch(`/api/careers/${props.career._id}`, { method: 'delete' });
@@ -184,7 +173,7 @@ function CareerShow(props) {
 			<div className="container">
 				<div className="row">
 					<div className="col-sm-12 text-center">
-						<Heading title={props.career.name}/>
+						<a href={"https://www.indeed.com/jobs?q=" + props.career.name}><Heading title={props.career.name}/></a>
 					</div>
 				</div>
 			</div>
@@ -286,28 +275,6 @@ function CareerShow(props) {
 							</GridContainer>
 						</CardBody>
             <CardFooter stats onClick={() => basicInfo('Education', 'The typical minimum required education you need to go into this career. The list of subjects shows what to study to be ready for this career.')}>
-              <div className={classes.stats}>
-								<InfoIcon />
-                More Info
-              </div>
-            </CardFooter>
-          </Card>
-        </GridItem>
-
-				<GridItem xs={12} sm={12} md={12} lg={12}>
-          <Card>
-            <CardHeader color="rose" stats icon>
-              <CardIcon color="rose">
-                <ListIcon />
-              </CardIcon>
-            </CardHeader>
-						<CardBody>
-							<h3>Keywords</h3>
-							<GridContainer>
-								{listKeywords}
-							</GridContainer>
-						</CardBody>
-            <CardFooter stats onClick={() => basicInfo('Keywords', 'A list of keywords that help the system organize the careers.')}>
               <div className={classes.stats}>
 								<InfoIcon />
                 More Info
