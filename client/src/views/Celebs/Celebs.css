@@ -1,0 +1,16 @@
+.celeb {
+	height: 250px;
+	width: 300px;
+	object-fit: 'cover';
+}
+
+.card {
+	width: 300px;
+}
+
+.card-container {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-column-gap: 1em;
+	grid-row-gap: 1em;
+}

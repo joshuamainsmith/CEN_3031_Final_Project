@@ -14,7 +14,7 @@ const CreateCluster = props => {
     }
 
     function handleSubmit(event) {
-		console.log(careerCluster);
+		
 		event.preventDefault();
 		async function postCareerCluster() {
 			fetch('/api/career_clusters', {
@@ -27,7 +27,7 @@ const CreateCluster = props => {
 			})
 				.then((response) => response.json())
 				.then((data) => {
-					console.log(data);
+					
 					props.history.push('/cluster/' + data._id);
 				})
 				.catch((error) => {

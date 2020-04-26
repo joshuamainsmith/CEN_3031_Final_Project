@@ -15,7 +15,7 @@ const EditUser = (props) => {
 	}
 
 	async function handleSubmit(event) {
-		console.log(user);
+		
 		event.preventDefault();
 		try {
 			const response = await fetch('/api/users/' + user._id, {
@@ -36,12 +36,12 @@ const EditUser = (props) => {
 	const [ userId, setUserId ] = useState(props.match.params.id);
 
 	useEffect(() => {
-		console.log('userID', userId);
+		
 		const fetchUsers = async () => {
 			const response = await fetch('/api/users/' + userId);
 
 			const responseData = await response.json();
-			console.log('response data', responseData);
+			
 			responseData['username'] = responseData.username;
 			responseData['role'] = responseData.role;
 

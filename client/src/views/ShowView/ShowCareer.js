@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { Button, ModalHeader, ModalBody, ModalFooter, Modal } from 'reactstrap';
 import { AuthContext } from '../../Context/AuthContext'
 import './ShowCareer.css';
+import ReactPlayer from 'react-player';
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -31,6 +32,11 @@ import alertStyles from "../../assets/jss/material-dashboard-pro-react/views/swe
 
 const useStyles = makeStyles(styles);
 const useAlertStyles = makeStyles(alertStyles);
+
+const centerStyle = {
+	marginLeft: 'auto',
+	marginRight: 'auto'
+}
 
 function capitalize(str) {
 	if(str) {
@@ -138,7 +144,7 @@ function CareerShow(props) {
 	}
 
 	const listSubjects = props.career.important_subjects.map((item) =>
-		<GridItem xs={12} sm={6} md={4}>
+		<GridItem xs={12} sm={6} md={4} key={item}>
 			<Card>
 				<CardBody>
 					<a href={"https://www.khanacademy.org/search?page_search_query=" + item}><h4 className={classes.cardTitle}>{capitalize(item)}</h4></a>
@@ -147,16 +153,6 @@ function CareerShow(props) {
 		</GridItem>
 	);
 
-	/* const listKeywords = props.career.keywords.map((item) =>
-		<GridItem xs={12} sm={6}>
-			<Card>
-				<CardBody>
-					<h4 className={classes.cardTitle}>{capitalize(item)}</h4>
-				</CardBody>
-			</Card>
-		</GridItem>
-	);
- */
 	async function handleDelete() {
 		try {
 			fetch(`/api/careers/${props.career._id}`, { method: 'delete' });
@@ -172,19 +168,24 @@ function CareerShow(props) {
 	const toggle = () => setModal(!modal);
 
 	return (
-		<div>
+		<div className="container">
 			{alert}
 			<div className="container">
 				<div className="row">
 					<div className="col-sm-12 text-center">
-						<Heading title={props.career.name}/>
+						<a href={"https://www.indeed.com/jobs?q=" + props.career.name}><Heading title={props.career.name}/></a>
 					</div>
 				</div>
 			</div>
-
 			<GridContainer>
 				{adminButtons()}
-
+				<GridItem xs={12}>
+					<Card>
+						<CardBody style={centerStyle}>
+							<ReactPlayer url = { props.career.video_link } ></ReactPlayer>
+						</CardBody>
+					</Card>
+				</GridItem>
 				<GridItem xs={12}>
 					<Card product className={classes.cardCategory}>
 					<CardHeader color={projectedGrowthColor(props.career.outlook)} stats icon>
@@ -281,8 +282,6 @@ function CareerShow(props) {
             </CardFooter>
           </Card>
         </GridItem>
-
-				
 			</GridContainer>
 		</div>
 	);
@@ -303,7 +302,7 @@ const ShowCareer = (props) => {
 		};
 
 		fetchCareers();
-	}, []);
+	}, [careerId]);
 
 	return <CareerShow career={loadedCareer} history={props.history} />;
 };

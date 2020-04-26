@@ -30,7 +30,7 @@ const signToken = userID => {
   return JWT.sign({
     iss: "NoobCoder",
     sub: userID
-  }, "NoobCoder", {expiresIn: "1h"});
+  }, "NoobCoder", {expiresIn: "6h"});
 }
 
 

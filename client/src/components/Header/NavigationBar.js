@@ -1,4 +1,5 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
+import { withRouter } from 'react-router-dom';
 import AuthService from '../../Services/AuthService'
 import { AuthContext } from '../../Context/AuthContext'
 import Gator from './logo.png';
@@ -7,12 +8,13 @@ import './NavigationBar.css';
 const NavigationBar = (props) => {
 	const {isAuthenticated, user, setIsAuthenticated, setUser} = useContext(AuthContext);
 
-	const onClickLogoutHandler = (props) => {
+	const onClickLogoutHandler = () => {
 		AuthService.logout().then(data => {
-			console.log(data);
-			if(data.sucess) {
+			
+			if(data.success) {
 				setUser(data.user);
 				setIsAuthenticated(false);
+				
 				props.history.push('/user/login');
 			}
 		})
@@ -38,17 +40,22 @@ const NavigationBar = (props) => {
 	const authenticatedAdminNav = () => {
 		return (
 			<>
-				<li className="nav-item active">
-					<a className="nav-link" href="/">
-						Home
-						<span className="sr-only">(current)</span>
+				<li className="nav-item">
+					<a className="nav-link" href="/careers">
+						Careers
 					</a>
 				</li>
 				<li className="nav-item">
-					<a className="nav-link" href="/careers">
-						Search Careers
+					<a className="nav-link" href="/clusters">
+						Clusters
 					</a>
 				</li>
+				<li className="nav-item">
+					<a className="nav-link" href="/celebs">
+						Celebrites
+					</a>
+				</li>
+
 				{
 					user.role === "admin" ?
 					<li className="nav-item dropdown">
@@ -69,16 +76,16 @@ const NavigationBar = (props) => {
 								Create Career
 							</a>
 							<a className="dropdown-item" href="/cluster/create">
-								Create Career Cluster
+								Create Cluster
 							</a>
 							<a className="dropdown-item" href="/careers">
-								Search Careers
+								Careers
 							</a>
 							<a className="dropdown-item" href="/clusters">
-								Search Career Clusters
+								Clusters
 							</a>
 							<a className="dropdown-item" href="/users">
-								Search Users
+								Users
 							</a>
 						</div>
 					</li> : null
@@ -135,4 +142,4 @@ const NavigationBar = (props) => {
 	);
 };
 
-export default NavigationBar;
+export default withRouter (NavigationBar);

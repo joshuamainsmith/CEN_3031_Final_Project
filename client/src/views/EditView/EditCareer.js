@@ -12,7 +12,8 @@ const EditCareer = (props) => {
 		median_wage: '',
 		mean_wage: '',
 		growth_rate: '',
-		education: ''
+		education: '',
+		video_link: ''
 	};
 	const [ career, setCareer ] = useState(initialState);
 
@@ -21,7 +22,7 @@ const EditCareer = (props) => {
 	}
 
 	function handleSubmit(event) {
-		console.log(career);
+		
 		event.preventDefault();
 		async function postCareer() {
 			fetch('/api/careers/' + career._id, {
@@ -44,6 +45,8 @@ const EditCareer = (props) => {
 	}
 	const [ careerId, setCareerId ] = useState(props.match.params.id);
 
+	const [ clusters, setClusters ] = useState([]);
+
 	useEffect(() => {
 		const fetchCareers = async () => {
 			const response = await fetch('/api/careers/' + careerId);
@@ -57,8 +60,16 @@ const EditCareer = (props) => {
 			setCareerId(careerId);
 		};
 
+		const fetchClusters = async () => {
+			const responseCluster = await fetch('/api/career_clusters/');
+			const responseDataCluster = await responseCluster.json();
+			setClusters(responseDataCluster);
+			
+		}
+
 		fetchCareers();
-	}, []);
+		fetchClusters();
+	}, [careerId]);
 
 	return (
 		<div className="form-wrapper">
@@ -78,14 +89,21 @@ const EditCareer = (props) => {
 					</Col>
 					<Col md={6}>
 						<FormGroup>
-							<Label>Career Type</Label>
+							<Label>Cluster</Label>
 							<Input
-								type="text"
+								type="select"
 								name="type"
 								id="careerType"
-								value={career.type}
+								
 								onChange={handleChange}
-							/>
+							>
+								{clusters.map(cluster => {
+									return (
+										<option selected={cluster.name === career.type} value={cluster.name}> {cluster.name} </option>
+									)
+								})}
+								
+							</Input>
 						</FormGroup>
 					</Col>
 				</Row>
@@ -229,11 +247,24 @@ const EditCareer = (props) => {
 									name="education"
 									value="high school"
 									onChange={handleChange}
-									checked={career.education === 'high school'}
+									checked={career.education === 'High school diploma or equivalent'}
 								/>
 								High School
 							</Label>
 						</FormGroup>
+												<FormGroup check>
+							<Label check>
+								<Input
+									type="radio"
+									name="education"
+									value="associates"
+									onChange={handleChange}
+									checked={career.education === 'Associate\'s degree'}
+								/>
+								Bachelor's degree
+							</Label>
+						</FormGroup>
+
 						<FormGroup check>
 							<Label check>
 								<Input
@@ -241,9 +272,9 @@ const EditCareer = (props) => {
 									name="education"
 									value="bachelors"
 									onChange={handleChange}
-									checked={career.education === 'bachelors'}
+									checked={career.education === 'Bachelor\'s degree'}
 								/>
-								Bachelors
+								Bachelor's degree
 							</Label>
 						</FormGroup>
 						<FormGroup check>
@@ -253,7 +284,7 @@ const EditCareer = (props) => {
 									name="education"
 									value="masters"
 									onChange={handleChange}
-									checked={career.education === 'masters'}
+									checked={career.education === 'Master\'s degree'}
 								/>
 								Masters
 							</Label>
@@ -265,13 +296,30 @@ const EditCareer = (props) => {
 									name="education"
 									value="doctorate"
 									onChange={handleChange}
-									checked={career.education === 'doctorate'}
+									checked={career.education === 'Doctoral or professional degree'}
 								/>
 								Doctorate
 							</Label>
 						</FormGroup>
 					</FormGroup>
 				</Row>
+
+				<Row form>
+						<Col md={10}>
+						<FormGroup>
+							<Label>Video Link</Label>
+							<Input
+								type="text"
+								name="video_link"
+								id="videoLink"
+								placeholder="https://www.example.com/xyxyxy"
+								value={career.video_link}
+								onChange={handleChange}
+							/>
+						</FormGroup>
+					</Col>
+
+</Row>
 
 				<Row form>
 					<Col md={12}>
