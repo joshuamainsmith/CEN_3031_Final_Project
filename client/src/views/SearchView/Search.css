@@ -14,3 +14,12 @@
 .pagination {
 	justify-content: center;
 }
+
+.career-header {
+	text-align: center;
+	color: white;
+	background-color: #1cacbb;
+	height: 325px;
+	padding-top: 100px;
+	margin-bottom: -150px;
+}
