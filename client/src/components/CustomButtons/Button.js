@@ -69,7 +69,8 @@ RegularButton.propTypes = {
     "behance",
     "dribbble",
     "reddit",
-    "transparent"
+    "transparent",
+    "secondary"
   ]),
   size: PropTypes.oneOf(["sm", "lg"]),
   simple: PropTypes.bool,

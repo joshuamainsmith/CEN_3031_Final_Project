@@ -3,7 +3,7 @@ import './Search.css';
 import { Link, useLocation } from 'react-router-dom';
 import { Pagination, PaginationItem, PaginationLink } from 'reactstrap';
 // @material-ui/core components
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles } from '@material-ui/core/styles';
 
 // core components
 import GridContainer from "../../components/Grid/GridContainer.js";
@@ -28,24 +28,23 @@ function useQuery() {
 
 function Page(props) {
 	return (
-		      <PaginationItem active={props.pageNumber === props.index}>
-        <PaginationLink onClick={() => props.setIndex(props.pageNumber)} href="#">
-					{props.pageNumber}
-        </PaginationLink>
-      </PaginationItem>
+		<PaginationItem active={props.pageNumber === props.index}>
+			<PaginationLink onClick={() => props.setIndex(props.pageNumber)} href="#">
+				{props.pageNumber}
+			</PaginationLink>
+		</PaginationItem>
 	);
-
 }
-
 
 function Search() {
 	let query = useQuery();
 	let median_wage, growth_rate;
-		const [ loadedCareers, setLoadedCareers ] = useState([]);
+
+	const [ loadedCareers, setLoadedCareers ] = useState([]);
 
 	const [ index, setIndex ] = useState(1);
 	//const [ careerID ] = useState(props.match.params.id);
-	// Create a limit, 10
+
 	const limit = 10;
 	const classes = useStyles();
 	const dashClasses = useDashStyles();
@@ -88,23 +87,30 @@ function Search() {
 	}
 
 	const setPage = (index) => {
-		if(index < 1 || index > totalPages) {
+		if (index < 1 || index > totalPages) {
 			return null;
 		} else {
 			setIndex(index);
 		}
-	}
+	};
 
 	const totalPages = Math.ceil(loadedCareers.length / limit);
-	//console.log('Current index: ', index, ' Total Pages: ', totalPages);
+
 	const renderedPages = [];
-	if(index > totalPages - 5){
-		for(let i = totalPages - 5; i <= totalPages; i++){
-			renderedPages.push(<Page setIndex={setIndex} pageNumber={i} index={index} />);
+
+	// 30 records = 3 pages
+
+	if (index < totalPages + 5 && totalPages <= 5) {
+		for (let i = 1; i <= totalPages; i++) {
+			renderedPages.push(<Page key={i} setIndex={setIndex} pageNumber={i} index={index} />);
+		}
+	} else if (index > totalPages - 5) {
+		for (let i = totalPages - 5; i <= totalPages; i++) {
+			renderedPages.push(<Page key={i} setIndex={setIndex} pageNumber={i} index={index} />);
 		}
 	} else {
 		for (let i = index; i <= index + 5; i++) {
-			renderedPages.push(<Page setIndex={setIndex} pageNumber={i} index={index} />);
+			renderedPages.push(<Page key={i} setIndex={setIndex} pageNumber={i} index={index} />);
 		}
 	}
 
@@ -116,7 +122,6 @@ function Search() {
 		if (career.outlook) {
 			growth_rate = growthRate(career);
 		}
-
 		return (
 				<GridItem xs={12} sm={12}>
 					<Card product className={classes.cardHover}>
