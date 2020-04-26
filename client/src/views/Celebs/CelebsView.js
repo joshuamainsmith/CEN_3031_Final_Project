@@ -23,9 +23,10 @@ const CelebsView = () => {
 					<CardText>
 						Angela has been in several movies along with winning several awards.  Just to name one, Screen Actor Guild Award for Outstanding Performance by a cast in a Motion Picture - 2019 Black Panther.
 					</CardText>
-					<Button color="primary">More Info</Button>
+					<Button color="primary" href="/careers/">More Info</Button>
 				</CardBody>
 			</Card>
+
 			<Card className="card">
 				<CardImg className="celeb" top width="100%" src={Gerard} alt="Card image cap" />
 				<CardBody>
@@ -37,6 +38,7 @@ const CelebsView = () => {
 					<Button color="primary" href="/careers/">More Info</Button>
 				</CardBody>
 			</Card>
+
 			<Card className="card">
 				<CardImg className="celeb" top width="100%" src={John} alt="Card image cap" />
 				<CardBody>
@@ -45,7 +47,7 @@ const CelebsView = () => {
 					<CardText>
 						John retired from the Baltimore Ravens in 2017.  He was drafted in the fifth round of the 2014 NFL Draft from Penn State where he earned a Master's degree in Mathematics.  He is now persuing a Ph.D. in Mathematics from M.I.T.
 					</CardText>
-					<Button>Button</Button>
+					<Button color="primary" href="/careers/">More Info</Button>
 				</CardBody>
 			</Card>
 			<Card className="card">
@@ -56,9 +58,10 @@ const CelebsView = () => {
 					<CardText>
 						Ken is moost notable for his role in the Hangoover series.  He is a licensed physician.  However, he has since stopped practicing in favor of his acting career.
 					</CardText>
-					<Button>Button</Button>
+					<Button color="primary" href="/careers/">More Info</Button>
 				</CardBody>
 			</Card>
+
 			<Card className="card">
 				<CardImg className="celeb" top width="100%" src={Myron} alt="Card image cap" />
 				<CardBody>
@@ -67,7 +70,7 @@ const CelebsView = () => {
 					<CardText>
 						Myron was a sixth roound draft selection of the Tennessee Titans in 2010.  He retired from football tp persue a medical degree.  He graduated from Florida State univeristy College of Medicine.  He was also a Rhodes Scholarship winner and a student at St. Edmund Hall, Oxford University during the 2009-2010 academic year.  He wants to be a neurosurgeon. 
 					</CardText>
-					<Button>Button</Button>
+					<Button color="primary" href="/careers/">More Info</Button>
 				</CardBody>
 			</Card>
 			<Card className="card">
@@ -78,7 +81,7 @@ const CelebsView = () => {
 					<CardText>
 						Mayim is most notable for her roles in Blossom (1991-1995) and most recently in The Big Bang Theory as Dr. Amy Farah Fowler.  She earned her Ph.D. froom UCLA in neuroscience.
 					</CardText>
-					<Button>Button</Button>
+					<Button color="primary" href="/careers/">More Info</Button>
 				</CardBody>
 			</Card>
 			<Card className="card">
@@ -89,7 +92,7 @@ const CelebsView = () => {
 					<CardText>
 						Tom was born in Toledo, Ohio.  He went on to get a Bachelor's and Master's degree in Mechanical Engineering from Massachusetts of Technology.  He is moost notable for being in the band Boston.  He went on to start a company under the Rockman brand.
 					</CardText>
-					<Button>Button</Button>
+					<Button color="primary" href="/careers/">More Info</Button>
 				</CardBody>
 			</Card>
 			<Card className="card">
@@ -100,7 +103,7 @@ const CelebsView = () => {
 					<CardText>
 						David is most notable for his roles as FBI Agent Fox Mulder on The X-Files and as a writer on Californication.  Both roles earned him a Golden Globe Award.  He earned his under graduate degree in English Literature from Princeton University.
 					</CardText>
-					<Button>Button</Button>
+					<Button color="primary" href="/careers/">More Info</Button>
 				</CardBody>
 			</Card>
 			<Card className="card">
@@ -111,7 +114,7 @@ const CelebsView = () => {
 					<CardText>
 						Steve Young played college football at Brigham Young University where he also earned a Law degree in 1994.  After signed a $40 million deal in 1984 for the USFL, he then went on to play for Tampa Bay and San Fransisco where he won a Super Bowl in 1995.
 					</CardText>
-					<Button>Button</Button>
+					<Button color="primary" href="/careers/">More Info</Button>
 				</CardBody>
 			</Card>
 		</div>
