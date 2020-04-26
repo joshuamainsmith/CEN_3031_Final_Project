@@ -75,11 +75,11 @@ const CelebsView = () => {
 						<CardTitle><h3>Kendrick Kang-Joh Jeong</h3></CardTitle>
 						<CardSubtitle>Licensed Physician</CardSubtitle>
 						<CardText>
-							Ken is moost notable for his role in the Hangoover series.  He is a licensed physician.  However, he has since stopped practicing in favor of his acting career.
+							Ken is moost notable for his role in the Hangover series.  He is a licensed physician.  However, he has since stopped practicing in favor of his acting career.
 						</CardText>
 					</CardBody>
 					<CardFooter>
-						<Button block color="primary" href="/careers?keyword=physician">Relevant Careers</Button>
+						<Button block color="primary" href="/careers?keyword=medical">Relevant Careers</Button>
 					</CardFooter>
 				</Card>
 				<Card>
@@ -94,7 +94,7 @@ const CelebsView = () => {
 						</CardText>
 					</CardBody>
 					<CardFooter>
-						<Button block color="primary" href="/careers?keyword=anthropology">Relevant Careers</Button>
+						<Button block color="primary" href="/careers?keyword=science">Relevant Careers</Button>
 					</CardFooter>
 				</Card>
 				<Card>
