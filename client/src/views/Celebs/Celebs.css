@@ -22,17 +22,3 @@
 	width: auto;
 	overflow: hidden;
 }
-
-#background {
-    position: absolute;
-    min-height:100%;
-    width: 100%;
-    height: auto;
-    top: 0;
-    left: 0;
-    background: url(http://2.bp.blogspot.com/-ayEwJpMGTPQ/USqliwPWo1I/AAAAAAAAHtI/ab6NHVy0Q48/s1600/tree.jpg) no-repeat center center;
-    -webkit-background-size: cover; /* Add in these */
-    -moz-background-size: cover;    /* four lines to */
-    -o-background-size: cover;      /* remove the white space*/
-    background-size: cover;         /* around images */
-}
