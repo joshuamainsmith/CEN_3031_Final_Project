@@ -22,3 +22,12 @@
 	width: auto;
 	overflow: hidden;
 }
+
+.celebs-header {
+	text-align: center;
+	color: white;
+	background-color: #224;
+	height: 325px;
+	padding-top: 100px;
+	margin-bottom: -150px;
+}

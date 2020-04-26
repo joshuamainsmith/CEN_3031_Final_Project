@@ -14,6 +14,10 @@ import Steve from '../../assets/Steve_Young.jpg';
 
 const CelebsView = () => {
 	return (
+		<>
+		<header>
+			<h1 className="celebs-header">Famous Celebrities</h1>
+		</header>
 		<Container>
 			<CardGroup>
 				<Card>
@@ -139,6 +143,7 @@ const CelebsView = () => {
 				</Card>
 			</CardGroup>
 		</Container>
+		</>
 	);
 };
 
