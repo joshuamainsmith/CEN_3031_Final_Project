@@ -52,7 +52,7 @@ const NavigationBar = (props) => {
 				</li>
 				<li className="nav-item">
 					<a className="nav-link" href="/celebs">
-						Celebrites
+						Celebrities
 					</a>
 				</li>
 
