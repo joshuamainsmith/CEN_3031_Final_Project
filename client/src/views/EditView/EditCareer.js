@@ -245,9 +245,9 @@ const EditCareer = (props) => {
 								<Input
 									type="radio"
 									name="education"
-									value="High school"
+									value="high school"
 									onChange={handleChange}
-									checked={career.education === 'High school'}
+									checked={career.education === 'high school'}
 								/>
 								High School
 							</Label>
@@ -257,9 +257,9 @@ const EditCareer = (props) => {
 								<Input
 									type="radio"
 									name="education"
-									value="Associates"
+									value="associates"
 									onChange={handleChange}
-									checked={career.education === 'Associates'}
+									checked={career.education === 'associates'}
 								/>
 								Associate's degree
 							</Label>
@@ -270,9 +270,9 @@ const EditCareer = (props) => {
 								<Input
 									type="radio"
 									name="education"
-									value="Bachelors"
+									value="bachelors"
 									onChange={handleChange}
-									checked={career.education === 'Bachelors'}
+									checked={career.education === 'bachelors'}
 								/>
 								Bachelor's degree
 							</Label>
@@ -282,9 +282,9 @@ const EditCareer = (props) => {
 								<Input
 									type="radio"
 									name="education"
-									value="Masters"
+									value="masters"
 									onChange={handleChange}
-									checked={career.education === 'Masters'}
+									checked={career.education === 'masters'}
 								/>
 								Master's
 							</Label>
@@ -294,9 +294,9 @@ const EditCareer = (props) => {
 								<Input
 									type="radio"
 									name="education"
-									value="Doctorate"
+									value="doctorate"
 									onChange={handleChange}
-									checked={career.education === 'Doctorate'}
+									checked={career.education === 'doctorate'}
 								/>
 								Doctorate
 							</Label>
