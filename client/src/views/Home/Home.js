@@ -36,14 +36,22 @@ function Home() {
 			<div className="row">
 				<div className="col-md-12 text-center">
 					<h1 className="title ">Career Finder</h1>
-					<h4 className="title">We are helping students around the globe find the career of their dreams.</h4>
-					<a
-						href="/careers"
-						className="btn btn-info btn-fill btn-round"
-						>Search Careers</a
-					>
 				</div>
 			</div>
+      <div className="row">
+        <div className="col-md-12 text-center">
+          <h4 className="title">We are helping students around the globe find the career of their dreams.</h4>
+        </div>
+      </div>
+      <div className="row">
+        <div className="col-md-12 text-center">
+          <a
+            href="/careers"
+            className="btn btn-info btn-fill btn-round"
+            >Search Careers</a
+          >
+        </div>
+      </div>
 		</div>
 		</div>
 		</>
