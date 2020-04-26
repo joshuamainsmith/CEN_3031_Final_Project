@@ -22,7 +22,7 @@ import Card from "../../components/Card/Card.js";
 import CardBody from "../../components/Card/CardBody.js";
 import CardIcon from "../../components/Card/CardIcon.js";
 import CardHeader from "../../components/Card/CardHeader.js";
-
+import {Link} from 'react-router-dom';
 import { dataTable } from "../../variables/general.js";
 
 import { cardTitle } from "../../assets/jss/material-dashboard-pro-react.js";
@@ -90,8 +90,15 @@ const UserList = (props) => {
 
 	function fillButtons(user) {
 		return [
-			<Button color="success" className={classes.actionButtons} href={'/user/' + user._id + '/edit'} >
+			<Button color="success" className={classes.actionButtons}>
+        <Link
+        to={{
+        pathname: "/user/edit",
+        state: { user: user }
+        }}>
+
 				<Edit className={classes.icon}/>
+        </Link>
 			</Button>,
 			<Button onClick={() => toggle(user)} className={classes.actionButtons} color="danger">
 				<Close className={classes.icon}/>

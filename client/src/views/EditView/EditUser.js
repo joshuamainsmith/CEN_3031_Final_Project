@@ -5,10 +5,11 @@ import { Row, Col, Label, Container, Button, Form, FormGroup, Input } from 'reac
 const EditUser = (props) => {
 	const initialState = {
 		username: '',
-		role: ''
+		role: '',
+		_id: null
 	};
 
-	const [ user, setUser ] = useState(initialState);
+	const [ user, setUser ] = useState(props.location.state.user);
 
 	function handleChange(event) {
 		setUser({ ...user, [event.target.name]: event.target.value });
@@ -18,7 +19,7 @@ const EditUser = (props) => {
 		
 		event.preventDefault();
 		try {
-			const response = await fetch('/api/users/' + userId, {
+			const response = await fetch('/api/users/' + user._id, {
 				method: 'put',
 				body: JSON.stringify(user),
 				headers: {
@@ -37,20 +38,22 @@ const EditUser = (props) => {
 
 	useEffect(() => {
 		
-		const fetchUsers = async () => {
-			const response = await fetch('/api/users/' + userId);
+		// const fetchUsers = async () => {
+		// 	const response = await fetch('/api/users/' + userId);
 
-			const responseData = await response.json();
-			console.log(responseData);
-			responseData['username'] = responseData.username;
-			responseData['role'] = responseData.role;
+		// 	const responseData = await response.json();
+		// 	console.log(responseData);
+		// 	responseData['username'] = responseData.username;
+		// 	responseData['role'] = responseData.role;
 
-			setUser(responseData);
-			setUserId(userId);
-		};
+		// 	setUser(responseData);
 
-		fetchUsers();
+		// 	setUserId(userId);
+		// };
+
+		// fetchUsers();
 	}, [userId]);
+
 
 	return (
 		<Container>
