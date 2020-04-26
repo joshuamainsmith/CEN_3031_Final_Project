@@ -4,3 +4,12 @@
 	text-align: center;
 	text-size-adjust: 100px;
 }
+
+.cluster-header {
+	text-align: center;
+	color: white;
+	background-color: #914165;
+	height: 325px;
+	padding-top: 100px;
+	margin-bottom: -150px;
+}

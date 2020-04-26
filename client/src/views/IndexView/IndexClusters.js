@@ -1,6 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import './IndexClusters.css';
 import { Link, useLocation } from 'react-router-dom';
+import CardBody from "../../components/Card/CardBody.js";
+import GridItem from "../../components/Grid/GridItem.js";
+import Card from "../../components/Card/Card.js";
+import CardHeader from "../../components/Card/CardHeader.js";
+// @material-ui/core components
+import { makeStyles } from "@material-ui/core/styles";
+
+import styles from "../../assets/jss/material-dashboard-pro-react/views/gridSystemStyle.js";
+
+const useStyles = makeStyles(styles);
 
 function useQuery() {
 	return new URLSearchParams(useLocation().search);
@@ -9,6 +19,7 @@ function useQuery() {
 function IndexClusters(props) {
 	let query = useQuery();
 	const [ loadedClusters, setloadedClusters ] = useState([]);
+	const classes = useStyles();
 
 	useEffect(() => {
 		const fetchClusters = async () => {
@@ -32,23 +43,28 @@ function IndexClusters(props) {
 	const clusterList = loadedClusters.map((cluster) => {
 
 		return (
-			<div className="row" key={cluster._id}>
-				<div className="col-12">
-					<h3><Link to={"/cluster/" + cluster._id}>{cluster.name}</Link></h3>
-				</div>
-
-				<div className="col-12">
-					<p>{cluster.description}</p>
-				</div>
-			</div>
+			<GridItem xs={12} sm={12}>
+				<Card product className={classes.cardHover}>
+					<CardHeader className={classes.cardHeaderHover}>
+						<h3><Link to={"/cluster/" + cluster._id}>{cluster.name}</Link></h3>
+					</CardHeader>
+					<CardBody>
+						<p>{cluster.description}</p>
+					</CardBody>
+				</Card>
+			</GridItem>
 		);
 	});
 
 	return (
+		<>
+		<header>
+			<h1 className="cluster-header">Cluster</h1>
+		</header>
 		<div className="container">
-			<h1>Clusters</h1>
 			{clusterList}
 		</div>
+		</>
 	);
 }
 

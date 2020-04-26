@@ -13,10 +13,14 @@ import CardBody from "../../components/Card/CardBody.js";
 import CardHeader from "../../components/Card/CardHeader.js";
 import CardFooter from "../../components/Card/CardFooter.js";
 import Heading from "../../components/Heading/Heading.js";
+import ShowChartIcon from '@material-ui/icons/ShowChart';
+import MonetizationOnIcon from '@material-ui/icons/MonetizationOn';
 
 import styles from "../../assets/jss/material-dashboard-pro-react/views/gridSystemStyle.js";
+import dashStyles from "../../assets/jss/material-dashboard-pro-react/views/dashboardStyle.js";
 
 const useStyles = makeStyles(styles);
+const useDashStyles = makeStyles(dashStyles);
 
 function useQuery() {
 	return new URLSearchParams(useLocation().search);
@@ -43,6 +47,8 @@ function Search() {
 	//const [ careerID ] = useState(props.match.params.id);
 	// Create a limit, 10
 	const limit = 10;
+	const classes = useStyles();
+	const dashClasses = useDashStyles();
 
 	useEffect(() => {
 		const fetchCareers = async () => {
@@ -65,16 +71,18 @@ function Search() {
 
 	function medianWage(career) {
 		return (
-			<div className="col-12">
-				<p>Median Wage: ${career.salary_ranges.median.toLocaleString()}</p>
+			<div className={dashClasses.stats}>
+				<MonetizationOnIcon />
+				Median Wage: ${career.salary_ranges.median.toLocaleString()}
 			</div>
 		);
 	}
 
 	function growthRate(career) {
 		return (
-			<div className="col-12">
-				<p>Growth Rate: {career.outlook}%</p>
+			<div className={dashClasses.stats}>
+				<ShowChartIcon/>
+				Growth Rate: {career.outlook}%
 			</div>
 		);
 	}
@@ -100,8 +108,6 @@ function Search() {
 		}
 	}
 
-	const classes = useStyles();
-
 	const careerList = loadedCareers.slice(index * limit - limit, limit * index).map((career) => {
 		if (career.salary_ranges && career.salary_ranges.median) {
 			median_wage = medianWage(career);
@@ -116,16 +122,17 @@ function Search() {
 					<Card product className={classes.cardHover}>
 						<CardHeader className={classes.cardHeaderHover}>
 							<h3><Link to={"/career/" + career._id}>{career.name}</Link></h3>
+							<h5>{career.type}</h5>
 						</CardHeader>
 						<CardBody>
 							<p>{career.description}</p>
 						</CardBody>
-						<CardFooter product>
+						<CardFooter stats>
 							<div className={classes.price}>
-								{medianWage}
+								{median_wage}
 							</div>
 							<div className={classes.price}>
-								{growthRate}
+								{growth_rate}
 							</div>
 						</CardFooter>
 					</Card>
@@ -134,28 +141,31 @@ function Search() {
 	});
 
 	return (
+		<>
+		<header>
+		<h1 className="career-header">Careers</h1>
+		</header>
 		<div className="container">
-			<Heading title="Careers" textAlign="center" />
 			<GridContainer>
 				{careerList}
-				
-				    <Pagination aria-label="Page navigation example" className="text-center">
-    <PaginationItem>
-        <PaginationLink onClick={() => setIndex(1)} first href="#" />
-      </PaginationItem>
-      <PaginationItem>
-        <PaginationLink onClick={ () => setPage(index - 1)} previous href="#" />
-      </PaginationItem>
-      {renderedPages}
-      <PaginationItem>
-        <PaginationLink onClick={ () => setPage(index + 1)} next href="#" />
-      </PaginationItem>
-      <PaginationItem>
-        <PaginationLink onClick={() => setIndex(totalPages)} last href="#" />
-      </PaginationItem>
-    </Pagination>
+				<Pagination aria-label="Page navigation example" className="text-center">
+    			<PaginationItem>
+        		<PaginationLink onClick={() => setIndex(1)} first href="#" />
+      		</PaginationItem>
+      		<PaginationItem>
+        		<PaginationLink onClick={ () => setPage(index - 1)} previous href="#" />
+      		</PaginationItem>
+      		{renderedPages}
+      		<PaginationItem>
+        		<PaginationLink onClick={ () => setPage(index + 1)} next href="#" />
+      		</PaginationItem>
+      		<PaginationItem>
+        		<PaginationLink onClick={() => setIndex(totalPages)} last href="#" />
+      		</PaginationItem>
+    		</Pagination>
 			</GridContainer>
 		</div>
+		</>
 	);
 }
 
