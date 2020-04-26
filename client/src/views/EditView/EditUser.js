@@ -18,7 +18,7 @@ const EditUser = (props) => {
 		
 		event.preventDefault();
 		try {
-			const response = await fetch('/api/users/' + user._id, {
+			const response = await fetch('/api/users/' + userId, {
 				method: 'put',
 				body: JSON.stringify(user),
 				headers: {
@@ -50,7 +50,7 @@ const EditUser = (props) => {
 		};
 
 		fetchUsers();
-	}, []);
+	}, [userId]);
 
 	return (
 		<Container>

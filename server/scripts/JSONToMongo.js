@@ -46,10 +46,7 @@ function clearAndRefill() {
                 clusters[doc.type] = 1;
             CareerCluster.create({name: doc.type}, (err) => {
                 if (err) throw err;
-               
-                // clusters.agriculture = 1
-                //callback();
-            
+                callback();
             })}
         }, () => {
             mongoose.connection.close();

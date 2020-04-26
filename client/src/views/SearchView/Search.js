@@ -37,11 +37,12 @@ function Page(props) {
 function Search() {
 	let query = useQuery();
 	let median_wage, growth_rate;
-		const [ loadedCareers, setLoadedCareers ] = useState([]);
+		
+	const [ loadedCareers, setLoadedCareers ] = useState([]);
 
 	const [ index, setIndex ] = useState(1);
 	//const [ careerID ] = useState(props.match.params.id);
-	// Create a limit, 10
+
 	const limit = 10;
 
 	useEffect(() => {
@@ -90,13 +91,15 @@ function Search() {
 	const totalPages = Math.ceil(loadedCareers.length / limit);
 	//console.log('Current index: ', index, ' Total Pages: ', totalPages);
 	const renderedPages = [];
+	
+
 	if(index > totalPages - 5){
 		for(let i = totalPages - 5; i <= totalPages; i++){
-			renderedPages.push(<Page setIndex={setIndex} pageNumber={i} index={index} />);
+			renderedPages.push(<Page key={i} setIndex={setIndex} pageNumber={i} index={index} />);
 		}
 	} else {
 		for (let i = index; i <= index + 5; i++) {
-			renderedPages.push(<Page setIndex={setIndex} pageNumber={i} index={index} />);
+			renderedPages.push(<Page key={i} setIndex={setIndex} pageNumber={i} index={index} />);
 		}
 	}
 
@@ -112,7 +115,7 @@ function Search() {
 		}
 
 		return (
-				<GridItem xs={12} sm={12}>
+				<GridItem key={career.name} xs={12} sm={12}>
 					<Card product className={classes.cardHover}>
 						<CardHeader className={classes.cardHeaderHover}>
 							<h3><Link to={"/career/" + career._id}>{career.name}</Link></h3>
