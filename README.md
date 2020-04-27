@@ -95,11 +95,11 @@ After filling the DB with dummy data, in your browser, go to `localhost:5000/api
 
 ## Handoff Guidelines
 
-Please get added to the Github repo but a current collaborator, and get added to the Heroku project by the current project owner.
+Please get added to the Github repo by a current collaborator, and get added to the Heroku project by the current project owner.
 
 ### Running the application in Heroku
 
-Make sure to have all the config environment variables in place before deploying to Heroku. The instructions [here](https://devcenter.heroku.com/articles/getting-started-with-nodejs#set-up) will help you get started.
+Make sure to have all the config environment variables in place before deploying to Heroku. The instructions to deploy [here](https://devcenter.heroku.com/articles/getting-started-with-nodejs#set-up) will help you get started.
 
 ### Beyond Heroku
 
