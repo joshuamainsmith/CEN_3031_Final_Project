@@ -28,9 +28,9 @@ usersRouter.delete('/:userId', usersController.remove);
 
 const signToken = userID => {
   return JWT.sign({
-    iss: "NoobCoder",
+    iss: process.env.COOKIE_SECRET || require('../config/config').cookie.secret,
     sub: userID
-  }, "NoobCoder", {expiresIn: "6h"});
+  }, process.env.COOKIE_SECRET || require('../config/config').cookie.secret, {expiresIn: "6h"});
 }
 
 
