@@ -21,7 +21,7 @@ The papertrail api token is only needed if you are using papertrail as the loggi
 
 ## Deployment
 
-We are using Heroku for deployment. If you are to deployed you need to be added to the Heroku project or start your own with the code.
+We are using Heroku for deployment. If you are to deploy you need to be added to the Heroku project or start your own with the code.
 
 To deploy to heroku setup heroku and then run the following command:
 
