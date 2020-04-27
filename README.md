@@ -95,7 +95,7 @@ After filling the DB with dummy data, in your browser, go to `localhost:5000/api
 
 ## Handoff Guidelines
 
-Please get added to the Github repo by a current collaborator, and get added to the Heroku project by the current project owner.
+Please add to Github repo by a current collaborator, and add to the Heroku project by the current project owner.
 
 ### Running the application in Heroku
 
