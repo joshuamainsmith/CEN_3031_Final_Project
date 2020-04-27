@@ -1,19 +1,33 @@
-## _**PLEASE READ THIS TO COMPLETION BEFORE ASKING ANY QUESTIONS!**_
+# Career Finder
 
-### _**IMPORTANT NOTES**_ -
-This project does not have a mongoDB connection setup. Setup the connection based on the environments below.
-- local development: create a config file (make sure to name it config.js) in the config folder, which exports your db.uri connection. An example is provided, config/config.example.js. This file will be ignored by git so your db credentials will be kept safe when the app is deployed.
-- production: Since the config file is not pushed when you deploy your app, you must specifiy your db uri in heorku. Set the uri in heroku as specified in [this](https://devcenter.heroku.com/articles/config-vars) resource. Make sure you name the environement variable "DB_URI".
+## Tech stack
 
-This project contains an example project board meant to showcase how one can be used. The issues posted to it are not real issues.
+* MERN stack
+* Atlas as 3rd party service for mongoDB
+* Heroku for deployment
 
-## Getting Started
-This repository aims to assist you in beginning work on a MERN stack application for heroku deployment with a solid file structure as a foundation. To get started make a copy of this template repo for your project teams by clicking the green "Use this template" button above.
 
-Since this project will hold both the client application and the server application there will be node modules in two different places. First run `npm install` from the root. After this you will run `npm run-script install-all` from the root. From now on run this command anytime you want to install all modules again. This is a script we have defined in package.json. Alternatively your group may choose to simplify this process by using yarn workspaces as specified [here](https://yarnpkg.com/lang/en/docs/workspaces/).
+## Config
 
-This app can be deployed directly to heroku since there is a script defined in package.json which will automatically handle building and deploying the app. For more information on deploying to heroku reference the extra resources at the bottom of this file.
+The following are the environment variables needed in production:
 
+* DB_URI
+* LOG_LEVEL
+* NODE_ENV
+* COOKIE_SECRET
+* PAPERTRAIL_API_TOKEN
+
+The papertrail api token is only needed if you are using papertrail as the logging service in Heroku.
+
+## Deployment
+
+We are using Heroku for deployment. If you are to deployed you need to be added to the Heroku project or start your own with the code.
+
+To deploy to heroku setup heroku and then run the following command:
+
+```
+git push heroku master
+```
 
 ## Available Scripts
 
@@ -66,15 +80,8 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 #### `.gitignore` - Tells git which files to ignore
 #### `README` - This file!
 
-## Learn More
-To learn how to setup a local MongoDB instance for testing, check out how to [connect to MongoDB](https://docs.mongodb.com/guides/server/drivers/).
 
-To learn how to deploy a full-stack web app to heroku, check out [this great guide](https://daveceddia.com/deploy-react-express-app-heroku/).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-
-## Filling Database with dummy data
+## Filling Database with dummy data for Development
 
 Make sure to make a `config.js` file inside `server/config` and have the right db uri (local or remote).
 
