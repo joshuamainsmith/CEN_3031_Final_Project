@@ -2,7 +2,7 @@
 
 ## Tech stack
 
-* MERN stack
+* MERN stack, MongoDB Express React NodeJs
 * Atlas as 3rd party service for mongoDB
 * Heroku for deployment
 
